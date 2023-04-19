@@ -20,5 +20,7 @@
     <!-- Description in introductory session -->
     <color name="description">#82799D</color>
 
+    <!-- Icon navigation -->
+    <color name="icon">#A095C1</color>
 
 </resources>

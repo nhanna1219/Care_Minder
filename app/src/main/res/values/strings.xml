@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CareMinder</string>
+    <string name="feature">feature</string>
+    <string name="statistic">statistic</string>
+    <string name="notification">notification</string>
+    <string name="setting">setting</string>
 </resources>
