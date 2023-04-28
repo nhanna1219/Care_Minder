@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!--Shadow-->
+    <color name="shadow">#FCC0BAC0</color>
     <!-- Background-->
     <color name="theme">#E1DAE1</color>
 
@@ -22,5 +24,6 @@
 
     <!-- Icon navigation -->
     <color name="icon">#A095C1</color>
+    <color name="Exercises_Oval">#91559B</color>
 
 </resources>

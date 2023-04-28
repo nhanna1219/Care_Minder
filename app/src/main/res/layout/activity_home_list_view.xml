@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ListView.Home_ListView">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/daily_activity"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/rectangle"
+                    app:backgroundTint="@color/theme"
+                    android:elevation="6dp"
+                    android:contentDescription="@string/daily_activity_button"
+                    android:text="@string/daily_activity"
+                    android:fontFamily="@font/raleway_extrabold"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:padding="16dp">
+                </androidx.appcompat.widget.AppCompatButton>
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:layout_alignEnd="@+id/daily_activity"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/daily_activity" />
+
+                <LinearLayout
+                    android:id="@+id/ic_counting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/daily_activity"
+                    android:layout_marginStart="8dp"
+                    android:paddingBottom="50dp"
+                    android:orientation="horizontal"
+                    android:elevation="8dp">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:src="@drawable/ic_step"
+                            android:contentDescription="@string/icon_counting_step" />
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:src="@drawable/ic_time"
+                            android:contentDescription="@string/icon_duraion"/>
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:src="@drawable/ic_calory"
+                            android:contentDescription="@string/icon_calories_counting"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/counting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/daily_activity"
+                    android:layout_marginStart="8dp"
+                    android:paddingBottom="20dp"
+                    android:orientation="horizontal"
+                    android:elevation="8dp">
+
+                        <TextView
+                            android:id="@+id/step_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="19dp"
+                            android:text="@string/_0"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_0"
+                            android:layout_marginHorizontal="19dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/calories_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_0"
+                            android:layout_marginHorizontal="19dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+                </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/exercise"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rectangle"
+                    android:elevation="6dp"
+                    android:contentDescription="@string/exercises_button"
+                    android:text="@string/exercises"
+                    android:fontFamily="@font/raleway_extrabold"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:padding="16dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/exercise"
+                    android:elevation="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="30dp">
+
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_walk"
+                            android:contentDescription="@string/walk"
+                            app:backgroundTint="@color/Exercises_Oval"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_run"
+                            android:contentDescription="@string/run"
+                            app:backgroundTint="@color/Exercises_Oval"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_bicycle"
+                            android:contentDescription="@string/bicycle"
+                            app:backgroundTint="@color/Exercises_Oval"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_swim"
+                            android:contentDescription="@string/swim"
+                            app:backgroundTint="@color/Exercises_Oval"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/steps"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rectangle"
+                    android:contentDescription="@string/steps_counting_button"
+                    android:elevation="6dp"
+                    android:gravity="start"
+                    android:padding="16dp"
+                    android:text="@string/steps"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    app:backgroundTint="@color/theme"
+                    app:fontFamily="@font/raleway_extrabold" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignEnd="@+id/steps"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/steps" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/steps"
+                    android:layout_marginStart="20dp"
+                    android:paddingBottom="30dp"
+                    android:elevation="8dp">
+
+                        <TextView
+                            android:id="@+id/steps_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@string/_0"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/limit_steps_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@string/_6_000"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/food"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rectangle"
+                    android:elevation="6dp"
+                    app:backgroundTint="@color/theme"
+                    android:contentDescription="@string/food_for_calculating_calories_button"
+                    android:text="@string/food"
+                    app:fontFamily="@font/raleway_extrabold"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:padding="16dp"/>
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_alignEnd="@+id/food"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/food" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/food"
+                    android:layout_marginStart="20dp"
+                    android:paddingBottom="30dp"
+                    android:elevation="8dp">
+                        <TextView
+                            android:id="@+id/main_calories_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:text="@string/_0"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/limit_calories_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@string/_1600_kcal"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/water"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rectangle"
+                    android:elevation="6dp"
+                    app:backgroundTint="@color/theme"
+                    android:contentDescription="@string/water_for_body_button"
+                    android:text="@string/water"
+                    app:fontFamily="@font/raleway_extrabold"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:padding="16dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/water"
+                    android:layout_marginStart="20dp"
+                    android:paddingBottom="30dp"
+                    android:elevation="8dp">
+                        <TextView
+                            android:id="@+id/main_water_counting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:text="@string/_0"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/water_measurment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@string/glass"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/water"
+                    android:layout_marginTop="88dp"
+                    android:elevation="8dp">
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_minus"
+                            android:layout_marginHorizontal="15dp"
+                            android:contentDescription="@string/subtract_a_cup_of_water"/>
+                        <ImageButton
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:background="@drawable/circle"
+                            android:src="@drawable/ic_plus"
+                            android:layout_marginEnd="25dp"
+                            android:layout_marginStart="15dp"
+                            android:contentDescription="@string/add_a_cup_of_water" />
+                </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/body"
+                    android:layout_width="320dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/rectangle"
+                    android:elevation="6dp"
+                    app:backgroundTint="@color/theme"
+                    android:contentDescription="@string/body_information_and_suggesting"
+                    android:text="@string/body"
+                    app:fontFamily="@font/raleway_extrabold"
+                    android:textColor="@color/title"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:padding="16dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_alignEnd="@+id/body"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/body" />
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/track_your_weight_and_body_composition_in_one_place"
+                    android:layout_alignBottom="@id/body"
+                    android:textSize="17sp"
+                    android:textStyle="italic"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/black"
+                    android:elevation="8dp"/>
+        </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

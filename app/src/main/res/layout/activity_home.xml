@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <TextView
+        android:id="@+id/hi"
+        android:layout_width="280dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/raleway_extrabold"
+        android:text="@string/hi_julia"
+        android:textColor="@color/title"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/ic_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/hi"
+        android:contentDescription="@string/profile" />
+    <ListView
+        android:id="@+id/home_listview"
+        android:layout_width="match_parent"
+        android:layout_height="666dp"
+        app:layout_constraintTop_toBottomOf="@id/hi" />
+
+    <include layout="@layout/activity_partial_view"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
