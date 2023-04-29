@@ -10,7 +10,19 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <!--Slider-->
+    <style name="MyTooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="backgroundTint">#FC979497</item>
+        <item name="android:textAppearance">@style/MyTooltip.TextAppearance</item>
+    </style>
+
+    <style name="MyTooltip.TextAppearance" parent="@style/TextAppearance.MaterialComponents.Tooltip">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/dm_sans_bold</item>
+        <item name="android:textSize">17sp</item>
     </style>
 </resources>

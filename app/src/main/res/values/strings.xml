@@ -33,4 +33,18 @@
     <string name="glass">glass</string>
     <string name="subtract_a_cup_of_water">subtract a cup of water</string>
     <string name="add_a_cup_of_water">add a cup of water</string>
+    <string name="give_us_some_basic_information">Give us some basic information</string>
+    <string name="male_gender">male gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="height_slider">Height slider</string>
+    <string name="female_gender">Female gender</string>
+    <string name="_50cm">50cm</string>
+    <string name="_300cm">300cm</string>
+    <string name="weight_slider">weight slider</string>
+    <string name="_20kg">20kg</string>
+    <string name="_200kg">200kg</string>
+    <string name="next_button">Next button</string>
 </resources>

@@ -1,9 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InformationActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/text_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/give_us_some_basic_information"
+        android:gravity="center_horizontal|top"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/raleway_bold"/>
+
+    <RelativeLayout
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/text_information">
+
+        <ImageButton
+            android:id="@+id/male"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/check_rectangle"
+            android:contentDescription="@string/male_gender"
+            android:src="@drawable/ic_male"
+            android:elevation="8dp"
+            android:layout_marginEnd="35dp">
+        </ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/male"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/dm_sans_bold"
+            android:textColor="@color/black"
+            android:text="@string/male"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/female"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/uncheck_rectangle"
+            android:contentDescription="@string/female_gender"
+            android:elevation="8dp"
+            android:layout_toEndOf="@+id/male"
+            android:src="@drawable/ic_female"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/female"
+            android:layout_toEndOf="@+id/male"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/dm_sans_bold"
+            android:textColor="@color/black"
+            android:text="@string/female"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gender"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/height"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    
+    <com.google.android.material.slider.Slider
+        android:id="@id/height_slider"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        app:trackHeight="3dp"
+        app:trackColor="@color/shadow"
+        app:thumbColor="@color/white"
+        app:thumbStrokeColor="@color/black"
+        app:thumbStrokeWidth="3dp"
+        app:haloColor="@color/shadow"
+        app:labelStyle="@style/MyTooltip"
+        app:labelBehavior="visible"
+        android:value="100.0"
+        android:valueFrom="50.0"
+        android:valueTo="300.0"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="64dp"
+        android:layout_below="@id/height"
+        android:contentDescription="@string/height_slider"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_height_short"
+        android:layout_alignBottom="@+id/height_slider"
+        android:layout_marginStart="65dp"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/height_slider"
+        android:layout_marginStart="65dp"
+        android:text="@string/_50cm"
+        android:fontFamily="@font/dm_sans_bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_height_tall"
+        android:layout_alignBottom="@+id/height_slider"
+        android:layout_marginStart="350dp"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/height_slider"
+        android:text="@string/_300cm"
+        android:layout_marginStart="310dp"
+        android:fontFamily="@font/dm_sans_bold"/>
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/height_slider"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/weight"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@id/weight_slider"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        app:trackHeight="3dp"
+        app:trackColor="@color/shadow"
+        app:thumbColor="@color/white"
+        app:thumbStrokeColor="@color/black"
+        app:thumbStrokeWidth="3dp"
+        app:haloColor="@color/shadow"
+        app:labelStyle="@style/MyTooltip"
+        app:labelBehavior="visible"
+        android:value="60.0"
+        android:valueFrom="20.0"
+        android:valueTo="200.0"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="64dp"
+        android:layout_below="@id/weight"
+        android:contentDescription="@string/weight_slider"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_weight_thin"
+        android:layout_alignBottom="@+id/weight_slider"
+        android:layout_marginStart="65dp"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weight_slider"
+        android:layout_marginStart="65dp"
+        android:text="@string/_20kg"
+        android:fontFamily="@font/dm_sans_bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_weight_fat"
+        android:layout_alignBottom="@+id/weight_slider"
+        android:layout_marginStart="350dp"
+        android:layout_marginBottom="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weight_slider"
+        android:text="@string/_200kg"
+        android:layout_marginStart="310dp"
+        android:fontFamily="@font/dm_sans_bold"/>
+
+    <ImageButton
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/ic_next"
+        android:contentDescription="@string/next_button" />
+
+</RelativeLayout>
