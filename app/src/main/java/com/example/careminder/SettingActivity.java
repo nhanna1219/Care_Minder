@@ -2,9 +2,9 @@ package com.example.careminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import android.os.Bundle;
 
 import com.example.careminder.utils.SettingAdapter;
@@ -19,6 +19,7 @@ public class SettingActivity extends AppCompatActivity {
     private SettingAdapter settingAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
@@ -29,6 +30,7 @@ public class SettingActivity extends AppCompatActivity {
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, numColumns));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         List<SettingItem> settingItems = createSettingItems();
 
