@@ -28,9 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".WaterActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".SettingActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".FoodActivity"
             android:exported="false" />
@@ -44,24 +42,25 @@
             android:name=".DailyActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".IntroductionActivity"
             android:exported="false" />
         <activity
             android:name=".InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".IntroductionActivity"
+            android:name=".SettingActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" /> <!-- <activity -->
+            android:exported="false" />
+        <!-- <activity -->
         <!-- android:name=".ProfileActivity" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name=".SettingActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
