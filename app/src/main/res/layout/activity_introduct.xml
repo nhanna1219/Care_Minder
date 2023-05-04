@@ -6,4 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".IntroductionActivity">
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/wel_gif"
+        android:layout_width="375dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="135dp"
+        android:src="@drawable/welcome2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wel_text"
+        android:layout_width="295dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="105dp"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:fontFamily="@font/dm_sans_bold"
+        android:text="@string/welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wel_gif" />
+
+    <ImageButton
+        android:id="@+id/wel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/ic_next"
+        android:contentDescription="@string/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroductionActivity2">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/intro_gif"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/welcome3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:contentDescription="@string/ic_active"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_active"
+        app:layout_constraintEnd_toStartOf="@+id/ic_intro"
+        app:layout_constraintTop_toBottomOf="@+id/intro_gif" />
+
+    <ImageView
+        android:contentDescription="@string/ic_default"
+        android:id="@+id/ic_intro"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/ic_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro_gif" />
+
+    <ImageView
+        android:contentDescription="@string/ic_default"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/ic_default"
+        app:layout_constraintStart_toEndOf="@+id/ic_intro"
+        app:layout_constraintTop_toBottomOf="@+id/intro_gif" />
+
+    <TextView
+        android:id="@+id/intro_text"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/raleway_bold"
+        android:gravity="center"
+        android:text="@string/intro"
+        android:textSize="32sp"
+        android:textColor="@color/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_intro" />
+
+    <TextView
+        android:id="@+id/de_intro"
+        android:layout_width="375dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/raleway_medium"
+        android:gravity="center"
+        android:text="@string/de_intro"
+        android:textColor="@color/description"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro_text" />
+
+    <ImageButton
+        android:id="@+id/intro_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="38dp"
+        android:background="@drawable/ic_next"
+        android:contentDescription="@string/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        layout="@layout/activity_skip_introduction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

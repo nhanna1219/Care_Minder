@@ -47,4 +47,21 @@
     <string name="_20kg">20kg</string>
     <string name="_200kg">200kg</string>
     <string name="next_button">Next button</string>
+    <string name="welcome">Welcome to your personal health tracker</string>
+    <string name="intro">Health status monitoring</string>
+    <string name="intro2">Health recommendations</string>
+    <string name="intro3">Exercise regime</string>
+    <string name="ic_default">Default</string>
+    <string name="ic_active">Active</string>
+    <string name="ic_back">Back</string>
+    <string name="de_intro">Manage and monitor your health by creating personal profile that document your health history, current status and lifestyle preferences.</string>
+    <string name="de_intro2">Recommendations are provided based on personalized information such as health history, interests and lifestyle.</string>
+    <string name="de_intro3">Provides strength training exercises and stats insights. Set and track personal daily goals.</string>
+    <string name="intro_skip_btn">Skip</string>
+    <string name="steps_today">Today</string>
+    <string name="steps_quantity">2000</string>
+    <string name="steps_kcal">0 kcal</string>
+    <string name="steps_km">0 km</string>
+    <string name="steps_highlights">Highlights</string>
+    <string name="steps_content_highlights">You averaged 1717 steps a day over the last 7 days</string>
 </resources>
