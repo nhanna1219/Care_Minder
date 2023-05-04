@@ -25,5 +25,5 @@
     <!-- Icon navigation -->
     <color name="icon">#A095C1</color>
     <color name="Exercises_Oval">#91559B</color>
-
+    <color name="colorBlue">#0000FF</color>
 </resources>
