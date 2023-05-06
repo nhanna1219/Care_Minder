@@ -92,4 +92,16 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <string name="title_text">Calorie Counter</string>
+    <string name="food_hint">What did you eat?</string>
+    <string name="cal_hint">Calories</string>
+    <string name="submit_text">Submit</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="share_title">Share</string>
+    <string name="food_total">Total Calories:</string>
+    <string name="cal_text">Cal.</string>
+    <string name="num_foods">Food Items:</string>
+    <string name="delete_menu">Delete</string>
+
 </resources>
