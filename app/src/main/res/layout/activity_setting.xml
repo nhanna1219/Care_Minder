@@ -83,12 +83,12 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/circle_user"
 
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="@+id/settingsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
         app:shapeAppearanceOverlay="@style/circular"
         app:srcCompat="@drawable/avatar_1"
@@ -123,10 +123,10 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/activity_partial_view"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-    />
+<!--    <include-->
+<!--        android:id="@+id/include"-->
+<!--        layout="@layout/activity_partial_view"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/linearLayout"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+<!--    />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

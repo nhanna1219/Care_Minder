@@ -78,7 +78,6 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.SettingV
                         Intent intent5 = new Intent(context, HelpSettingActivity.class);
                         context.startActivity(intent5);
                         break;
-
                     // hoạt động khác
                 }
             }

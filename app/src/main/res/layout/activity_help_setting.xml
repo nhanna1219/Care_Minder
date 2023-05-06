@@ -10,71 +10,61 @@
         android:id="@+id/settingsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="46dp"
         android:drawableStart="@drawable/ic_back"
         android:drawablePadding="15dp"
         android:text="Help"
         android:textColor="@color/colorBlue"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/TextView1"
+        android:layout_marginTop="25dp"
+
+        android:layout_marginLeft="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="36dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/TextView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView1" />
-
-    <View
-        android:id="@+id/view5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="393dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView2" />
 
     <TextView
         android:id="@+id/TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="34dp"
         android:text="Frequently asked questions"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginLeft="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView1" />
 
     <TextView
         android:id="@+id/TextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="36dp"
         android:text="Contact Us"
+        android:layout_marginTop="20dp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintStart_toStartOf="@+id/TextView1"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/TextView2" />
+    <include layout="@layout/activity_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

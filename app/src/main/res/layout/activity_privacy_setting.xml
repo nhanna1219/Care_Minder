@@ -10,16 +10,14 @@
         android:id="@+id/settingsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="26dp"
-        android:layout_marginBottom="55dp"
         android:drawableStart="@drawable/ic_back"
         android:drawablePadding="15dp"
         android:text="Privacy and Security"
         android:textColor="@color/colorBlue"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,67 +25,59 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
         android:drawablePadding="15dp"
         android:text="Privacy Policy"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_line1"
-        app:layout_constraintEnd_toEndOf="@+id/textView1"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="32dp"
         android:drawablePadding="15dp"
         android:text="Data Security"
+        android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_line2"
-        app:layout_constraintStart_toStartOf="@+id/horizontal_line1"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_line1" />
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginBottom="347dp"
         android:drawablePadding="15dp"
+        android:layout_marginTop="20dp"
         android:text="Manage App Permission"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+        app:layout_constraintStart_toStartOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
 
-    <View
-        android:id="@+id/horizontal_line1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="28dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <View
-        android:id="@+id/horizontal_line2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="29dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
+    <include layout="@layout/activity_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

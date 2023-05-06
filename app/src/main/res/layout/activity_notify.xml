@@ -12,11 +12,11 @@
         android:layout_height="1dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginTop="90dp"
         android:background="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view11" />
 
     <View
         android:id="@+id/view9"
@@ -30,15 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView22" />
 
-    <View
-        android:id="@+id/view8"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+
 
     <View
         android:id="@+id/view14"
@@ -54,17 +46,14 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginTop="30dp"
         android:drawablePadding="15dp"
         android:text="Exercise in progress"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view13"
-        app:layout_constraintEnd_toStartOf="@+id/textView23"
-        app:layout_constraintStart_toStartOf="@+id/view11" />
+        app:layout_constraintStart_toStartOf="@+id/view11"
+        app:layout_constraintTop_toBottomOf="@+id/view11" />
 
     <TextView
         android:id="@+id/textView22"
@@ -85,40 +74,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="20dp"
         android:drawablePadding="15dp"
         android:text="Show priority"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintEnd_toEndOf="@+id/textView26"
         app:layout_constraintTop_toBottomOf="@+id/view9" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
         android:drawablePadding="15dp"
         android:text="Show priority"
+        android:layout_marginTop="30dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView25"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintTop_toBottomOf="@+id/view11" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="284dp"
         android:drawablePadding="15dp"
         android:text="Steps"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/view9" />
 
     <CheckBox
@@ -149,32 +136,15 @@
         android:id="@+id/switch1"
         layout_constraintStart_toStartOf="parent"
         layout_constraintTop_toTopOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="92dp"
+        android:layout_width="344dp"
+        android:layout_height="48dp"
         android:text="Allows Notifications"
+        android:layout_marginTop="40dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/view12"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
 
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="71dp"
-        android:background="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/switch1" />
 
     <View
         android:id="@+id/view4"
@@ -193,14 +163,12 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="58dp"
         android:background="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/textView26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/view9" />
 
     <View
         android:id="@+id/view12"
@@ -209,9 +177,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="23dp"
         android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
@@ -222,9 +188,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="26dp"
-        android:layout_marginBottom="112dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -234,7 +198,7 @@
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="164dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintTop_toTopOf="parent" />
@@ -243,35 +207,31 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginTop="30dp"
         android:drawablePadding="15dp"
         android:text="Pop up notification"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view4"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintStart_toStartOf="@+id/view4" />
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:drawablePadding="15dp"
         android:text="Notification on lock screen"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/view12"
+        app:layout_constraintStart_toStartOf="@+id/view4"
         app:layout_constraintTop_toTopOf="@+id/checkBox3" />
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/activity_partial_view"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+<!--        <include-->
+<!--            android:id="@+id/include2"-->
+<!--            layout="@layout/activity_partial_view" />-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
