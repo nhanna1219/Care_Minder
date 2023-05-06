@@ -12,34 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="26dp"
+        android:drawableStart="@drawable/ic_back"
+        android:drawablePadding="15dp"
         android:text="Settings"
         android:textColor="@color/colorBlue"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="24dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="@+id/settingsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
-        app:srcCompat="@drawable/avatar_1" />
 
     <FrameLayout
         android:id="@+id/frameLayout5"
@@ -55,50 +35,98 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="Khanh Nguyen"
             android:textColor="@color/colorBlue"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/frameLayout5"
+            app:layout_constraintEnd_toEndOf="@+id/frameLayout5"
+            app:layout_constraintTop_toTopOf="@+id/frameLayout5"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout5"
+            />
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="264dp"
-        android:text="nqkdeveloper@gmail.com"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
     <!-- activity_setting.xml -->
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recyclerView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="71dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/textView4">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
         >
-
-
         <!-- Danh sách các mục chức năng -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="0dp"
+            android:padding="25dp"
             app:layout_constraintTop_toBottomOf="@id/textView4" />
-            />
+
+
     </LinearLayout>
-    <include layout="@layout/activity_partial_view"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/circle_user"
+
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/settingsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/avatar_1"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp" />
+
+    <ImageView
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="173dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/ic_edit_picture"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="266dp"
+        android:layout_marginBottom="20dp"
+        android:text="nqkdeveloper@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout5"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout5"
+        app:layout_constraintTop_toBottomOf="@id/frameLayout5"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_partial_view"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

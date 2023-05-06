@@ -1,14 +1,15 @@
 package com.example.careminder;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.example.careminder.utils.SettingAdapter;
 import com.example.careminder.utils.SettingItem;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,6 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         recyclerView = findViewById(R.id.recyclerView);
-
 
 //        int numColumns = 2;
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, numColumns));
@@ -43,12 +43,12 @@ public class SettingActivity extends AppCompatActivity {
         List<SettingItem> settingItems = new ArrayList<>();
 
 
-        settingItems.add(new SettingItem("Account"));
-        settingItems.add(new SettingItem("Notification"));
-        settingItems.add(new SettingItem("Advanced Settings"));
-        settingItems.add(new SettingItem("Privacy & Security"));
-        settingItems.add(new SettingItem("Log out"));
-        settingItems.add(new SettingItem("Help"));
+        settingItems.add(new SettingItem("Account",R.drawable.ic_notification));
+        settingItems.add(new SettingItem("Notification",R.drawable.ic_notification));
+        settingItems.add(new SettingItem("Advanced Settings",R.drawable.ic_notification));
+        settingItems.add(new SettingItem("Privacy & Security",R.drawable.ic_notification));
+        settingItems.add(new SettingItem("Log out", R.drawable.ic_show_password));
+        settingItems.add(new SettingItem("Help",R.drawable.ic_notification));
 
         return settingItems;
     }

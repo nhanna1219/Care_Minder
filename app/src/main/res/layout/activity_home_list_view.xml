@@ -255,21 +255,24 @@
                     android:layout_marginEnd="10dp"
                     android:elevation="8dp"
                     android:src="@drawable/food" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/food"
                     android:layout_marginStart="20dp"
-                    android:paddingBottom="30dp"
-                    android:elevation="8dp">
+                    android:layout_marginBottom="18dp"
+                    android:elevation="8dp"
+                    android:paddingBottom="30dp">
+
                         <TextView
                             android:id="@+id/main_calories_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/raleway_semibold"
+                            android:text="@string/_0"
                             android:textColor="@color/black"
                             android:textSize="25sp"
-                            android:text="@string/_0"
                             android:textStyle="bold" />
 
                         <TextView

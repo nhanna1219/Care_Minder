@@ -12,6 +12,24 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".utils.LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.HelpSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.PrivacySettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.AdvancedSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.NotifyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utils.AccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".IntroductionActivity4"
             android:exported="false" />
         <activity
@@ -48,19 +66,18 @@
             android:name=".InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-        <!-- <activity -->
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".ProfileActivity" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".SettingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
