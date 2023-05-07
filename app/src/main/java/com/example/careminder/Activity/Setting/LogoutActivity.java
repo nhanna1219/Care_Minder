@@ -1,4 +1,4 @@
-package com.example.careminder.utils;
+package com.example.careminder.Activity.Setting;
 
 import androidx.appcompat.app.AppCompatActivity;
 

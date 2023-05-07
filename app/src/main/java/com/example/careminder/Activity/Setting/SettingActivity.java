@@ -11,9 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.careminder.R;
-import com.example.careminder.utils.EditProfileActivity;
-import com.example.careminder.utils.SettingAdapter;
-import com.example.careminder.utils.SettingItem;
 
 
 import java.util.ArrayList;

@@ -18,25 +18,25 @@
             android:name=".Partial.Footer"
             android:exported="false" />
         <activity
-            android:name=".utils.EditProfileActivity"
+            android:name=".Activity.Setting.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.LogoutActivity"
+            android:name=".Activity.Setting.LogoutActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.HelpSettingActivity"
+            android:name=".Activity.Setting.HelpSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.PrivacySettingActivity"
+            android:name=".Activity.Setting.PrivacySettingActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.AdvancedSettingActivity"
+            android:name=".Activity.Setting.AdvancedSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.NotifyActivity"
+            android:name=".Activity.Setting.NotifyActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.AccountActivity"
+            android:name=".Activity.Setting.AccountActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Introduction.IntroductionActivity4"
