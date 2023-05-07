@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".Partial.Footer"
+            android:exported="false" />
+        <activity
             android:name=".utils.EditProfileActivity"
             android:exported="false" />
         <activity
@@ -69,16 +72,17 @@
             android:name=".InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Login_Signup"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".ProfileActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".SettingActivity"
             android:exported="true">

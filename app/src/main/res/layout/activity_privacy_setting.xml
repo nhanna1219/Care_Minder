@@ -79,5 +79,5 @@
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/view1" />
 
-    <include layout="@layout/activity_partial_view"/>
+    <include layout="@layout/activity_footer_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/activity_partial_view" />
+    <include layout="@layout/activity_footer_partial_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

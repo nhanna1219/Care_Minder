@@ -93,7 +93,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="title_text">Calorie Counter</string>
+    <string name="title_text">Calories Counter</string>
     <string name="food_hint">What did you eat?</string>
     <string name="cal_hint">Calories</string>
     <string name="submit_text">Submit</string>
@@ -103,5 +103,9 @@
     <string name="cal_text">Cal.</string>
     <string name="num_foods">Food Items:</string>
     <string name="delete_menu">Delete</string>
+    <string name="title_activity_a">a</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

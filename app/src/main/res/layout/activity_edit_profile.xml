@@ -98,5 +98,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleTextView" />
 
-    <include layout="@layout/activity_partial_view"/>
+    <include layout="@layout/activity_footer_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
