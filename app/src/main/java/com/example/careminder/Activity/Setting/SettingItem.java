@@ -1,4 +1,4 @@
-package com.example.careminder.utils;
+package com.example.careminder.Activity.Setting;
 
 public class SettingItem {
     private String title;

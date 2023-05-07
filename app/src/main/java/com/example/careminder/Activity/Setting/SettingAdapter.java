@@ -1,18 +1,14 @@
-package com.example.careminder.utils;
-import static androidx.recyclerview.widget.RecyclerView.*;
+package com.example.careminder.Activity.Setting;
 
 import com.example.careminder.*;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
