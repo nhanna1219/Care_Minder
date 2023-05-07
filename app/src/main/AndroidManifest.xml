@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".BodyActivity"
+            android:exported="false" />
+        <activity
             android:name=".Partial.Footer"
             android:exported="false" />
         <activity

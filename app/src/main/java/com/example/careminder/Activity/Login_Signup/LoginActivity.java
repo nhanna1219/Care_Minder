@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.careminder.Activity.Information.InformationActivity;
 import com.example.careminder.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 String input = "Email: " + textInputEmail.getEditText().getText().toString();
                 input += "\n";
                 input += "Password: " + textInputPassword.getEditText().getText().toString();
-
+                startActivity(new Intent(LoginActivity.this, InformationActivity.class));
 //                Toast.makeText(this, input, Toast.LENGTH_LONG).show();
             }
         });
