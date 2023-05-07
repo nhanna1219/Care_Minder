@@ -1,4 +1,4 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Food;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.careminder.Data.CustomListViewAdapter;
 import com.example.careminder.Data.DatabaseHandler;
+import com.example.careminder.R;
 import com.example.careminder.utils.Utils;
 
 import java.util.ArrayList;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/theme"
     android:padding="16dp"
-    tools:context=".DisplayFoodActivity">
+    tools:context=".Activity.Food.DisplayFoodActivity">
 
     <LinearLayout
         android:id="@+id/displayFoodLinLayout"

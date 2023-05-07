@@ -1,8 +1,10 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Introduction;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.careminder.R;
 
 public class IntroductionActivity4 extends AppCompatActivity {
 

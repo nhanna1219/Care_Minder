@@ -1,10 +1,11 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.careminder.R;
 import com.example.careminder.utils.Home_Adapter;
 
 import java.io.IOException;

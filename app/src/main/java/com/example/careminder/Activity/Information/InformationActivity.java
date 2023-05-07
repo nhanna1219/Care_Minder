@@ -1,19 +1,15 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Information;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.careminder.Activity.Home.HomeActivity;
+import com.example.careminder.R;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
 

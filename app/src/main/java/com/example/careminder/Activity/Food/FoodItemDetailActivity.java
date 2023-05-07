@@ -1,4 +1,4 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Food;
 
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.careminder.Data.DatabaseHandler;
+import com.example.careminder.R;
 
 public class FoodItemDetailActivity extends AppCompatActivity {
     private TextView detFoodName, detCalories, detDate;

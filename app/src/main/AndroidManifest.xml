@@ -36,55 +36,58 @@
             android:name=".utils.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".IntroductionActivity4"
+            android:name=".Activity.Introduction.IntroductionActivity4"
             android:exported="false" />
         <activity
-            android:name=".IntroductionActivity3"
+            android:name=".Activity.Introduction.IntroductionActivity3"
             android:exported="false" />
         <activity
-            android:name=".IntroductionActivity2"
+            android:name=".Activity.Introduction.IntroductionActivity2"
             android:exported="false" />
         <activity
             android:name=".ListView.Home_ListView"
             android:exported="false" />
         <activity
-            android:name=".BodyActivity"
+            android:name=".Activity.Body.BodyActivity"
             android:exported="false" />
         <activity
-            android:name=".WaterActivity"
+            android:name=".Activity.Water.WaterActivity"
             android:exported="false" />
         <activity
-            android:name=".FoodActivity"
+            android:name=".Activity.Food.FoodActivity"
             android:exported="false" />
         <activity
-            android:name=".StepActivity"
+            android:name=".Activity.Steps.StepActivity"
             android:exported="false" />
         <activity
-            android:name=".ExercisesActivity"
+            android:name=".Activity.Exercises.ExercisesActivity"
             android:exported="false" />
         <activity
-            android:name=".DailyActivity"
+            android:name=".Activity.Daily.DailyActivity"
             android:exported="false" />
         <activity
-            android:name=".IntroductionActivity"
+            android:name=".Activity.Introduction.IntroductionActivity"
             android:exported="false" />
         <activity
-            android:name=".InformationActivity"
+            android:name=".Activity.Information.InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".Login_Signup"
+            android:name=".Activity.Home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".Activity.Login_Signup.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.Setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.Login_Signup.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".Activity.Food.DisplayFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Login_Signup.Login_Signup"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

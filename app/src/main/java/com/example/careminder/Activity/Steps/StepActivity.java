@@ -1,10 +1,12 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Steps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.example.careminder.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

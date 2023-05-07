@@ -1,4 +1,4 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Setting;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.careminder.R;
 import com.example.careminder.utils.EditProfileActivity;
 import com.example.careminder.utils.SettingAdapter;
 import com.example.careminder.utils.SettingItem;

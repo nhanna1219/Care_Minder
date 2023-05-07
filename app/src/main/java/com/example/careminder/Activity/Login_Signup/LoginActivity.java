@@ -1,18 +1,19 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Login_Signup;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TextView;
 
+import com.example.careminder.R;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class SignUpActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LoginActivity extends AppCompatActivity {
 
     private TextInputLayout textInputEmail;
-    private TextInputLayout textInputName;
     private TextInputLayout textInputPassword;
 
     private boolean validateEmail() {
@@ -26,22 +27,6 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
     }
-
-    private boolean validateUsername() {
-        String usernameInput = textInputName.getEditText().getText().toString().trim();
-
-        if (usernameInput.isEmpty()) {
-            textInputName.setError("Field can't be empty");
-            return false;
-        } else if (usernameInput.length() > 15) {
-            textInputName.setError("Username too long");
-            return false;
-        } else {
-            textInputName.setError(null);
-            return true;
-        }
-    }
-
     private boolean validatePassword() {
         String passwordInput = textInputPassword.getEditText().getText().toString().trim();
 
@@ -54,37 +39,37 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        TextView btn=findViewById(R.id.alreadyHaveAccount);
-        textInputEmail = findViewById(R.id.textemailSignup);
-        textInputName = findViewById(R.id.textnameSignup);
-        textInputPassword = findViewById(R.id.textpassSignup);
+        setContentView(R.layout.activity_login);
+        textInputEmail = findViewById(R.id.textnamelogin);
+        textInputPassword = findViewById(R.id.textpasslogin);
 
-        Button Signup = findViewById(R.id.btnSignup);
-        Signup.setOnClickListener(new View.OnClickListener() {
+        TextView btn = findViewById(R.id.textViewSignUp);
+        Button login = findViewById(R.id.btnLogin);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (!validateEmail() | !validateUsername() | !validatePassword()) {
+                //Confirm
+                if (!validateEmail() | !validatePassword()) {
                     return;
                 }
+
                 String input = "Email: " + textInputEmail.getEditText().getText().toString();
-                input += "\n";
-                input += "Username: " + textInputName.getEditText().getText().toString();
                 input += "\n";
                 input += "Password: " + textInputPassword.getEditText().getText().toString();
 
+//                Toast.makeText(this, input, Toast.LENGTH_LONG).show();
             }
         });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(new Intent(SignUpActivity.this, com.example.careminder.LoginActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
     }
 }

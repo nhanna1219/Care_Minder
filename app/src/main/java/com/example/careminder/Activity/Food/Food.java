@@ -1,4 +1,4 @@
-package com.example.careminder;
+package com.example.careminder.Activity.Food;
 import java.io.Serializable;
 public class Food implements Serializable {
     //serialize class - freeze it so you can use it later

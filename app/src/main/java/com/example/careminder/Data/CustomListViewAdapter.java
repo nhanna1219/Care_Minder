@@ -12,8 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.careminder.FoodItemDetailActivity;
-import com.example.careminder.Food;
+import com.example.careminder.Activity.Food.FoodItemDetailActivity;
+import com.example.careminder.Activity.Food.Food;
 import com.example.careminder.R;
 
 import java.util.ArrayList;

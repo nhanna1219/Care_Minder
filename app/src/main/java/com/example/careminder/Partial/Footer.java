@@ -3,15 +3,13 @@ package com.example.careminder.Partial;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.careminder.HomeActivity;
+import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.R;
-import com.example.careminder.SettingActivity;
+import com.example.careminder.Activity.Setting.SettingActivity;
 
 public class Footer extends AppCompatActivity {
 private ImageButton setting, home, notify, statistic;

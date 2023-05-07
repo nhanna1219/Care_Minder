@@ -3,6 +3,13 @@ package com.example.careminder.utils;
 import static androidx.recyclerview.widget.RecyclerView.*;
 
 import com.example.careminder.*;
+import com.example.careminder.Activity.Body.BodyActivity;
+import com.example.careminder.Activity.Daily.DailyActivity;
+import com.example.careminder.Activity.Exercises.ExercisesActivity;
+import com.example.careminder.Activity.Food.FoodActivity;
+import com.example.careminder.Activity.Steps.StepActivity;
+import com.example.careminder.Activity.Water.WaterActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,9 +18,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class Home_Adapter extends BaseAdapter {
     Context context;
