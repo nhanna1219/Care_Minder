@@ -108,5 +108,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="home">Home</string>
+    <string name="reminder">Reminder</string>
+    <string name="Reminder_content">Just one small positive thought in the morning can change your whole day</string>
+    <string name="running">Running</string>
+    <string name="Kilometer_Travelled">Kilometers Travelled: 2.30 km</string>
 
 </resources>

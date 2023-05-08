@@ -2,10 +2,14 @@ package com.example.careminder.Activity.Steps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.R;
 
 import java.text.SimpleDateFormat;
@@ -13,10 +17,21 @@ import java.util.Calendar;
 
 public class StepActivity extends AppCompatActivity {
 
+    ImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
+
+        back = findViewById(R.id.back_nav);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            }
+        });
+
 
         TextView steps_month = findViewById(R.id.steps_month);
         TextView steps_year = findViewById(R.id.steps_year);

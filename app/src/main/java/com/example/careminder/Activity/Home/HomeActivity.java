@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.careminder.Activity.Notification.NotificationActivity;
+import com.example.careminder.Activity.Setting.EditProfileActivity;
 import com.example.careminder.Activity.Setting.SettingActivity;
 import com.example.careminder.Activity.Statistic.StatisticActivity;
 import com.example.careminder.R;
@@ -24,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     ListView listView;
     Home_Adapter adapter;
 
+    ImageButton profile;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,15 @@ public class HomeActivity extends AppCompatActivity {
         listView = findViewById(R.id.home_listview);
         adapter = new Home_Adapter(getApplicationContext());
         listView.setAdapter(adapter);
+
+        profile = (ImageButton) findViewById(R.id.profile);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.home_nav);

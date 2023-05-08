@@ -21,6 +21,7 @@
             android:gravity="center_vertical">
 
             <ImageButton
+                android:id="@+id/back_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
@@ -99,10 +100,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="@font/raleway_semibold"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="26sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/steps_day_before_1"
@@ -110,10 +111,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="@font/raleway_semibold"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="26sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/steps_toDay"
@@ -122,10 +123,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="@drawable/steps_highlightday"
-                android:fontFamily="@font/raleway_semibold"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="26sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/steps_day_after_1"
@@ -133,10 +134,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="@font/raleway_semibold"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="26sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/steps_day_after_2"
@@ -144,10 +145,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="@font/raleway_semibold"
+                android:fontFamily="@font/dm_sans_bold"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="26sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <View

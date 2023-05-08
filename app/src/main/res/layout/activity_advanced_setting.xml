@@ -133,5 +133,4 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/switch2"
         app:layout_constraintTop_toBottomOf="@+id/view4" />
-        <include layout="@layout/activity_footer_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

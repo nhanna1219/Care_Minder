@@ -66,5 +66,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView2" />
-    <include layout="@layout/activity_footer_partial_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
