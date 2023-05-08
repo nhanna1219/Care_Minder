@@ -12,6 +12,12 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".StatisticActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".BodyActivity"
             android:exported="false" />
         <activity
@@ -75,7 +81,7 @@
             android:name=".Activity.Information.InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Home.HomeActivity"
+            android:name=".Activity.Login_Signup.Login_Signup"
             android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.SignUpActivity"
@@ -90,7 +96,13 @@
             android:name=".Activity.Food.DisplayFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Login_Signup.Login_Signup"
+            android:name=".Activity.Statistic.StatisticActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Notification.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

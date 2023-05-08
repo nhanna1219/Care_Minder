@@ -1,16 +1,16 @@
-package com.example.careminder.utils.ui.settings;
+package com.example.careminder.Partial.ui.ui.reflow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SettingsViewModel extends ViewModel {
+public class ReflowViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SettingsViewModel() {
+    public ReflowViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is settings fragment");
+        mText.setValue("This is reflow fragment");
     }
 
     public LiveData<String> getText() {

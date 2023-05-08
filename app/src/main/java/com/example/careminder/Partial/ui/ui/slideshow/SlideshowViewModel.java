@@ -1,16 +1,16 @@
-package com.example.careminder.utils.ui.reflow;
+package com.example.careminder.Partial.ui.ui.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ReflowViewModel extends ViewModel {
+public class SlideshowViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public ReflowViewModel() {
+    public SlideshowViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is reflow fragment");
+        mText.setValue("This is slideshow fragment");
     }
 
     public LiveData<String> getText() {

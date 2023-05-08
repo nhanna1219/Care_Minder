@@ -1,4 +1,4 @@
-package com.example.careminder.utils.ui.slideshow;
+package com.example.careminder.Partial.ui.ui.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

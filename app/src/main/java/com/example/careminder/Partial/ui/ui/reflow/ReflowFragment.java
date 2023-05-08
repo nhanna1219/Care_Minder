@@ -1,4 +1,4 @@
-package com.example.careminder.utils.ui.settings;
+package com.example.careminder.Partial.ui.ui.reflow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.careminder.databinding.FragmentSettingsBinding;
+import com.example.careminder.databinding.FragmentReflowBinding;
 
-public class SettingsFragment extends Fragment {
+public class ReflowFragment extends Fragment {
 
-    private FragmentSettingsBinding binding;
+    private FragmentReflowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        ReflowViewModel reflowViewModel =
+                new ViewModelProvider(this).get(ReflowViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentReflowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textReflow;
+        reflowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
