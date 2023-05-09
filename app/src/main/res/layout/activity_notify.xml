@@ -126,7 +126,7 @@
         android:drawableStart="@drawable/ic_back"
         android:drawablePadding="15dp"
         android:text="Notification Settings"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/title"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

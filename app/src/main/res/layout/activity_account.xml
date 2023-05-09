@@ -106,7 +106,7 @@
         android:drawableStart="@drawable/ic_back"
         android:drawablePadding="15dp"
         android:text="Account Settings"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/title"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="15dp"

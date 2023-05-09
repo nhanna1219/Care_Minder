@@ -83,12 +83,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <include
-        layout="@layout/activity_skip_introduction"
+    <Button
+        android:id="@+id/intro_skip_btn"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="38dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/intro_skip_btn"
+        android:textColor="@color/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

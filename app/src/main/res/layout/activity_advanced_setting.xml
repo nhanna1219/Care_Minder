@@ -16,7 +16,7 @@
         android:layout_marginTop="25dp"
 
         android:layout_marginLeft="25dp"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/title"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
