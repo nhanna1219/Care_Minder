@@ -47,14 +47,14 @@ public class FoodItemDetailActivity extends AppCompatActivity {
         //set TextViews to food data
         detFoodName.setText(myFood.getName());
         detDate.setText(myFood.getRecordDate());
-        detCalories.setText(String.valueOf(myFood.getCalories()));
+        detCalories.setText(String.valueOf(myFood.getCalories()) + " cal");
 
         //get food ID so we can delete it
         foodId = myFood.getId();
 
-        //set calories text size
-        detCalories.setTextSize(34.9f);
-        detCalories.setTextColor(Color.RED);
+//        //set calories text size
+//        detCalories.setTextSize(34.9f);
+//        detCalories.setTextColor(Color.RED);
 
 
 //        detShareBtn.setOnClickListener(new View.OnClickListener() {

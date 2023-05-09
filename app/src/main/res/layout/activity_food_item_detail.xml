@@ -9,17 +9,6 @@
 
     tools:context=".Activity.Food.FoodItemDetailActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/detToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:background="@color/theme"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
     <ImageView
@@ -28,7 +17,8 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:src="@drawable/carrot" />
+        android:src="@drawable/carrot"
+        android:contentDescription="@string/img_carrot" />
 <!--    <GridLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
@@ -42,7 +32,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/row_bg"
-            android:paddingLeft="16dp">
+            android:paddingLeft="16dp"
+            android:paddingBottom="40dp"
+            android:paddingTop="20dp">
 
             <TextView
                 android:id="@+id/detFoodTxt"
@@ -57,7 +49,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp">
 
                 <TextView
                     android:id="@+id/detCaloriesTxt"
@@ -72,38 +66,72 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10sp"
-                    android:paddingTop="4dp"
+                    android:layout_marginStart="15dp"
                     android:text="180"
                     android:textAlignment="center"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
 
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eaten on:"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/detDateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:text="120"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <TextView
-                android:id="@+id/detDateTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eaten on:"
-                android:textSize="20sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ghi Chú:"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:text="Note:"
                 android:textSize="20dp">
-
             </TextView>
             <EditText
-                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_width="330dp"
                 android:layout_height="match_parent">
-
             </EditText>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp">
 
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="70dp"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/btnDel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:layout_marginStart="20dp">
+
+                </Button>
 
         </LinearLayout>
 
@@ -120,26 +148,7 @@
 <!--            android:textColor="@android:color/white"-->
 <!--            android:textStyle="bold" />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="70dp"
-            android:text="Save" />
-
-        <Button
-            android:id="@+id/btnDel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete"
-            android:layout_marginLeft="20dp">
-
-        </Button>
 
     </LinearLayout>
 

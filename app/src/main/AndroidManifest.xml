@@ -12,7 +12,7 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
-            android:name=".Forgotpassword"
+            android:name=".Activity.Login_Signup.Forgotpassword"
             android:exported="false" />
         <activity
             android:name=".Activity.Statistic.StatisticActivity"

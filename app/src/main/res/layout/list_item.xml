@@ -36,7 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thumbnailImg" />
+        app:layout_constraintTop_toBottomOf="@+id/thumbnailImg"
+        android:paddingBottom="20dp"/>
 
     <ImageView
         android:id="@+id/thumbnailImg"
@@ -57,10 +58,10 @@
         android:layout_below="@id/thumbnailImg"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:text="120"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/thumbnailImg"
         app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
@@ -71,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/caloriesTxt"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="87dp"
         android:layout_toEndOf="@+id/caloriesTxt"
         android:text="@string/cal_text"
         android:textColor="@android:color/holo_red_dark"
