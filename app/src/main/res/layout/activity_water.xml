@@ -4,19 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Water.WaterActivity">
+    tools:context=".Activity.Water.WaterActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-26dp">
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="80dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/water_goal"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar2"
-        app:layout_constraintTop_toBottomOf="@+id/water_consumed" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="335dp"
+        android:layout_height="313dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_remind">
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="78dp"
+            android:background="@drawable/steps_circle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/water_consumed"
+                android:layout_width="140dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/dm_sans_bold"
+                android:gravity="center"
+                android:text="@string/water_consumed"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/dm_sans_bold"
+                android:gravity="center"
+                android:text="@string/water_unit"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="105dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="184dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/dm_sans_bold"
+                android:text="@string/water_goal"
+                android:textAlignment="center"
+                android:textColor="#FF9800"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="182dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/dm_sans_bold"
+                android:text="@string/water_unit"
+                android:textAlignment="center"
+                android:textColor="#FF9800"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -56,8 +134,8 @@
         android:id="@+id/img_remind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:srcCompat="@drawable/ic_remind" />
@@ -66,6 +144,7 @@
         android:id="@+id/txt_remind"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectangle"
         android:contentDescription="@string/daily_activity_button"
         android:elevation="6dp"
@@ -76,96 +155,35 @@
         android:textAllCaps="false"
         android:textColor="@color/title"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toEndOf="@+id/img_remind"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="294dp"
-        android:layout_height="255dp"
+    <EditText
+        android:id="@+id/water_add"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:ems="10"
+        android:hint="@string/water_add"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_remind" />
-
-    <TextView
-        android:id="@+id/water_consumed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="163dp"
-        android:text="@string/water_consumed"
-        android:textColor="#9C27B0"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar2"
-        app:layout_constraintTop_toTopOf="@+id/progressBar2" />
-
-    <TextView
-        android:id="@+id/water_goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="125dp"
-        android:text="@string/water_goal"
-        android:textColor="#8BC34A"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-        app:layout_constraintStart_toStartOf="@+id/progressBar2"
-        app:layout_constraintTop_toBottomOf="@+id/water_consumed"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="409dp"
-        android:layout_height="159dp"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txt_history"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/water_history"
-                android:textColor="@color/teal_200"
-                android:textSize="20sp" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="187dp" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="60dp"
         android:layout_height="70dp"
-        android:onClick="fda"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="176dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:srcCompat="@drawable/add_water" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

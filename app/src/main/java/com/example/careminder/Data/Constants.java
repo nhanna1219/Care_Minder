@@ -10,3 +10,4 @@ public class Constants {
     public static final String KEY_CALORIES = "calories";
     public static final String KEY_DATE = "date_recorded";
 }
+
