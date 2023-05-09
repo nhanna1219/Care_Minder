@@ -114,4 +114,23 @@
     <string name="Kilometer_Travelled">Kilometers Travelled: 2.30 km</string>
     <string name="img_carrot">img_carrot</string>
 
+    <string name="water_consumed">0</string>
+    <string name="water_unit">ml</string>
+    <string name="water_goal">2000</string>
+    <string name="water_history">History</string>
+    <string name="water_remind">Don’t forget to drink enough water!</string>
+    <string name="water_setting">Water - Setting</string>
+    <string name="water_set_goal">Set Goal</string>
+    <string name="water_reminder">Reminder Schedule</string>
+    <string name="water_default_time">Default Time</string>
+    <string name="water_reminder_modify">Reminder Schedule Modify</string>
+    <string name="water_add">Add the amount of water you drunk here</string>
+
+    <string name="body_comp">Current Body Composition</string>
+    <string name="body_report">Body - Report</string>
+    <string name="body_motivation">Change starts in your thoughts!</string>
+    <string name="body_btn1">Body Report</string>
+    <string name="body_btn2">Medical History</string>
+    <string name="body_btn3">Recommended For You</string>
+
 </resources>

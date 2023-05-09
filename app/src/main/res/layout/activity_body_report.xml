@@ -3,8 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.Body.BodyActivity">
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/txt_remind2"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="67dp"
+        android:background="@drawable/rectangle"
+        android:contentDescription="@string/daily_activity_button"
+        android:elevation="6dp"
+        android:fontFamily="@font/raleway_extrabold"
+        android:gravity="start"
+        android:padding="16dp"
+        android:text="@string/body_motivation"
+        android:textAllCaps="false"
+        android:textColor="@color/title"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_remind2" />
+
+    <ImageView
+        android:id="@+id/img_remind2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_remind3" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -33,57 +61,21 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:text="@string/body"
+            android:text="@string/body_report"
             android:textColor="@color/colorBlue"
             android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView30"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/body_comp"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="292dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="7dp"
-        android:text="@string/body_btn2"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="292dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="90dp"
-        android:text="@string/body_btn3"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="292dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="9dp"
-        android:text="@string/body_btn1"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:srcCompat="@drawable/body_report" />
 </androidx.constraintlayout.widget.ConstraintLayout>
