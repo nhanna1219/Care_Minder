@@ -4,6 +4,7 @@
 <item
     android:id="@+id/deleteItem"
     android:title="@string/delete_menu"
+    android:icon="@drawable/baseline_delete_24"
     android:orderInCategory="100"
     app:showAsAction="always"/>
 

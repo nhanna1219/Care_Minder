@@ -48,14 +48,14 @@
         <EditText
             android:id="@+id/foodEditTxt"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:hint="@string/food_hint" />
 
         <EditText
             android:id="@+id/calEditTxt"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:hint="@string/cal_hint"
             android:inputType="number" />

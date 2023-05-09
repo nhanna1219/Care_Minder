@@ -22,7 +22,8 @@ import com.example.careminder.R;
 
 public class FoodItemDetailActivity extends AppCompatActivity {
     private TextView detFoodName, detCalories, detDate;
-    private Button detShareBtn;
+    private Button btnDel ,btnSave;
+//    private Button detShareBtn;
     private Food myFood;
     private int foodId;
 
@@ -31,14 +32,14 @@ public class FoodItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_item_detail);
         //setup toolbar
-        setSupportActionBar((Toolbar) findViewById(R.id.detToolbar));
+//        setSupportActionBar((Toolbar) findViewById(R.id.detToolbar));
 
         //set up textviews and button
         detFoodName = (TextView) findViewById(R.id.detFoodTxt);
         detCalories = (TextView) findViewById(R.id.detCaloriesValueTxt);
         detDate = (TextView) findViewById(R.id.detDateTxt);
-
-        detShareBtn = (Button) findViewById(R.id.detShareBtn);
+        btnDel = (Button) findViewById(R.id.btnDel);
+//        detShareBtn = (Button) findViewById(R.id.detShareBtn);
         //get serialized food object from intent
         Intent prevIntent = getIntent();
         myFood = (Food) prevIntent.getExtras().getSerializable("userObj");
@@ -56,39 +57,44 @@ public class FoodItemDetailActivity extends AppCompatActivity {
         detCalories.setTextColor(Color.RED);
 
 
-        detShareBtn.setOnClickListener(new View.OnClickListener() {
+//        detShareBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                shareFoodRecord();
+//            }
+//        });
+        btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                shareFoodRecord();
+            public void onClick(View view) {
+                deleteAlertDialog();
             }
         });
-
     }
 
-    private void shareFoodRecord() {
-        //prepare data string to use as body of email
-        StringBuilder dataString = new StringBuilder();
-
-        dataString.append(" Food: " + detFoodName.getText().toString() + "\n");
-        dataString.append(" Calories: " + detCalories.getText().toString() + "\n");
-        dataString.append(" Eaten on: " + detDate.getText().toString() + "\n");
-        //prepare send email intent
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "I Ate This Food: Caloric Report");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"recipient@example.com"});
-        intent.putExtra(Intent.EXTRA_TEXT, dataString.toString());
-
-        try{
-            startActivity(intent.createChooser(intent,"Send Email"));
-
-        }catch (ActivityNotFoundException e){
-            Toast.makeText(getApplicationContext(),
-                    "Install Email client application to share",
-                    Toast.LENGTH_SHORT).show();
-        }
-
-    }
+//    private void shareFoodRecord() {
+//        //prepare data string to use as body of email
+//        StringBuilder dataString = new StringBuilder();
+//
+//        dataString.append(" Food: " + detFoodName.getText().toString() + "\n");
+//        dataString.append(" Calories: " + detCalories.getText().toString() + "\n");
+//        dataString.append(" Eaten on: " + detDate.getText().toString() + "\n");
+//        //prepare send email intent
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("message/rfc822");
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "I Ate This Food: Caloric Report");
+//        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"recipient@example.com"});
+//        intent.putExtra(Intent.EXTRA_TEXT, dataString.toString());
+//
+//        try{
+//            startActivity(intent.createChooser(intent,"Send Email"));
+//
+//        }catch (ActivityNotFoundException e){
+//            Toast.makeText(getApplicationContext(),
+//                    "Install Email client application to share",
+//                    Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

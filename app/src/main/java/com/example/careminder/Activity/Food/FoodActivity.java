@@ -38,7 +38,7 @@ public class FoodActivity extends AppCompatActivity {
                 //only add food item if the list is not empty
                 if(!foodName.getText().toString().isEmpty() &&
                         !foodCals.getText().toString().isEmpty()){
-                    saveFoodToDB();
+                        saveFoodToDB();
 
                 } else {
                     Snackbar.make(v,

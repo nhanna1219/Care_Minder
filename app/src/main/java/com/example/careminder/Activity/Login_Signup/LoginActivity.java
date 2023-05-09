@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         TextView btn = findViewById(R.id.textViewSignUp);
         Button login = findViewById(R.id.btnLogin);
+        TextView forgot = findViewById(R.id.forgotpw);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +71,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, Forgotpassword.class));
             }
         });
 

@@ -6,7 +6,7 @@ import com.example.careminder.*;
 import com.example.careminder.Activity.Body.BodyActivity;
 import com.example.careminder.Activity.Daily.DailyActivity;
 import com.example.careminder.Activity.Exercises.ExercisesActivity;
-import com.example.careminder.Activity.Food.FoodActivity;
+import com.example.careminder.Activity.Food.DisplayFoodActivity;
 import com.example.careminder.Activity.Steps.StepActivity;
 import com.example.careminder.Activity.Water.WaterActivity;
 
@@ -87,7 +87,7 @@ public class Home_Adapter extends BaseAdapter {
             food.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context.getApplicationContext(), FoodActivity.class);
+                    Intent intent = new Intent(context.getApplicationContext(), DisplayFoodActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

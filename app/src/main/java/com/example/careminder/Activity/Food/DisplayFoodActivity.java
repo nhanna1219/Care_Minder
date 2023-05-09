@@ -1,7 +1,10 @@
 package com.example.careminder.Activity.Food;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,10 +34,17 @@ public class DisplayFoodActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         totalCalories = (TextView) findViewById(R.id.totalCalsTxt);
         totalFoods = (TextView) findViewById(R.id.totalItemsTxt);
-
+        Button btn = findViewById(R.id.btnadd);
         refreshData();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DisplayFoodActivity.this, FoodActivity.class));
+            }
+        });
 
     }
+
 
     private void refreshData() {
         dbFoods.clear();

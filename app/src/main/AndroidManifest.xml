@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".Forgotpassword"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Statistic.StatisticActivity"
             android:exported="false" />
         <activity
@@ -91,6 +94,9 @@
             android:exported="false" />
         <activity
             android:name=".Activity.Food.DisplayFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Food.FoodItemDetailActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Statistic.StatisticActivity"

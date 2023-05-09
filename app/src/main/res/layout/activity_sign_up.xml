@@ -52,14 +52,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:layout_editor_absoluteX="0dp">
 
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textemailSignup"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/title"
-            app:errorEnabled="true"
-            >
+            app:errorEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -67,8 +69,8 @@
                 android:hint="Email"
                 android:inputType="textWebEmailAddress"
                 android:padding="20dp" />
-        </com.google.android.material.textfield.TextInputLayout>
 
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textnameSignup"
