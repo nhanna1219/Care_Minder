@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="262dp"
@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/login" />
+        android:src="@drawable/healthy_food" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,6 +92,7 @@
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
@@ -104,7 +105,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4sp"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -118,7 +119,8 @@
                 android:id="@+id/textViewSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SignUp"
+                android:layout_marginStart="5dp"
+                android:text="Sign Up"
                 android:textColor="@color/black" />
 
         </LinearLayout>

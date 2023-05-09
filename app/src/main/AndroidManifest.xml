@@ -57,9 +57,6 @@
             android:name=".ListView.Home_ListView"
             android:exported="false" />
         <activity
-            android:name=".Activity.Body.BodyActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.Water.WaterActivity"
             android:exported="false" />
         <activity
@@ -81,7 +78,7 @@
             android:name=".Activity.Information.InformationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Login_Signup.Login_Signup"
+            android:name=".Activity.Login_Signup.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.SignUpActivity"
@@ -90,7 +87,7 @@
             android:name=".Activity.Setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Login_Signup.LoginActivity"
+            android:name=".Activity.Home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Food.DisplayFoodActivity"
@@ -99,13 +96,7 @@
             android:name=".Activity.Food.FoodItemDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Statistic.StatisticActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.Notification.NotificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.Home.HomeActivity"
+            android:name=".Activity.Login_Signup.Login_Signup"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
