@@ -1,6 +1,6 @@
 package com.example.careminder.utils;
 
-import static androidx.recyclerview.widget.RecyclerView.*;
+import  static androidx.recyclerview.widget.RecyclerView.*;
 
 import com.example.careminder.*;
 import com.example.careminder.Activity.Body.BodyActivity;
