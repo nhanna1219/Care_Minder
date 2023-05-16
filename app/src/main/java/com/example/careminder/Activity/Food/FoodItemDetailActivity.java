@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class FoodItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_item_detail);
         //setup toolbar
 //        setSupportActionBar((Toolbar) findViewById(R.id.detToolbar));
-
+        ImageButton back = (ImageButton) findViewById(R.id.bigback);
         //set up textviews and button
         detFoodName = (TextView) findViewById(R.id.detFoodTxt);
         detCalories = (TextView) findViewById(R.id.detCaloriesValueTxt);
@@ -67,6 +68,12 @@ public class FoodItemDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteAlertDialog();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FoodItemDetailActivity.this, DisplayFoodActivity.class));
             }
         });
     }

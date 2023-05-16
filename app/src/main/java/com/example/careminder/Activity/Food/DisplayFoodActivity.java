@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.Data.CustomListViewAdapter;
 import com.example.careminder.Data.DatabaseHandler;
 import com.example.careminder.R;
@@ -30,6 +32,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_food);
+        ImageButton back = (ImageButton)  findViewById(R.id.bigback);
 
         listView = (ListView) findViewById(R.id.listView);
         totalCalories = (TextView) findViewById(R.id.totalCalsTxt);
@@ -40,6 +43,12 @@ public class DisplayFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DisplayFoodActivity.this, FoodActivity.class));
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DisplayFoodActivity.this, HomeActivity.class));
             }
         });
 

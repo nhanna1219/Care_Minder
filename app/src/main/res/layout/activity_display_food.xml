@@ -7,7 +7,26 @@
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".Activity.Food.DisplayFoodActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:background="@color/title"
+        android:layout_marginBottom="8dp">
 
+        <ImageButton
+            android:id="@+id/bigback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ic_back"
+            android:paddingStart="16dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/ic_bigback" />
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/displayFoodLinLayout"
         android:layout_width="fill_parent"
