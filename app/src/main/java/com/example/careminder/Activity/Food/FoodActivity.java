@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.careminder.Data.DatabaseHandler;
 import com.example.careminder.R;
@@ -26,6 +27,7 @@ public class FoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
+        ImageButton back = (ImageButton)  findViewById(R.id.bigback);
 
         db = new DatabaseHandler(FoodActivity.this);
         foodName = (EditText) findViewById(R.id.foodEditTxt);
@@ -48,6 +50,12 @@ public class FoodActivity extends AppCompatActivity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FoodActivity.this, DisplayFoodActivity.class));
+            }
+        });
 
     }
 
