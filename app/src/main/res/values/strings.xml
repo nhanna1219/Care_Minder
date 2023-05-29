@@ -132,5 +132,8 @@
     <string name="body_btn1">Body Report</string>
     <string name="body_btn2">Medical History</string>
     <string name="body_btn3">Recommended For You</string>
+    <string name="health_connect_description">Share data between your favorite apps</string>
+    <string name="when_you_connect_careminder_to_health_connect_you_can_choose_which_data_types_to_add">When you connect CareMinder to Health Connect, you can choose which data types to add.</string>
+    <string name="careminder_can_also_add_your_workout_stats_as_well_as_other_health_related_information_such_as_hydration_and_nutrition_data_to_health_connect_so_you_can_see_them_in_your_other_health_and_fitness_apps">CareMinder can also add your workout stats, as well as other health-related information such as hydration and nutrition data to Health Connect, so you can see them in your other health and fitness apps.</string>
 
 </resources>

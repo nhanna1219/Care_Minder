@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.HealthConnect.HC_Permission">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_healthconnect"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/health_connect_description"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/when_you_connect_careminder_to_health_connect_you_can_choose_which_data_types_to_add"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp" />
+    <TextView
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/careminder_can_also_add_your_workout_stats_as_well_as_other_health_related_information_such_as_hydration_and_nutrition_data_to_health_connect_so_you_can_see_them_in_your_other_health_and_fitness_apps"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+        <Button
+            android:id="@+id/btn_continue_HC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/icon"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_btn_intro1"
+            android:textColor="@color/white"
+            android:text="Continue"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="110dp"/>
+
+        <Button
+            android:id="@+id/btn_not_now_HC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="110dp"
+            android:background="@drawable/background_btn_intro2"
+            android:backgroundTint="@color/theme"
+            android:text="Not now"
+            android:textColor="@color/title"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

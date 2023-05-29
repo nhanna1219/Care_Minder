@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.careminder.Activity.Information.InformationActivity;
 import com.example.careminder.Activity.Introduction.IntroductionActivity;
 import com.example.careminder.R;
 import com.google.android.material.textfield.TextInputLayout;
