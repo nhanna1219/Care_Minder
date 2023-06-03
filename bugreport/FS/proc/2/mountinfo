@@ -1,0 +1,69 @@
+16 24 0:17 / /dev rw,nosuid,relatime shared:2 - tmpfs tmpfs rw,seclabel,mode=755
+17 16 0:18 / /dev/pts rw,relatime shared:3 - devpts devpts rw,seclabel,mode=600,ptmxmode=000
+18 24 0:5 / /proc rw,relatime shared:4 - proc proc rw,gid=3009,hidepid=2
+19 24 0:19 / /sys rw,relatime shared:5 - sysfs sysfs rw,seclabel
+20 19 0:15 / /sys/fs/selinux rw,relatime shared:6 - selinuxfs selinuxfs rw
+21 24 0:20 / /mnt rw,nosuid,nodev,noexec,relatime shared:7 - tmpfs tmpfs rw,seclabel,mode=755,gid=1000
+23 24 251:49 / /metadata rw,nosuid,nodev,noatime shared:8 - ext4 /dev/block/pci/pci0000:00/0000:00:06.0/by-name/metadata rw,seclabel
+24 1 253:4 / / ro,nodev,relatime shared:1 - ext4 /dev/block/dm-4 ro,seclabel
+25 24 253:3 / /vendor ro,relatime shared:9 - ext4 /dev/block/dm-3 ro,seclabel
+26 24 253:2 / /product ro,relatime shared:10 - ext4 /dev/block/dm-2 ro,seclabel
+27 24 253:1 / /system_ext ro,relatime shared:11 - ext4 /dev/block/dm-1 ro,seclabel
+22 24 0:21 / /apex rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=755
+28 24 0:22 / /linkerconfig rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=755
+29 21 0:20 /user /mnt/installer rw,nosuid,nodev,noexec,relatime shared:12 master:7 - tmpfs tmpfs rw,seclabel,mode=755,gid=1000
+30 21 0:20 /user /mnt/androidwritable rw,nosuid,nodev,noexec,relatime shared:13 master:7 - tmpfs tmpfs rw,seclabel,mode=755,gid=1000
+47 16 0:23 / /dev/cg2_bpf rw,nosuid,nodev,noexec,relatime shared:14 - cgroup2 none rw
+49 16 0:24 / /dev/cpuctl rw,nosuid,nodev,noexec,relatime shared:15 - cgroup none rw,cpu
+51 24 0:25 / /acct rw,nosuid,nodev,noexec,relatime shared:16 - cgroup none rw,cpuacct
+53 16 0:26 / /dev/cpuset rw,nosuid,nodev,noexec,relatime shared:17 - cgroup none rw,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent
+55 16 0:27 / /dev/freezer rw,nosuid,nodev,noexec,relatime shared:18 - cgroup none rw,freezer
+57 16 0:28 / /dev/memcg rw,nosuid,nodev,noexec,relatime shared:19 - cgroup none rw,memory
+59 28 0:22 /bootstrap /linkerconfig rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=755
+60 22 7:0 / /apex/com.android.i18n@1 ro,nodev,noatime - ext4 /dev/block/loop0 ro,dirsync,seclabel
+61 22 7:0 / /apex/com.android.i18n ro,nodev,noatime - ext4 /dev/block/loop0 ro,dirsync,seclabel
+62 22 7:8 / /apex/com.android.runtime@1 ro,nodev,noatime - ext4 /dev/block/loop1 ro,dirsync,seclabel
+63 22 7:8 / /apex/com.android.runtime ro,nodev,noatime - ext4 /dev/block/loop1 ro,dirsync,seclabel
+64 22 7:16 / /apex/com.android.tzdata@300900700 ro,nodev,noatime - ext4 /dev/block/loop2 ro,dirsync,seclabel
+65 22 7:16 / /apex/com.android.tzdata ro,nodev,noatime - ext4 /dev/block/loop2 ro,dirsync,seclabel
+66 22 7:24 / /apex/com.android.os.statsd@300900700 ro,nodev,noatime - ext4 /dev/block/loop3 ro,dirsync,seclabel
+67 22 7:24 / /apex/com.android.os.statsd ro,nodev,noatime - ext4 /dev/block/loop3 ro,dirsync,seclabel
+68 22 7:32 / /apex/com.android.art@1 ro,nodev,noatime - ext4 /dev/block/loop4 ro,dirsync,seclabel
+69 22 7:32 / /apex/com.android.art ro,nodev,noatime - ext4 /dev/block/loop4 ro,dirsync,seclabel
+70 22 7:40 / /apex/com.android.vndk.v30@1 ro,nodev,noatime - ext4 /dev/block/loop5 ro,dirsync,seclabel
+71 22 7:40 / /apex/com.android.vndk.v30 ro,nodev,noatime - ext4 /dev/block/loop5 ro,dirsync,seclabel
+72 19 0:10 / /sys/kernel/tracing rw,relatime shared:20 - tracefs tracefs rw,seclabel
+74 18 0:29 / /proc/sys/fs/binfmt_misc rw,relatime shared:21 - binfmt_misc binfmt_misc rw
+76 24 0:16 / /config rw,nosuid,nodev,noexec,relatime shared:22 - configfs none rw
+78 16 0:30 / /dev/binderfs rw,relatime shared:23 - binder binder rw,max=1048576,stats=global
+80 19 0:31 / /sys/fs/fuse/connections rw,relatime shared:24 - fusectl none rw
+82 19 0:32 / /sys/fs/bpf rw,nosuid,nodev,noexec,relatime shared:25 - bpf none rw
+84 19 0:33 / /sys/fs/pstore rw,nosuid,nodev,noexec,relatime shared:26 - pstore pstore rw,seclabel
+86 24 253:5 / /data rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+91 86 253:5 /data /data/user/0 rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+94 24 0:34 / /data_mirror rw,nosuid,nodev,noexec,relatime shared:28 - tmpfs tmpfs rw,seclabel,mode=700,gid=1000
+97 94 253:5 /user /data_mirror/data_ce/null rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+98 97 253:5 /data /data_mirror/data_ce/null/0 rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+100 94 253:5 /user_de /data_mirror/data_de/null rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+102 94 253:5 /misc/profiles/cur /data_mirror/cur_profiles rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+146 86 0:4 net:[4026532710] /data/vendor/var/run/netns/router rw shared:29 - nsfs nsfs rw
+148 24 0:20 /user/0 /storage rw,nosuid,nodev,noexec,relatime shared:7 - tmpfs tmpfs rw,seclabel,mode=755,gid=1000
+2061 21 0:71 / /mnt/user/0/emulated rw,nosuid,nodev,noexec,noatime shared:30 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+2130 29 0:71 / /mnt/installer/0/emulated rw,nosuid,nodev,noexec,noatime shared:32 master:30 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+2106 30 0:71 / /mnt/androidwritable/0/emulated rw,nosuid,nodev,noexec,noatime shared:31 master:30 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+2063 148 0:71 / /storage/emulated rw,nosuid,nodev,noexec,noatime shared:30 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+2155 21 253:5 /media /mnt/pass_through/0/emulated rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3485 2061 253:5 /media/0/Android/data /mnt/user/0/emulated/0/Android/data rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3528 2106 253:5 /media/0/Android/data /mnt/androidwritable/0/emulated/0/Android/data rw,nosuid,nodev,noatime shared:34 master:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3489 2130 253:5 /media/0/Android/data /mnt/installer/0/emulated/0/Android/data rw,nosuid,nodev,noatime shared:33 master:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3487 2063 253:5 /media/0/Android/data /storage/emulated/0/Android/data rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3634 2061 253:5 /media/0/Android/obb /mnt/user/0/emulated/0/Android/obb rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3677 2106 253:5 /media/0/Android/obb /mnt/androidwritable/0/emulated/0/Android/obb rw,nosuid,nodev,noatime shared:36 master:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3638 2130 253:5 /media/0/Android/obb /mnt/installer/0/emulated/0/Android/obb rw,nosuid,nodev,noatime shared:35 master:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3636 2063 253:5 /media/0/Android/obb /storage/emulated/0/Android/obb rw,nosuid,nodev,noatime shared:27 - ext4 /dev/block/dm-5 rw,seclabel,resgid=1065,errors=panic
+3783 21 251:80 / /mnt/media_rw/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:37 - vfat /dev/block/vold/public:251,80 rw,dirsync,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro
+3821 21 0:104 / /mnt/user/0/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+3930 29 0:104 / /mnt/installer/0/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:40 master:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+3892 30 0:104 / /mnt/androidwritable/0/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:39 master:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+3823 148 0:104 / /storage/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+3970 21 251:80 / /mnt/pass_through/0/0E0D-160F rw,nosuid,nodev,noexec,noatime shared:37 - vfat /dev/block/vold/public:251,80 rw,dirsync,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro

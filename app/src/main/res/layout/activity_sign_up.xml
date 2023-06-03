@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="8sp"
-    tools:context=".Activity.Login_Signup.SignUpActivity">
+    tools:context=".Activity.Introduction.Login_Signup.SignUpActivity">
 
     <TextView
         android:id="@+id/textView4"

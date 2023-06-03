@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Login_Signup.Login_Signup" >
+    tools:context=".Activity.Introduction.Login_Signup.Login_Signup" >
 
     <TextView
         android:id="@+id/textView"

@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.input.classifier@1.0::IInputClassifier/default' failed: exit code 128

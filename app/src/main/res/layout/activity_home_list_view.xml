@@ -27,81 +27,56 @@
                     android:textColor="@color/title"
                     android:textSize="18sp"/>
 
-                        <pl.droidsonroids.gif.GifImageView
-                            android:layout_width="120dp"
-                            android:layout_height="100dp"
-                            android:layout_alignEnd="@+id/daily_activity"
-                            android:layout_marginTop="40dp"
-                            android:layout_marginEnd="10dp"
-                            android:elevation="8dp"
-                            android:src="@drawable/daily_activity" />
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:layout_alignEnd="@+id/daily_activity"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="8dp"
+                    android:src="@drawable/daily_activity" />
 
-                        <LinearLayout
-                            android:id="@+id/ic_counting"
-                            android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignBottom="@+id/daily_activity"
+                    android:elevation="10dp">
+                        <TextView
+                            android:id="@+id/step_counting"
+                            android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/daily_activity"
-                            android:layout_marginStart="8dp"
-                            android:paddingBottom="50dp"
-                            android:orientation="horizontal"
-                            android:elevation="8dp">
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_marginHorizontal="15dp"
-                                    android:src="@drawable/ic_step"
-                                    android:contentDescription="@string/icon_counting_step" />
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginHorizontal="15dp"
-                                    android:src="@drawable/ic_time"
-                                    android:contentDescription="@string/icon_duraion"/>
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_marginTop="2dp"
-                                    android:layout_marginHorizontal="15dp"
-                                    android:src="@drawable/ic_calory"
-                                    android:contentDescription="@string/icon_calories_counting"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/counting"
-                            android:layout_width="wrap_content"
+                            android:text="@string/_0"
+                            android:textAlignment="center"
+                            android:drawablePadding="12dp"
+                            android:layout_marginStart="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="20dp"
+                            android:drawableTop="@drawable/ic_step" />
+                        <TextView
+                            android:id="@+id/duration"
+                            android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/daily_activity"
-                            android:layout_marginStart="8dp"
-                            android:paddingBottom="20dp"
-                            android:orientation="horizontal"
-                            android:elevation="8dp">
+                            android:text="@string/_0"
+                            android:textAlignment="center"
+                            android:drawablePadding="12dp"
+                            android:layout_marginStart="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="20dp"
+                            android:drawableTop="@drawable/ic_time" />
+                        <TextView
+                            android:id="@+id/calories"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_0"
+                            android:textAlignment="center"
+                            android:drawablePadding="12dp"
+                            android:layout_marginStart="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="20dp"
+                            android:drawableTop="@drawable/ic_calory" />
 
-                                <TextView
-                                    android:id="@+id/step_counting"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="19dp"
-                                    android:text="@string/_0"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-                                <TextView
-                                    android:id="@+id/duration"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_0"
-                                    android:layout_marginHorizontal="19dp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/black"/>
-                                <TextView
-                                    android:id="@+id/calories_counting"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_0"
-                                    android:layout_marginHorizontal="19dp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/black"/>
-                        </LinearLayout>
+                </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout

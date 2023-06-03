@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.careminder.Activity.Home.HomeActivity
 
 open class HealthConnect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +36,8 @@ open class HealthConnect : AppCompatActivity() {
             )
             return
         }
-//        val healthConnectClient = HealthConnectClient.getOrCreate(context)
 
-        startActivity(Intent(this,PermissionsRationaleActivity::class.java))
+        startActivity(Intent(this,HomeActivity::class.java))
 
     }
 }

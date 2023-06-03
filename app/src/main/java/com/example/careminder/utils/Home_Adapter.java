@@ -7,6 +7,7 @@ import com.example.careminder.Activity.Body.BodyActivity;
 import com.example.careminder.Activity.Daily.DailyActivity;
 import com.example.careminder.Activity.Exercises.ExercisesActivity;
 import com.example.careminder.Activity.Food.DisplayFoodActivity;
+import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
 import com.example.careminder.Activity.Steps.StepActivity;
 import com.example.careminder.Activity.Water.WaterActivity;
 
@@ -18,6 +19,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.health.connect.client.HealthConnectClient;
+
+import java.util.concurrent.CompletableFuture;
+
+import kotlin.Unit;
+import kotlin.coroutines.EmptyCoroutineContext;
+import kotlinx.coroutines.CoroutineScopeKt;
+import kotlinx.coroutines.CoroutineStart;
+import kotlinx.coroutines.future.FutureKt;
 
 public class Home_Adapter extends BaseAdapter {
     Context context;
@@ -51,12 +62,24 @@ public class Home_Adapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         if (view == null) {
             view = inflater.inflate(R.layout.activity_home_list_view, parent, false);
+
             Button dailyActivity = view.findViewById(R.id.daily_activity);
             TextView exercises = view.findViewById(R.id.exercise);
             Button steps = view.findViewById(R.id.steps);
             Button food = view.findViewById(R.id.food);
             Button water = view.findViewById(R.id.water);
             Button body = view.findViewById(R.id.body);
+
+            // Display number of steps
+            TextView stepCounting = view.findViewById(R.id.step_counting);
+            HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(context);
+            PermissionsRationaleActivity loadStepsData = new PermissionsRationaleActivity();
+            CompletableFuture<Unit> suspendResult = FutureKt.future(
+                    CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
+                    EmptyCoroutineContext.INSTANCE,
+                    CoroutineStart.DEFAULT,
+                    (scope, continuation) -> loadStepsData.loadDailyData(healthConnectClient,stepCounting,continuation)
+            );
 
             dailyActivity.setOnClickListener(new OnClickListener() {
                 @Override
