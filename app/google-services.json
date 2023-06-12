@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "59412433028",
+    "project_id": "careminder-1bae2",
+    "storage_bucket": "careminder-1bae2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59412433028:android:92618b6cc5a227aed19ad1",
+        "android_client_info": {
+          "package_name": "com.example.careminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59412433028-t3csb8gv2qvd0bl4r7ek1mi47vdcbg85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.careminder",
+            "certificate_hash": "af8ebec088250a61bf5722abb096def5e817622a"
+          }
+        },
+        {
+          "client_id": "59412433028-2gv9f4s8k28qhldm9cqid4r9lf0n6c91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHFkHUojKoo_htbvyLfqe_-KALi5mZ4iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59412433028-2gv9f4s8k28qhldm9cqid4r9lf0n6c91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

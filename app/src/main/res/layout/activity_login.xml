@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Introduction.Login_Signup.LoginActivity">
+    tools:context=".Activity.Login_Signup.LoginActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Forget Your Password?"
+            android:text="Forgot Your Password?"
             android:textAlignment="textEnd"
             android:textColor="@color/title" />
 
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dont have an Account?"
+                android:text="Don't have an Account?"
                 android:textColor="@color/title" />
 
             <TextView
@@ -120,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:textStyle="bold"
                 android:text="Sign Up"
                 android:textColor="@color/black" />
 

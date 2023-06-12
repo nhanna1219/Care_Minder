@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="8sp"
-    tools:context=".Activity.Introduction.Login_Signup.SignUpActivity">
+    tools:context=".Activity.Login_Signup.SignUpActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -84,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="FullName"
-                android:inputType="textPassword"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
                 android:padding="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
