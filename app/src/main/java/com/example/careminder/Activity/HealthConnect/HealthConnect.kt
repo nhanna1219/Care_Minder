@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.careminder.Activity.Home.HomeActivity
+import com.example.careminder.Activity.Information.InformationActivity
 
 open class HealthConnect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ open class HealthConnect : AppCompatActivity() {
             return
         }
 
-        startActivity(Intent(this,HomeActivity::class.java))
+        startActivity(Intent(this,InformationActivity::class.java))
 
     }
 }

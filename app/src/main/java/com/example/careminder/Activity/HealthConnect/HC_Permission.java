@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.careminder.Activity.Home.HomeActivity;
+import com.example.careminder.Activity.Information.InformationActivity;
 import com.example.careminder.R;
 
 public class HC_Permission extends AppCompatActivity {
