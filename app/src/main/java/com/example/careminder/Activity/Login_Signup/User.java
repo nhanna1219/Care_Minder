@@ -1,10 +1,21 @@
 package com.example.careminder.Activity.Login_Signup;
 
 public class User {
-    String name;
-    String email;
-    // check first login
-    boolean firstLogin = true;
+    private String name;
+    private String firstLogin;
+    private String email;
+    private String password;
+
+    public User() {
+        // Constructor mặc định để Firestore có thể tạo đối tượng từ dữ liệu truy vấn
+    }
+
+    public User(String name, String firstLogin, String email, String password) {
+        this.name = name;
+        this.firstLogin = firstLogin;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
@@ -12,6 +23,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFirstLogin() {
+        return firstLogin;
+    }
+
+    public void setFirstLogin(String firstLogin) {
+        this.firstLogin = firstLogin;
     }
 
     public String getEmail() {
@@ -29,21 +48,9 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setFirstLogin(boolean firstLogin) {
-        this.firstLogin = firstLogin;
-    }
+
     public boolean checkFirstLogin() {
-        return firstLogin;
-    }
-    String password;
-
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-//        this.firstLogin = true;
+        return firstLogin.equals("true");
     }
 
-    public User() {
-    }
 }

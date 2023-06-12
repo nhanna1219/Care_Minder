@@ -31,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputName;
     private TextInputLayout textInputPassword;
+    private String checkLogin;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -99,13 +100,6 @@ public class SignUpActivity extends AppCompatActivity {
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String input = "Email: " + textInputEmail.getEditText().getText().toString();
-                input += "\n";
-                input += "Username: " + textInputName.getEditText().getText().toString();
-                input += "\n";
-                input += "Password: " + textInputPassword.getEditText().getText().toString();
-
                 // Khanh code
                 PerformForAuth();
             }
@@ -121,15 +115,17 @@ public class SignUpActivity extends AppCompatActivity {
         String email = textInputEmail.getEditText().getText().toString();
         String password = textInputPassword.getEditText().getText().toString();
         String name = textInputName.getEditText().getText().toString();
+        String firstLogin = "true";
         if (validateEmail() & validateUsername() & validatePassword()) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
+                    User user = new User(name, firstLogin, email, password);
+                    db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
                     Toast.makeText(SignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                    User user = new User(name, email, password);
-                    db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
+
                 }
             })
             .addOnFailureListener(new OnFailureListener() {

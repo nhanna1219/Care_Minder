@@ -1,7 +1,10 @@
 package com.example.careminder.Activity.Login_Signup;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,8 +13,10 @@ import android.widget.Toast;
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.Activity.Introduction.IntroductionActivity;
 import com.example.careminder.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +26,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,10 +103,29 @@ public class LoginActivity extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
-                            public void onSuccess(com.google.firebase.auth.AuthResult authResult) {
+                            public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                 // check first login of user
-                                startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                String uid = user.getUid();
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                DocumentReference docRef = db.collection("users").document(uid);
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                        Log.d(TAG, "onComplete: " + task.getResult().get("firstLogin"));
+                                        // if first login, go to introduction activity
+                                        if (task.getResult().get("firstLogin").equals("true")) {
+                                            startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
+                                            // set first login to false
+                                            docRef.update("firstLogin", "false");
+                                        }
+                                        // if not first login, go to home activity
+                                        else {
+                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                        }
+                                    }
+                                });
                             }
                         })
                         .addOnFailureListener(e ->
