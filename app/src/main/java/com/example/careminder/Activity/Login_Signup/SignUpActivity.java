@@ -61,9 +61,6 @@ public class SignUpActivity extends AppCompatActivity {
         if (usernameInput.isEmpty()) {
             textInputName.setError("Field can't be empty");
             return false;
-        } else if (usernameInput.length() > 15) {
-            textInputName.setError("Username too long");
-            return false;
         } else {
             textInputName.setError(null);
             return true;
@@ -113,8 +110,6 @@ public class SignUpActivity extends AppCompatActivity {
                 PerformForAuth();
             }
         });
-
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,16 +121,14 @@ public class SignUpActivity extends AppCompatActivity {
         String email = textInputEmail.getEditText().getText().toString();
         String password = textInputPassword.getEditText().getText().toString();
         String name = textInputName.getEditText().getText().toString();
-        password = encryptPassword(password);
-        String pass = password;
         if (validateEmail() & validateUsername() & validatePassword()) {
-            mAuth.createUserWithEmailAndPassword(email, pass)
+            mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     Toast.makeText(SignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                    User user = new User(name, email, pass);
+                    User user = new User(name, email, password);
                     db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
                 }
             })
@@ -148,19 +141,19 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
     // encrypt password by using MD5
-    private String encryptPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(password.getBytes());
-            byte byteData[] = md.digest();
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < byteData.length; i++) {
-                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    private String encryptPassword(String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            md.update(password.getBytes());
+//            byte byteData[] = md.digest();
+//            StringBuffer sb = new StringBuffer();
+//            for (int i = 0; i < byteData.length; i++) {
+//                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//            return sb.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

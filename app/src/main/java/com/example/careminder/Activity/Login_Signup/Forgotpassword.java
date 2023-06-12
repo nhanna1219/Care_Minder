@@ -78,10 +78,6 @@ public class Forgotpassword extends AppCompatActivity {
                        }
                     }
                 });
-                // confirm password reset
-
-
-
             }
         });
 

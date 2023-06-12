@@ -91,21 +91,18 @@ public class LoginActivity extends AppCompatActivity {
                 String email = textInputEmail.getEditText().getText().toString().trim();
                 String password = textInputPassword.getEditText().getText().toString().trim();
                 // decrypt the password MD5
-                String pass = encryptPassword(password);
-                mAuth.signInWithEmailAndPassword(email, pass)
+//                String pass = password;
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(com.google.firebase.auth.AuthResult authResult) {
                                 Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                 // check first login of user
                                 startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
-
-
                             }
                         })
                         .addOnFailureListener(e ->
                                 Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show());
-
 
                 //Toast.makeText(this, input, Toast.LENGTH_LONG).show();
             }
@@ -125,35 +122,35 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // decrypt password MD5 password as above function encryptPassword
-    public String decryptPassword(String password) {
-        String decryptedPassword = "";
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(password.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (byte b : array) {
-                sb.append(Integer.toString((b & 0xFF) + 0x100, 16).substring(1));
-            }
-            decryptedPassword = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return decryptedPassword;
-    }
-    private String encryptPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(password.getBytes());
-            byte byteData[] = md.digest();
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < byteData.length; i++) {
-                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    // decrypt password MD5 password as above function encryptPassword
+//    public String decryptPassword(String password) {
+//        String decryptedPassword = "";
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            byte[] array = md.digest(password.getBytes());
+//            StringBuilder sb = new StringBuilder();
+//            for (byte b : array) {
+//                sb.append(Integer.toString((b & 0xFF) + 0x100, 16).substring(1));
+//            }
+//            decryptedPassword = sb.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        return decryptedPassword;
+//    }
+//    private String encryptPassword(String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            md.update(password.getBytes());
+//            byte byteData[] = md.digest();
+//            StringBuffer sb = new StringBuffer();
+//            for (int i = 0; i < byteData.length; i++) {
+//                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//            return sb.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }
