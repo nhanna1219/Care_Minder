@@ -84,9 +84,12 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-
-        steps = findViewById(R.id.step_counting);
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
+        steps = findViewById(R.id.step_counting);
+        loadSteps(healthConnectClient, steps);
+    }
+
+    private void loadSteps(HealthConnectClient healthConnectClient, TextView steps){
         PermissionsRationaleActivity loadStepsData = new PermissionsRationaleActivity();
 
         // Pass steps textview to a suspendResult to call a suspend function in kotlin
@@ -97,7 +100,63 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
                 (scope, continuation) -> loadStepsData.loadDailyData(healthConnectClient,steps,continuation)
         );
     }
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("key1", previousTotalSteps);
+        editor.apply();
+    }
 
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        float savedNumber = sharedPreferences.getFloat("key1", 0f);
+
+        Log.d("DailyActivity", String.valueOf(savedNumber));
+
+        previousTotalSteps = savedNumber;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // We do not have to write anything in this function for this app
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        TextView step_counting = findViewById(R.id.step_counting);
+
+        if (running) {
+            totalSteps = event.values[0];
+
+            int currentSteps = (int) (totalSteps - previousTotalSteps);
+
+            step_counting.setText(String.valueOf(currentSteps));
+            Log.d("Counting:",  String.valueOf(step_counting));
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+
+        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
+        if (stepSensor == null) {
+            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
+            Log.d("DailyActivity", String.valueOf("No sensor"));
+
+        } else {
+            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+        sensorManager.unregisterListener(this);
+    }
     private String theNextDay(String[] date) {
         int day = Integer.parseInt(date[0]);
         int year = Integer.parseInt(date[2]);
@@ -214,28 +273,7 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
         date[0] = theDayBefore(date);
         return theDayBefore(date);
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
 
-        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
-        if (stepSensor == null) {
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
-            Log.d("DailyActivity", String.valueOf("No sensor"));
-
-        } else {
-            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-        sensorManager.unregisterListener(this);
-    }
 
     // RESET STEPS FUNCTION
 //    public void resetSteps() {
@@ -259,39 +297,4 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
 //            }
 //        });
 //    }
-
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat("key1", previousTotalSteps);
-        editor.apply();
-    }
-
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        float savedNumber = sharedPreferences.getFloat("key1", 0f);
-
-        Log.d("DailyActivity", String.valueOf(savedNumber));
-
-        previousTotalSteps = savedNumber;
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // We do not have to write anything in this function for this app
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        TextView step_counting = findViewById(R.id.step_counting);
-
-        if (running) {
-            totalSteps = event.values[0];
-
-            int currentSteps = (int) (totalSteps - previousTotalSteps);
-
-            step_counting.setText(String.valueOf(currentSteps));
-            Log.d("DailyActivity",  String.valueOf(step_counting));
-        }
-    }
 }

@@ -54,8 +54,9 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         checkPermissionsAndRun()
     }
     private fun checkPermissionsAndRun() {
-        val client = HealthConnectClient.getOrCreate(this)
         // Create the permissions launcher.
+        val client =  HealthConnectClient.getOrCreate(this)
+
         val requestPermissionActivityContract = PermissionController.createRequestPermissionResultContract()
 
         val requestPermissions =
@@ -81,17 +82,21 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             }
         }
     }
-    suspend fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
+
+    private suspend fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
 
     }
-
-
     suspend fun loadDailyData(healthConnectClient: HealthConnectClient, steps: TextView) {
-        val management: HealthConnectManagement = HealthConnectManagement(healthConnectClient)
+        val management = HealthConnectManagement(healthConnectClient)
         val result = management.aggregateStepsIntoMinutes()
-        Log.d("PermissionRationaleActivity", "checkPermissionsAndRun: $result")
+        Log.d("Load steps", result)
         steps.text = result
     }
 
-
+    // Write weight and height data
+    suspend fun writeBasicInformation(healthConnectClient: HealthConnectClient, height: Double, weight: Double){
+        val management = HealthConnectManagement(healthConnectClient)
+        management.writeHeightInput(height)
+        management.writeWeightInput(weight)
+    }
 }

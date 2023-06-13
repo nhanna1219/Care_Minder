@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.provider.Settings.Global
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.health.connect.client.HealthConnectClient
 import androidx.health.connect.client.changes.Change
@@ -13,11 +14,14 @@ import androidx.health.connect.client.request.AggregateGroupByDurationRequest
 import androidx.health.connect.client.request.AggregateGroupByPeriodRequest
 import androidx.health.connect.client.request.ChangesTokenRequest
 import androidx.health.connect.client.time.TimeRangeFilter
+import androidx.health.connect.client.units.Length
+import androidx.health.connect.client.units.Mass
 import kotlinx.coroutines.*
 import kotlinx.coroutines.future.future
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Period
+import java.time.ZonedDateTime
 import java.util.concurrent.CompletableFuture
 
 class HealthConnectManagement(private val healthConnectClient: HealthConnectClient) {
@@ -92,5 +96,38 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
             e.printStackTrace()
         }
         return "0";
+    }
+
+    suspend fun writeWeightInput(weightInput: Double) {
+        try {
+            val time = ZonedDateTime.now().withNano(0)
+            val weightRecord = WeightRecord(
+                weight = Mass.kilograms(weightInput),
+                time = time.toInstant(),
+                zoneOffset = time.offset
+            )
+            val records = listOf(weightRecord)
+            healthConnectClient.insertRecords(records)
+            Log.d("Insert weight: ", "Successfully")
+        } catch (e: Exception) {
+            Log.d("Insert weight: ", e.message.toString())
+        }
+    }
+
+    suspend fun writeHeightInput(heightInput: Double) {
+        try {
+            val time = ZonedDateTime.now().minusSeconds(1)
+            val heightRecord =  HeightRecord(
+                height = Length.meters(heightInput),
+                time = time.toInstant(),
+                zoneOffset = time.offset
+            )
+            val records = listOf(heightRecord)
+
+            healthConnectClient.insertRecords(records)
+            Log.d("Insert height: ", "Successfully")
+        } catch (e: Exception) {
+            Log.d("Insert height: ", e.message.toString())
+        }
     }
 }
