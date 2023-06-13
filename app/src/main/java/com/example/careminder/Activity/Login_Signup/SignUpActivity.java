@@ -116,16 +116,16 @@ public class SignUpActivity extends AppCompatActivity {
         String password = textInputPassword.getEditText().getText().toString();
         String name = textInputName.getEditText().getText().toString();
         String firstLogin = "true";
+        String pass_encrypt = encryptPassword(password);
         if (validateEmail() & validateUsername() & validatePassword()) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    User user = new User(name, firstLogin, email, password);
+                    User user = new User(name, firstLogin, email, pass_encrypt);
                     db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
                     Toast.makeText(SignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -136,20 +136,20 @@ public class SignUpActivity extends AppCompatActivity {
             });
         }
     }
-    // encrypt password by using MD5
-//    private String encryptPassword(String password) {
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("MD5");
-//            md.update(password.getBytes());
-//            byte byteData[] = md.digest();
-//            StringBuffer sb = new StringBuffer();
-//            for (int i = 0; i < byteData.length; i++) {
-//                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-//            }
-//            return sb.toString();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+
+    private String encryptPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] byteData = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte byteDatum : byteData) {
+                sb.append(Integer.toString((byteDatum & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
