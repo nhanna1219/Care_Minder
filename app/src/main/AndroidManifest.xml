@@ -136,7 +136,7 @@
             android:name=".Activity.Setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Information.InformationActivity"
+            android:name=".Activity.Home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Food.DisplayFoodActivity"
@@ -145,7 +145,7 @@
             android:name=".Activity.Food.FoodItemDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Home.HomeActivity"
+            android:name=".Activity.Information.InformationActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

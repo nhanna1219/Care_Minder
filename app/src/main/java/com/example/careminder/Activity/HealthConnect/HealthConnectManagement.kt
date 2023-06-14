@@ -10,6 +10,7 @@ import androidx.health.connect.client.HealthConnectClient
 import androidx.health.connect.client.changes.Change
 import androidx.health.connect.client.changes.UpsertionChange
 import androidx.health.connect.client.records.*
+import androidx.health.connect.client.records.metadata.Metadata
 import androidx.health.connect.client.request.AggregateGroupByDurationRequest
 import androidx.health.connect.client.request.AggregateGroupByPeriodRequest
 import androidx.health.connect.client.request.ChangesTokenRequest
@@ -22,6 +23,7 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Period
 import java.time.ZonedDateTime
+import java.util.UUID
 import java.util.concurrent.CompletableFuture
 
 class HealthConnectManagement(private val healthConnectClient: HealthConnectClient) {
@@ -99,15 +101,25 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
     }
 
     suspend fun writeWeightInput(weightInput: Double) {
+        val uuid = UUID.randomUUID().toString()
+        val version = System.currentTimeMillis()
+        Log.d("UUID:", uuid)
+        Log.d("Version:", version.toString())
+
         try {
             val time = ZonedDateTime.now().withNano(0)
             val weightRecord = WeightRecord(
                 weight = Mass.kilograms(weightInput),
                 time = time.toInstant(),
-                zoneOffset = time.offset
+                zoneOffset = time.offset,
+                metadata = Metadata(
+                    clientRecordId = uuid,
+                    clientRecordVersion = version
+                )
             )
             val records = listOf(weightRecord)
-            healthConnectClient.insertRecords(records)
+            val response = healthConnectClient.insertRecords(records)
+
             Log.d("Insert weight: ", "Successfully")
         } catch (e: Exception) {
             Log.d("Insert weight: ", e.message.toString())
@@ -115,12 +127,21 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
     }
 
     suspend fun writeHeightInput(heightInput: Double) {
+        val uuid = UUID.randomUUID().toString()
+        val version = System.currentTimeMillis()
+        Log.d("UUID:", uuid)
+        Log.d("Version:", version.toString())
+
         try {
             val time = ZonedDateTime.now().minusSeconds(1)
             val heightRecord =  HeightRecord(
                 height = Length.meters(heightInput),
                 time = time.toInstant(),
-                zoneOffset = time.offset
+                zoneOffset = time.offset,
+                metadata = Metadata(
+                    clientRecordId = uuid,
+                    clientRecordVersion = version
+                )
             )
             val records = listOf(heightRecord)
 
