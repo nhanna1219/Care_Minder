@@ -5,6 +5,11 @@
     <queries>
         <package android:name="com.google.android.apps.healthdata" />
     </queries>
+    <supports-screens android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true" />
     <!-- App permissions on read/write access to Health Connect -->
     <uses-permission android:name="android.permission.health.READ_ACTIVE_CALORIES_BURNED" />
     <uses-permission android:name="android.permission.health.WRITE_ACTIVE_CALORIES_BURNED" />
@@ -115,9 +120,6 @@
             android:name=".Activity.Steps.StepActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Exercises.ExercisesActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.Daily.DailyActivity"
             android:exported="false" />
         <activity
@@ -136,7 +138,7 @@
             android:name=".Activity.Setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Home.HomeActivity"
+            android:name=".Activity.Information.InformationActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Food.DisplayFoodActivity"
@@ -145,7 +147,7 @@
             android:name=".Activity.Food.FoodItemDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Information.InformationActivity"
+            android:name=".Activity.Home.HomeActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

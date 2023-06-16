@@ -1,30 +1,25 @@
 package com.example.careminder.Activity.HealthConnect
 
-import android.content.Context
-import android.os.Bundle
-import android.provider.Settings.Global
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.health.connect.client.HealthConnectClient
-import androidx.health.connect.client.changes.Change
 import androidx.health.connect.client.changes.UpsertionChange
 import androidx.health.connect.client.records.*
 import androidx.health.connect.client.records.metadata.Metadata
 import androidx.health.connect.client.request.AggregateGroupByDurationRequest
-import androidx.health.connect.client.request.AggregateGroupByPeriodRequest
+import androidx.health.connect.client.request.AggregateRequest
 import androidx.health.connect.client.request.ChangesTokenRequest
+import androidx.health.connect.client.request.ReadRecordsRequest
 import androidx.health.connect.client.time.TimeRangeFilter
+import androidx.health.connect.client.units.Energy
 import androidx.health.connect.client.units.Length
 import androidx.health.connect.client.units.Mass
-import kotlinx.coroutines.*
-import kotlinx.coroutines.future.future
+import androidx.health.connect.client.units.meters
 import java.time.Duration
 import java.time.LocalDateTime
-import java.time.Period
 import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 import java.util.UUID
-import java.util.concurrent.CompletableFuture
+import kotlin.time.Duration.Companion.minutes
 
 class HealthConnectManagement(private val healthConnectClient: HealthConnectClient) {
 
@@ -76,28 +71,49 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
     }
 
 
-    suspend fun aggregateStepsIntoMinutes() : String {
+    suspend fun aggregateDailySteps() : Triple<String,String,String> {
         try {
-            val startTime = LocalDateTime.of(2023, 6, 2, 6, 6)
-            val endTime = LocalDateTime.of(2023, 6, 2, 23, 59)
+            val today = ZonedDateTime.now()
+            val startOfDay = today.truncatedTo(ChronoUnit.DAYS)
+            val timeRangeFilter = TimeRangeFilter.between(
+                startOfDay.toLocalDateTime(),
+                today.toLocalDateTime()
+            )
             val response =
-                healthConnectClient.aggregateGroupByDuration(
-                    AggregateGroupByDurationRequest(
-                        metrics = setOf(StepsRecord.COUNT_TOTAL),
-                        timeRangeFilter = TimeRangeFilter.between(startTime, endTime),
-                        timeRangeSlicer = Duration.ofMinutes(20)
+                healthConnectClient.aggregate(
+                    AggregateRequest(
+                        metrics = setOf(StepsRecord.COUNT_TOTAL,
+                                        DistanceRecord.DISTANCE_TOTAL,
+                                        ActiveCaloriesBurnedRecord.ACTIVE_CALORIES_TOTAL),
+                        timeRangeFilter = timeRangeFilter,
                     )
                 )
-            for (dailyResult in response) {
                 // The result may be null if no data is available in the time range.
-                val totalSteps = dailyResult.result[StepsRecord.COUNT_TOTAL]
-                return totalSteps.toString();
-            }
+            val totalSteps = response[StepsRecord.COUNT_TOTAL] ?: 0L
+            val totalDistance = response[DistanceRecord.DISTANCE_TOTAL]?.inKilometers ?: 0F
+            val totalCalories = response[ActiveCaloriesBurnedRecord.ACTIVE_CALORIES_TOTAL]?.inKilocalories ?: 0F
+//            val distanceString = totalDistance.toString().substring(0, totalDistance.toString().indexOf(" "))
+//            val caloriesString = totalCalories.toString().substring(0, totalCalories.toString().indexOf(""))
+            return Triple(totalSteps.toString(), totalDistance.toString(), totalCalories.toString())
         } catch (e: Exception) {
             // Run error handling here.
             e.printStackTrace()
         }
-        return "0";
+        return Triple("0", "0", "0",) ;
+    }
+
+    suspend fun readWeightInput(): Double {
+        val startTime = ZonedDateTime.now().minusDays(30).toInstant()
+        val endTime = ZonedDateTime.now().toInstant()
+        val request = ReadRecordsRequest(
+            recordType = WeightRecord::class,
+            timeRangeFilter = TimeRangeFilter.between(startTime, endTime),
+        )
+        val response = healthConnectClient.readRecords(request)
+        val sizeResponse = response.records.size
+        val weightString = response.records[sizeResponse - 1].weight.toString()
+        val weightValue = weightString.substring(0, weightString.indexOf(" "))
+        return weightValue.toDouble()
     }
 
     suspend fun writeWeightInput(weightInput: Double) {
@@ -105,7 +121,6 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         val version = System.currentTimeMillis()
         Log.d("UUID:", uuid)
         Log.d("Version:", version.toString())
-
         try {
             val time = ZonedDateTime.now().withNano(0)
             val weightRecord = WeightRecord(
@@ -151,4 +166,59 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
             Log.d("Insert height: ", e.message.toString())
         }
     }
+
+    suspend fun writeStepsInput(sec: Long, steps: Long, caloriesBurned: Double, distance: Double) {
+        val uuid = UUID.randomUUID().toString()
+        val version = System.currentTimeMillis()
+        Log.d("UUID:", uuid)
+        Log.d("Version:", version.toString())
+
+        try {
+            val startTime = ZonedDateTime.now().minusSeconds(sec).toInstant()
+            val endTime = ZonedDateTime.now().toInstant()
+            val records = listOf(
+                StepsRecord(
+                    metadata = Metadata(
+                        clientRecordId = uuid,
+                        clientRecordVersion = version
+                    ),
+                    count = steps,
+                    startTime = startTime,
+                    endTime = endTime,
+                    startZoneOffset = null,
+                    endZoneOffset = null,
+                ),
+                ActiveCaloriesBurnedRecord(
+                    metadata = Metadata(
+                        clientRecordId = uuid,
+                        clientRecordVersion = version
+                    ),
+                    energy = Energy.kilocalories(caloriesBurned),
+                    startTime = startTime,
+                    endTime = endTime,
+                    startZoneOffset = null,
+                    endZoneOffset = null,
+                ),
+                DistanceRecord(
+                    metadata = Metadata(
+                        clientRecordId = uuid,
+                        clientRecordVersion = version,
+                    ),
+                    distance = Length.meters(distance),
+                    startTime = startTime,
+                    endTime = endTime,
+                    startZoneOffset = null,
+                    endZoneOffset = null,
+                )
+            )
+            healthConnectClient.insertRecords(records)
+            Log.d("Insert steps: ", "Successfully")
+            Log.d("Calories: ", caloriesBurned.toString())
+            Log.d("Steps: ", steps.toString())
+
+        } catch (e: Exception) {
+            Log.d("Insert steps: ", e.message.toString())
+        }
+    }
+
 }

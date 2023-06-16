@@ -30,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 import kotlin.Unit;
@@ -46,16 +47,23 @@ public class InformationActivity extends AppCompatActivity {
     ImageButton next;
     Animation.AnimationListener animationListener;
 
-    String gender;
+    String gender = "male";
 
     Double weight_db;
 
     Double height_db;
 
+    private FirebaseFirestore db;
+    private FirebaseUser user;
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        db = FirebaseFirestore.getInstance();
 
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.gender_check);
         anim.setAnimationListener(animationListener);
@@ -108,6 +116,7 @@ public class InformationActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFirstLoginStatus();
                 setGender(gender);
                 setBasicIn4(height_db,weight_db);
                 startActivity(new Intent(InformationActivity.this, HomeActivity.class));
@@ -117,12 +126,20 @@ public class InformationActivity extends AppCompatActivity {
 
     }
 
-    private void setGender(String gender){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private void setFirstLoginStatus(){
         DocumentReference docRef = db.collection("users").document(uid);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (Objects.equals(task.getResult().get("firstLogin"), "true")) {
+                    docRef.update("firstLogin", "false");
+                }
+            }}
+        );
+    }
 
+    private void setGender(String gender){
+        DocumentReference docRef = db.collection("users").document(uid);
         // Add a new field to the user document
         Map<String, Object> updates = new HashMap<>();
         updates.put("gender", gender);
@@ -137,13 +154,6 @@ public class InformationActivity extends AppCompatActivity {
     private void setBasicIn4(Double height, Double weight){
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         PermissionsRationaleActivity writeBasicIn4 = new PermissionsRationaleActivity();
-
-        // Pass steps textview to a suspendResult to call a suspend function in kotlin
-        CompletableFuture<Unit> suspendResult = FutureKt.future(
-                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
-                EmptyCoroutineContext.INSTANCE,
-                CoroutineStart.DEFAULT,
-                (scope, continuation) -> writeBasicIn4.writeBasicInformation(healthConnectClient,height,weight,continuation)
-        );
+        writeBasicIn4.writeBasicInformation(healthConnectClient, height, weight);
     }
 }

@@ -180,65 +180,78 @@
 
                 <ImageView
                     android:id="@+id/running_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="250dp"
+                    android:layout_height="170dp"
                     android:background="@drawable/ic_running"
                     android:layout_below="@+id/today"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
                     android:contentDescription="@string/running" />
-                
-                <TextView
+
+                <LinearLayout
                     android:id="@+id/km_traveled_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/running_img"
-                    android:text="@string/Kilometer_Travelled"
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Kilometer_Travelled"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Distance"
+                        android:textStyle="bold"
+                        android:layout_marginStart="6dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ic_counting"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:orientation="horizontal"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/km_traveled_text">
                     <TextView
                         android:id="@+id/step_counting"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
                         android:text="@string/_0"
                         android:textAlignment="center"
                         android:drawablePadding="12dp"
-                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginHorizontal="20dp"
                         android:textStyle="bold"
                         android:layout_marginVertical="20dp"
-                        android:drawableTop="@drawable/ic_step" />
+                        app:drawableTopCompat="@drawable/ic_step" />
                     <TextView
                         android:id="@+id/duration"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
                         android:text="@string/_0"
                         android:textAlignment="center"
                         android:drawablePadding="12dp"
-                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginHorizontal="20dp"
                         android:textStyle="bold"
                         android:layout_marginVertical="20dp"
-                        android:drawableTop="@drawable/ic_time" />
+                        app:drawableTopCompat="@drawable/ic_time" />
                     <TextView
                         android:id="@+id/calories"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
                         android:text="@string/_0"
                         android:textAlignment="center"
                         android:drawablePadding="12dp"
-                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginHorizontal="20dp"
                         android:textStyle="bold"
                         android:layout_marginVertical="20dp"
-                        android:drawableTop="@drawable/ic_calory" />
+                        app:drawableTopCompat="@drawable/ic_calory" />
 
                 </LinearLayout>
             </RelativeLayout>

@@ -11,11 +11,14 @@ import androidx.health.connect.client.PermissionController
 import androidx.health.connect.client.permission.HealthPermission
 import androidx.health.connect.client.records.*
 import androidx.lifecycle.lifecycleScope
-import com.example.careminder.Activity.Daily.DailyActivity
 import com.example.careminder.Activity.Home.HomeActivity
-import com.example.careminder.R
-import kotlinx.coroutines.launch
-import java.time.LocalDateTime
+import com.example.careminder.Activity.Information.InformationActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
+import kotlin.math.round
+import kotlin.math.roundToInt
 
 class PermissionsRationaleActivity : AppCompatActivity() {
     // build a set of permissions for required data types
@@ -49,6 +52,9 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             HealthPermission.getReadPermission(HeightRecord::class),
             HealthPermission.getWritePermission(HeightRecord::class),
         )
+    private val db = Firebase.firestore
+    private val mAuth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkPermissionsAndRun()
@@ -63,10 +69,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             registerForActivityResult(requestPermissionActivityContract) { granted ->
                 if (granted.containsAll(PERMISSIONS)) {
                     // Permissions successfully granted
-                    // PERMISSIONS: Set<string> as of Alpha11
-                    lifecycleScope.launch {
                         onPermissionsAvailable(client)
-                    }
                 } else {
                     // Lack of required permissions
                     Toast.makeText(this, "Permissions Not Granted", Toast.LENGTH_SHORT).show()
@@ -83,20 +86,100 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
-
+    private fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
+        val docRef = mAuth.currentUser?.let { db.collection("users").document(it.uid) }
+        docRef?.get()?.addOnSuccessListener { document ->
+            val gender = document.getString("gender")
+            if (!document.contains("gender") || gender.isNullOrEmpty()){
+                startActivity(Intent(this, InformationActivity::class.java))
+            }
+            else
+                startActivity(Intent(this, HomeActivity::class.java))
+        }
     }
-    suspend fun loadDailyData(healthConnectClient: HealthConnectClient, steps: TextView) {
+
+    // Read steps aggregate
+    fun loadDailyData(healthConnectClient: HealthConnectClient, steps: TextView, distance: TextView, caloriesBurned: TextView, duration: TextView) {
         val management = HealthConnectManagement(healthConnectClient)
-        val result = management.aggregateStepsIntoMinutes()
-        Log.d("Load steps", result)
-        steps.text = result
+        lifecycleScope.launch {
+            val (TOTAL_STEPS, TOTAL_DISTANCE, TOTAL_CALORIES_BURNED) = management.aggregateDailySteps()
+            val totalCalories = round(TOTAL_CALORIES_BURNED.toDouble() * 100) / 100
+            val caloriesString = "$totalCalories  (kcal)"
+            caloriesBurned.text = caloriesString
+
+            val stepsString = "$TOTAL_STEPS  (steps)"
+            steps.text = stepsString
+
+            val distanceInKM = round(TOTAL_DISTANCE.toDouble() * 100) / 100
+            distance.text = distanceInKM.toString()
+
+            val TOTAL_DURATION = round((TOTAL_STEPS.toDouble() / 105) * 100) / 100
+            val durationString = "$TOTAL_DURATION  (min)"
+            duration.text = durationString
+        }
+    }
+
+    fun loadDailyData(healthConnectClient: HealthConnectClient, stepsCounting: TextView, steps: TextView, caloriesBurned: TextView, duration: TextView, temp: Int) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val (TOTAL_STEPS, TOTAL_DISTANCE, TOTAL_CALORIES_BURNED) = management.aggregateDailySteps()
+            val totalCalories = round(TOTAL_CALORIES_BURNED.toDouble() * 100) / 100
+            val caloriesString = "$totalCalories"
+            steps.text = TOTAL_STEPS
+            stepsCounting.text = TOTAL_STEPS
+            caloriesBurned.text = caloriesString
+            val TOTAL_DURATION = round((TOTAL_STEPS.toDouble() / 105) * 100) / 100
+            val durationString = "$TOTAL_DURATION"
+            duration.text = durationString
+        }
+    }
+
+    // Write steps record
+    fun writeSteps(healthConnectClient: HealthConnectClient, steps: Long){
+        val management = HealthConnectManagement(healthConnectClient)
+        val cadence = 105
+        val calsPerSteps = 0.04
+        val avgStrideLength = 0.67
+        val sec = steps / cadence * 60;
+        val caloriesBurned = calsPerSteps * steps
+        val distance = steps * avgStrideLength
+        lifecycleScope.launch {
+            management.writeStepsInput(sec ,steps, caloriesBurned, distance)
+        }
     }
 
     // Write weight and height data
-    suspend fun writeBasicInformation(healthConnectClient: HealthConnectClient, height: Double, weight: Double){
+    fun writeBasicInformation(healthConnectClient: HealthConnectClient, height: Double, weight: Double){
         val management = HealthConnectManagement(healthConnectClient)
-        management.writeHeightInput(height)
-        management.writeWeightInput(weight)
+        lifecycleScope.launch {
+            management.writeHeightInput(height)
+            management.writeWeightInput(weight)
+        }
     }
+
+    //     Read weight
+    suspend fun readWeight(healthConnectClient: HealthConnectClient): Double = withContext(Dispatchers.IO) {
+            val management = HealthConnectManagement(healthConnectClient)
+            return@withContext management.readWeightInput()
+    }
+
+//    @OptIn(DelicateCoroutinesApi::class)
+//    fun readWeightWriteStep(healthConnectClient: HealthConnectClient, actualSteps: Long) {
+//        GlobalScope.launch {
+//            val weight = readWeight(healthConnectClient).toString().toDouble()
+//            Log.d("getWeight: ", readWeight(healthConnectClient).toString())
+//            writeSteps(healthConnectClient, sec, actualSteps, caloriesBurned, distance)
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
 }

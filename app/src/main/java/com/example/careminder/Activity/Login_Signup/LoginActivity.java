@@ -117,8 +117,6 @@ public class LoginActivity extends AppCompatActivity {
                                         // if first login, go to introduction activity
                                         if (task.getResult().get("firstLogin").equals("true")) {
                                             startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
-                                            // set first login to false
-                                            docRef.update("firstLogin", "false");
                                         }
                                         // if not first login, go to home activity
                                         else {

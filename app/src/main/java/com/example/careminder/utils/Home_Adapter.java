@@ -5,7 +5,6 @@ import  static androidx.recyclerview.widget.RecyclerView.*;
 import com.example.careminder.*;
 import com.example.careminder.Activity.Body.BodyActivity;
 import com.example.careminder.Activity.Daily.DailyActivity;
-import com.example.careminder.Activity.Exercises.ExercisesActivity;
 import com.example.careminder.Activity.Food.DisplayFoodActivity;
 import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
 import com.example.careminder.Activity.Steps.StepActivity;
@@ -64,7 +63,6 @@ public class Home_Adapter extends BaseAdapter {
             view = inflater.inflate(R.layout.activity_home_list_view, parent, false);
 
             Button dailyActivity = view.findViewById(R.id.daily_activity);
-            TextView exercises = view.findViewById(R.id.exercise);
             Button steps = view.findViewById(R.id.steps);
             Button food = view.findViewById(R.id.food);
             Button water = view.findViewById(R.id.water);
@@ -72,14 +70,14 @@ public class Home_Adapter extends BaseAdapter {
 
             // Display number of steps
             TextView stepCounting = view.findViewById(R.id.step_counting);
+            TextView duration = view.findViewById(R.id.duration);
+            TextView calories = view.findViewById(R.id.calories);
+            TextView stepsCounting = view.findViewById(R.id.steps_counting);
+
             HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(context);
             PermissionsRationaleActivity loadStepsData = new PermissionsRationaleActivity();
-            CompletableFuture<Unit> suspendResult = FutureKt.future(
-                    CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
-                    EmptyCoroutineContext.INSTANCE,
-                    CoroutineStart.DEFAULT,
-                    (scope, continuation) -> loadStepsData.loadDailyData(healthConnectClient,stepCounting,continuation)
-            );
+            loadStepsData.loadDailyData(healthConnectClient, stepsCounting, stepCounting, calories, duration, 1);
+
 
             dailyActivity.setOnClickListener(new OnClickListener() {
                 @Override
@@ -89,14 +87,7 @@ public class Home_Adapter extends BaseAdapter {
                     context.startActivity(intent);
                 }
             });
-            exercises.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context.getApplicationContext(), ExercisesActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            });
+
 
             steps.setOnClickListener(new OnClickListener() {
                 @Override

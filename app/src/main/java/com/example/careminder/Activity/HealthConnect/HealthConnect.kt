@@ -37,8 +37,6 @@ open class HealthConnect : AppCompatActivity() {
             )
             return
         }
-
-        startActivity(Intent(this,InformationActivity::class.java))
-
+        startActivity(Intent(this,PermissionsRationaleActivity::class.java))
     }
 }

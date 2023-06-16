@@ -1,28 +1,71 @@
 package com.example.careminder.Activity.Steps;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.health.connect.client.HealthConnectClient;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.R;
+import com.example.careminder.utils.StepCounterDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
-public class StepActivity extends AppCompatActivity {
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.CoroutineContext;
+import kotlin.coroutines.EmptyCoroutineContext;
+import kotlin.io.FilesKt;
+import kotlinx.coroutines.BuildersKt;
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.CoroutineScopeKt;
+import kotlinx.coroutines.CoroutineStart;
+import kotlinx.coroutines.Deferred;
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.future.FutureKt;
+
+public class StepActivity extends AppCompatActivity implements SensorEventListener {
 
     ImageButton back;
+
+    ImageButton instruction;
+
+    private SensorManager sensorManager;
+    private boolean running = false;
+    private TextView steps;
+    private float totalSteps = 0f;
+    private float previousTotalSteps = 0f;
+    private int actualSteps = 0;
+    private final long cadence = 105;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
-
+        instruction = findViewById(R.id.instruction);
+        instruction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StepCounterDialog.showInstructionsDialog(StepActivity.this);
+            }
+        });
         back = findViewById(R.id.back_nav);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +98,100 @@ public class StepActivity extends AppCompatActivity {
 
         steps_day_before_1.setText(theDayBefore(splitDate));
         steps_day_before_2.setText(theTwoDaysBefore(splitDate));
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        resetSteps();
+
+    }
+
+    public void insertSteps(){
+        HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
+        PermissionsRationaleActivity management = new PermissionsRationaleActivity();
+        management.writeSteps(healthConnectClient,actualSteps);
+    }
+
+    public void resetSteps() {
+        LinearLayout steps_circle = findViewById(R.id.steps_circle);
+        TextView steps_counting = findViewById(R.id.steps_counting);
+        steps_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(StepActivity.this, "Long tap to reset steps", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        steps_circle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                insertSteps();
+                previousTotalSteps = totalSteps;
+                actualSteps = 0;
+                steps_counting.setText("0");
+                saveData();
+                Toast.makeText(StepActivity.this, "Reset Successfully!", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("key1", previousTotalSteps);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        float savedNumber = sharedPreferences.getFloat("key1", 0f);
+
+        Log.d("DailyActivity", String.valueOf(savedNumber));
+
+        previousTotalSteps = savedNumber;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // We do not have to write anything in this function for this app
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        TextView steps_counting = findViewById(R.id.steps_counting);
+        if (running) {
+            loadData();
+            totalSteps = event.values[0];
+            int currentSteps = (int) (totalSteps - previousTotalSteps);
+            actualSteps = actualSteps + currentSteps;
+            steps_counting.setText(String.valueOf(actualSteps));
+            Log.d("Counting:",  String.valueOf(currentSteps));
+            previousTotalSteps = totalSteps;
+            saveData();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+
+        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
+        if (stepSensor == null) {
+            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
+            Log.d("DailyActivity", String.valueOf("No sensor"));
+
+        } else {
+            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+        sensorManager.unregisterListener(this);
+        insertSteps();
     }
 
     private String theNextDay(String[] date) {

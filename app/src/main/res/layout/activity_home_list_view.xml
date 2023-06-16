@@ -44,34 +44,34 @@
                     android:elevation="10dp">
                         <TextView
                             android:id="@+id/step_counting"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
                             android:text="@string/_0"
+                            android:textSize="13sp"
                             android:textAlignment="center"
                             android:drawablePadding="12dp"
-                            android:layout_marginStart="20dp"
                             android:textStyle="bold"
                             android:layout_marginVertical="20dp"
                             android:drawableTop="@drawable/ic_step" />
                         <TextView
                             android:id="@+id/duration"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
                             android:text="@string/_0"
+                            android:textSize="13sp"
                             android:textAlignment="center"
                             android:drawablePadding="12dp"
-                            android:layout_marginStart="20dp"
                             android:textStyle="bold"
                             android:layout_marginVertical="20dp"
                             android:drawableTop="@drawable/ic_time" />
                         <TextView
                             android:id="@+id/calories"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
                             android:text="@string/_0"
+                            android:textSize="13sp"
                             android:textAlignment="center"
                             android:drawablePadding="12dp"
-                            android:layout_marginStart="20dp"
                             android:textStyle="bold"
                             android:layout_marginVertical="20dp"
                             android:drawableTop="@drawable/ic_calory" />
@@ -79,73 +79,7 @@
                 </LinearLayout>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exercise"
-                    android:layout_width="320dp"
-                    android:layout_height="130dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/rectangle"
-                    android:elevation="6dp"
-                    android:contentDescription="@string/exercises_button"
-                    android:text="@string/exercises"
-                    android:fontFamily="@font/raleway_extrabold"
-                    android:textColor="@color/title"
-                    android:textSize="18sp"
-                    android:gravity="start"
-                    android:padding="16dp"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/exercise"
-                    android:elevation="8dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="30dp">
 
-                        <ImageButton
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginHorizontal="15dp"
-                            android:background="@drawable/circle"
-                            android:src="@drawable/ic_walk"
-                            android:contentDescription="@string/walk"
-                            app:backgroundTint="@color/Exercises_Oval"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                        <ImageButton
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginHorizontal="15dp"
-                            android:background="@drawable/circle"
-                            android:src="@drawable/ic_run"
-                            android:contentDescription="@string/run"
-                            app:backgroundTint="@color/Exercises_Oval"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                        <ImageButton
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginHorizontal="15dp"
-                            android:background="@drawable/circle"
-                            android:src="@drawable/ic_bicycle"
-                            android:contentDescription="@string/bicycle"
-                            app:backgroundTint="@color/Exercises_Oval"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                        <ImageButton
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginHorizontal="15dp"
-                            android:background="@drawable/circle"
-                            android:src="@drawable/ic_swim"
-                            android:contentDescription="@string/swim"
-                            app:backgroundTint="@color/Exercises_Oval"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                </LinearLayout>
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -186,21 +120,19 @@
                             android:id="@+id/steps_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
                             android:text="@string/_0"
+                            android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+                            android:textSize="22sp"/>
 
                         <TextView
                             android:id="@+id/limit_steps_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:fontFamily="@font/raleway_semibold"
+                            android:layout_marginStart="10dp"
                             android:text="@string/_6_000"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
                 </LinearLayout>
         </RelativeLayout>
@@ -219,7 +151,7 @@
                     android:text="@string/food"
                     app:fontFamily="@font/raleway_extrabold"
                     android:textColor="@color/title"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:gravity="start"
                     android:padding="16dp"/>
                 <pl.droidsonroids.gif.GifImageView
@@ -244,21 +176,19 @@
                             android:id="@+id/main_calories_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
                             android:text="@string/_0"
+                            android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+                            android:textSize="22sp"/>
 
                         <TextView
                             android:id="@+id/limit_calories_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:fontFamily="@font/raleway_semibold"
+                            android:layout_marginStart="10dp"
                             android:text="@string/_1600_kcal"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
                 </LinearLayout>
         </RelativeLayout>
@@ -277,7 +207,7 @@
                     android:text="@string/water"
                     app:fontFamily="@font/raleway_extrabold"
                     android:textColor="@color/title"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:gravity="start"
                     android:padding="16dp"/>
 
@@ -292,21 +222,19 @@
                             android:id="@+id/main_water_counting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:textSize="22sp"
                             android:text="@string/_0"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/water_measurment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:fontFamily="@font/raleway_semibold"
+                            android:layout_marginStart="10dp"
                             android:text="@string/glass"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
                 </LinearLayout>
 

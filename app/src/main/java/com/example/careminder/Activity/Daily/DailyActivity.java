@@ -35,13 +35,8 @@ import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.future.FutureKt;
 
-public class DailyActivity extends AppCompatActivity implements SensorEventListener {
+public class DailyActivity extends AppCompatActivity {
     ImageButton back;
-    private SensorManager sensorManager;
-    private boolean running = false;
-    private TextView steps;
-    private float totalSteps = 0f;
-    private float previousTotalSteps = 0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,85 +73,19 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
         steps_day_before_1.setText(theDayBefore(splitDate));
         steps_day_before_2.setText(theTwoDaysBefore(splitDate));
 
-//        Counting step
-//        loadData();
-//        resetSteps();
-
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
-        steps = findViewById(R.id.step_counting);
-        loadSteps(healthConnectClient, steps);
+        TextView steps = findViewById(R.id.step_counting);
+        TextView distance = findViewById(R.id.distance);
+        TextView caloriesBurned = findViewById(R.id.calories);
+        TextView duration = findViewById(R.id.duration);
+        loadSteps(healthConnectClient, steps, distance, caloriesBurned, duration);
     }
 
-    private void loadSteps(HealthConnectClient healthConnectClient, TextView steps){
-        PermissionsRationaleActivity loadStepsData = new PermissionsRationaleActivity();
-
-        // Pass steps textview to a suspendResult to call a suspend function in kotlin
-        CompletableFuture<Unit> suspendResult = FutureKt.future(
-                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
-                EmptyCoroutineContext.INSTANCE,
-                CoroutineStart.DEFAULT,
-                (scope, continuation) -> loadStepsData.loadDailyData(healthConnectClient,steps,continuation)
-        );
-    }
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat("key1", previousTotalSteps);
-        editor.apply();
+    private void loadSteps(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration){
+        PermissionsRationaleActivity management = new PermissionsRationaleActivity();
+        management.loadDailyData(healthConnectClient,steps,distance,caloriesBurned,duration);
     }
 
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        float savedNumber = sharedPreferences.getFloat("key1", 0f);
-
-        Log.d("DailyActivity", String.valueOf(savedNumber));
-
-        previousTotalSteps = savedNumber;
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // We do not have to write anything in this function for this app
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        TextView step_counting = findViewById(R.id.step_counting);
-
-        if (running) {
-            totalSteps = event.values[0];
-
-            int currentSteps = (int) (totalSteps - previousTotalSteps);
-
-            step_counting.setText(String.valueOf(currentSteps));
-            Log.d("Counting:",  String.valueOf(step_counting));
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-
-        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
-        if (stepSensor == null) {
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
-            Log.d("DailyActivity", String.valueOf("No sensor"));
-
-        } else {
-            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-        sensorManager.unregisterListener(this);
-    }
     private String theNextDay(String[] date) {
         int day = Integer.parseInt(date[0]);
         int year = Integer.parseInt(date[2]);
@@ -213,7 +142,6 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
     }
 
     private String theDayBefore(String[] date) {
-        Log.d("myLog", date[0]);
         int day = Integer.parseInt(date[0]);
         int year = Integer.parseInt(date[2]);
         String month = date[1];
@@ -273,28 +201,4 @@ public class DailyActivity extends AppCompatActivity implements SensorEventListe
         date[0] = theDayBefore(date);
         return theDayBefore(date);
     }
-
-
-    // RESET STEPS FUNCTION
-//    public void resetSteps() {
-//        TextView step_counting = findViewById(R.id.step_counting);
-//        step_counting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(DailyActivity.this, "Long tap to reset steps", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        step_counting.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                previousTotalSteps = totalSteps;
-//                step_counting.setText("0");
-//
-//                saveData();
-//
-//                return true;
-//            }
-//        });
-//    }
 }
