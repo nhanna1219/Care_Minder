@@ -33,7 +33,7 @@ import java.util.List;
 
 public class SettingActivity extends AppCompatActivity {
 
-    TextView fullName, email;
+    TextView fullName, email, back;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userID;
@@ -47,7 +47,7 @@ public class SettingActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        back = findViewById(R.id.settingsTextView);
         fullName = findViewById(R.id.textView3);
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -115,6 +115,13 @@ public class SettingActivity extends AppCompatActivity {
                 }
                 return false;
             }});
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

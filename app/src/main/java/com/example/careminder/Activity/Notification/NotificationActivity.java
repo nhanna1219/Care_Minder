@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.Activity.Setting.SettingActivity;
@@ -17,12 +19,13 @@ import com.google.android.material.navigation.NavigationBarView;
 public class NotificationActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    TextView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-
+//        back = findViewById(R.id.settingsTextView);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.notify_nav);
 
@@ -52,5 +55,12 @@ public class NotificationActivity extends AppCompatActivity {
                 return false;
             }
         });
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(NotificationActivity.this, SettingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }
