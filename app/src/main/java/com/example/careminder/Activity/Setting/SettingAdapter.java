@@ -54,24 +54,24 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.SettingV
                         Intent intent = new Intent(context, AccountActivity.class);
                         context.startActivity(intent);
                         break;
+//                    case 1:
+//                        Intent intent1 = new Intent(context, NotifyActivity.class);
+//                        context.startActivity(intent1);
+//                        break;
                     case 1:
-                        Intent intent1 = new Intent(context, NotifyActivity.class);
-                        context.startActivity(intent1);
-                        break;
-                    case 2:
                         Intent intent2 = new Intent(context, AdvancedSettingActivity.class);
                         context.startActivity(intent2);
                         break;
-                    case 3:
+                    case 2:
                         Intent intent3 = new Intent(context, PrivacySettingActivity.class);
                         context.startActivity(intent3);
                         break;
-                    case 4:
+                    case 3:
 //                        Intent intent4 = new Intent(context, LogoutActivity.class);
 //                        context.startActivity(intent4);
                         LogoutActivity.logoutUser(context);
                         break;
-                    case 5:
+                    case 4:
                         Intent intent5 = new Intent(context, HelpSettingActivity.class);
                         context.startActivity(intent5);
                         break;

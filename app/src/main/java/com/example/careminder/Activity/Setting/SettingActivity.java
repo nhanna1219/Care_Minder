@@ -130,7 +130,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         settingItems.add(new SettingItem("Account",R.drawable.sic_account));
-        settingItems.add(new SettingItem("Notification",R.drawable.sic_notification));
+//        settingItems.add(new SettingItem("Notification",R.drawable.sic_notification));
         settingItems.add(new SettingItem("Advanced Settings",R.drawable.sic_volume));
         settingItems.add(new SettingItem("Privacy & Security",R.drawable.sic_security));
         settingItems.add(new SettingItem("Log out", R.drawable.sic_logout));
