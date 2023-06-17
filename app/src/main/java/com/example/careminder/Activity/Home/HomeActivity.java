@@ -104,4 +104,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listView = findViewById(R.id.home_listview);
+        adapter = new Home_Adapter(getApplicationContext());
+        listView.setAdapter(adapter);
+    }
 }

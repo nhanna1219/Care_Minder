@@ -148,16 +148,12 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="176dp"
-        android:scaleType="fitCenter"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/add_water"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/add_water" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,15 +24,17 @@ public class AccountActivity extends AppCompatActivity {
 
         height = findViewById(R.id.textView12);
         weight = findViewById(R.id.textView11);
-        // convert height and weight to double
-        Double height_db = Double.parseDouble(height.getText().toString());
-        Double weight_db = Double.parseDouble(weight.getText().toString());
 
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 setBasicIn4(height_db, weight_db);
+                // convert height and weight to double
+                Double height_db = Double.parseDouble(height.getText().toString());
+                Double weight_db = Double.parseDouble(weight.getText().toString());
+                height_db = (double) (Math.round(height_db * 100) / 10000); // Divide 10000 cause we want the value in meters
+                weight_db = (double) (Math.round(weight_db * 100) / 100);
+                setBasicIn4(height_db, weight_db);
                 Intent intent = new Intent(AccountActivity.this, SettingActivity.class);
                 startActivity(intent);
             }
