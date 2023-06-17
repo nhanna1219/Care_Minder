@@ -171,9 +171,14 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         val version = System.currentTimeMillis()
         Log.d("UUID:", uuid)
         Log.d("Version:", version.toString())
-
+        val second : Long
         try {
-            val startTime = ZonedDateTime.now().minusSeconds(sec).toInstant()
+            if (sec == 0L) {
+                second = 1
+            } else {
+                second = sec
+            }
+            val startTime = ZonedDateTime.now().minusSeconds(second).toInstant()
             val endTime = ZonedDateTime.now().toInstant()
             val records = listOf(
                 StepsRecord(
@@ -210,10 +215,12 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
                     endZoneOffset = null,
                 )
             )
+
             healthConnectClient.insertRecords(records)
             Log.d("Insert steps: ", "Successfully")
             Log.d("Calories: ", caloriesBurned.toString())
             Log.d("Steps: ", steps.toString())
+
 
         } catch (e: Exception) {
             Log.d("Insert steps: ", e.message.toString())

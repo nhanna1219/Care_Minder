@@ -235,11 +235,11 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/steps_rectangle"
-                android:fontFamily="@font/raleway_medium"
                 android:gravity="center"
                 android:text="@string/steps_km"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textStyle="bold"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/steps_kcal"
@@ -250,11 +250,11 @@
                 android:layout_marginEnd="28dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/steps_rectangle"
-                android:fontFamily="@font/raleway_medium"
                 android:gravity="center"
                 android:text="@string/steps_kcal"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <View
                 android:layout_width="1dp"
@@ -302,7 +302,6 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="46dp"
                 android:layout_marginBottom="51dp"
-                android:fontFamily="@font/raleway_medium"
                 android:gravity="center"
                 android:text="@string/steps_content_highlights"
                 android:textColor="@color/black"

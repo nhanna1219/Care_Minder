@@ -280,12 +280,12 @@
                     android:layout_width="280dp"
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
-                    android:fontFamily="@font/raleway_medium"
                     android:gravity="center"
                     android:lineSpacingExtra="5dp"
                     android:text="@string/Reminder_content"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </RelativeLayout>

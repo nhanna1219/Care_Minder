@@ -142,11 +142,11 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         val cadence = 105
         val calsPerSteps = 0.04
         val avgStrideLength = 0.67
-        val sec = steps / cadence * 60;
+        val sec = round(steps.toDouble() / cadence.toDouble() * 60.0).toLong()
         val caloriesBurned = calsPerSteps * steps
         val distance = steps * avgStrideLength
         lifecycleScope.launch {
-            management.writeStepsInput(sec ,steps, caloriesBurned, distance)
+            management.writeStepsInput(sec,steps, caloriesBurned, distance)
         }
     }
 

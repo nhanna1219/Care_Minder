@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.health.connect.client.HealthConnectClient;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -106,13 +107,12 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void setDistanceCalories(int steps) {
-        double cadence = 105.0;
         double calsPerSteps = 0.04;
         double avgStrideLength = 0.67;
         double caloriesBurned = Math.round((calsPerSteps * steps) * 100) / 100.0;
         double distance = Math.round((steps * avgStrideLength) * 100) / 100.0;
-        String caloriesBurnedString = String.valueOf(caloriesBurned);
-        String distanceString = String.valueOf(distance);
+        String caloriesBurnedString = String.valueOf(caloriesBurned) + " kcal";
+        String distanceString = String.valueOf(distance) + " m";
         stepsKcal.setText(caloriesBurnedString);
         stepsKm.setText(distanceString);
     }
@@ -134,12 +134,15 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         });
 
         steps_circle.setOnLongClickListener(new View.OnLongClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public boolean onLongClick(View v) {
                 insertSteps();
                 previousTotalSteps = totalSteps;
                 actualSteps = 0;
                 steps_counting.setText("0");
+                stepsKm.setText("0 m");
+                stepsKcal.setText("0 kcal");
                 saveData();
                 Toast.makeText(StepActivity.this, "Reset Successfully!", Toast.LENGTH_SHORT).show();
                 return true;
