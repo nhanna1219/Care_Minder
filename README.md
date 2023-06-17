@@ -12,15 +12,6 @@ Care_Minder is a healthcare app developed in Android Studio using Java. It utili
 - Feature 4: Search for nearby healthcare providers and hospitals.
 - Feature 5: Chat with healthcare professionals for remote consultations.
 
-## Screenshots
 
-Include screenshots or GIFs of your app to showcase its functionality and user interface.
-
-## Installation
-
-1. Clone the repository:
-
-   ```shell
-   git clone https://github.com/your-username/Care_Minder.git
 
 
