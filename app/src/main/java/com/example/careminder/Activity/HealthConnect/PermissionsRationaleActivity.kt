@@ -16,7 +16,9 @@ import com.example.careminder.Activity.Information.InformationActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
 import kotlinx.coroutines.*
+import kotlin.math.abs
 import kotlin.math.round
 import kotlin.math.roundToInt
 
@@ -166,32 +168,58 @@ class PermissionsRationaleActivity : AppCompatActivity() {
 //    @OptIn(DelicateCoroutinesApi::class)
 //    fun readWeightWriteStep(healthConnectClient: HealthConnectClient, actualSteps: Long) {
 //        GlobalScope.launch {
-//            val weight = readWeight(healthConnectClient).toString().toDouble()
+//            val dailyWater = readWeight(healthConnectClient).toString().toDouble()
 //            Log.d("getWeight: ", readWeight(healthConnectClient).toString())
 //            writeSteps(healthConnectClient, sec, actualSteps, caloriesBurned, distance)
 //        }
 //    }
 
     ///water
-    suspend fun writeWaterActivity(healthConnectClient: HealthConnectClient, water: Double){
-        val management = HealthConnectManagement(healthConnectClient)
-        management.writeWaterInput(water)
+    fun writeWaterActivity(healthConnectClient: HealthConnectClient, water: Double, totalWater: TextView, circular: CircularFillableLoaders){
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            management.writeWaterInput(water)
+            readWater(healthConnectClient,totalWater, circular)
+        }
     }
 
-    suspend fun readWater(healthConnectClient: HealthConnectClient, totalWater: TextView) {
-        val management = HealthConnectManagement(healthConnectClient)
-        val result = management.readDailyRecords(healthConnectClient).toString()
-        totalWater.text = result
+    fun readWater(healthConnectClient: HealthConnectClient, totalWater: TextView, circular: CircularFillableLoaders) {
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            val result = management.readDailyRecords(healthConnectClient)
+            val waterDouble = round(result * 100) / 100
+            totalWater.text = waterDouble.toString()
+            val maxWater = 3000
+            var waterProgress = abs(100 -(waterDouble.toInt() * 100 / maxWater))
+            if (waterProgress > 100 || waterDouble > 3000) {
+                waterProgress = 0
+            }
+            try{
+                updateProgress(waterProgress, circular)
+            } catch (e: Exception) {
+                Log.d("Water Progress", e.message.toString())
+            }
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
+    private suspend fun updateProgress(waterProgress: Int, circular: CircularFillableLoaders) {
+        withContext(Dispatchers.Main) { // switch to the main thread
+            circular.setProgress(waterProgress)
+            Log.d("Water Progress", "$waterProgress")
+        }
+    }
+    fun readWater(healthConnectClient: HealthConnectClient, totalWater: TextView) {
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            val result = management.readDailyRecords(healthConnectClient)
+            val waterDouble = round(result / 250).toInt()
+            totalWater.text = waterDouble.toString()
+        }
+    }
+    fun writeWaterActivity(healthConnectClient: HealthConnectClient, water: Double, totalWater: TextView){
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            management.writeWaterInput(water)
+            readWater(healthConnectClient,totalWater)
+        }
+    }
 }

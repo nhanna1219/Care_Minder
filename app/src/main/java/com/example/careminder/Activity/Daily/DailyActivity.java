@@ -25,6 +25,7 @@ import com.example.careminder.R;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -37,6 +38,15 @@ import kotlinx.coroutines.future.FutureKt;
 
 public class DailyActivity extends AppCompatActivity {
     ImageButton back;
+    private String[] motivationalPhrases = {
+            "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+            "I have not failed. I've just found 10,000 ways that won't work.",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+            "Success is not how high you have climbed, but how you make a positive difference to the world.",
+            "You miss 100% of the shots you don't take.",
+            "The only limit to our realization of tomorrow will be our doubts of today.",
+            "Believe you can and you're halfway there."};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +89,11 @@ public class DailyActivity extends AppCompatActivity {
         TextView caloriesBurned = findViewById(R.id.calories);
         TextView duration = findViewById(R.id.duration);
         loadSteps(healthConnectClient, steps, distance, caloriesBurned, duration);
+
+        TextView motivation = findViewById(R.id.steps_content_highlights);
+        Random random = new Random();
+        int index = random.nextInt(motivationalPhrases.length);
+        motivation.setText(motivationalPhrases[index]);
     }
 
     private void loadSteps(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration){

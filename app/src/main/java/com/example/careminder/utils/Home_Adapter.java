@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.health.connect.client.HealthConnectClient;
@@ -32,6 +33,7 @@ import kotlinx.coroutines.future.FutureKt;
 public class Home_Adapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
+
 
     public Home_Adapter(Context context) {
         this.context = context;
@@ -68,15 +70,27 @@ public class Home_Adapter extends BaseAdapter {
             Button water = view.findViewById(R.id.water);
             Button body = view.findViewById(R.id.body);
 
+            ImageButton addWater = view.findViewById(R.id.addWater);
+
             // Display number of steps
             TextView stepCounting = view.findViewById(R.id.step_counting);
             TextView duration = view.findViewById(R.id.duration);
             TextView calories = view.findViewById(R.id.calories);
             TextView stepsCounting = view.findViewById(R.id.steps_counting);
 
+            TextView total_water = view.findViewById(R.id.main_water_counting);
+
             HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(context);
-            PermissionsRationaleActivity loadStepsData = new PermissionsRationaleActivity();
-            loadStepsData.loadDailyData(healthConnectClient, stepsCounting, stepCounting, calories, duration, 1);
+            PermissionsRationaleActivity management = new PermissionsRationaleActivity();
+            management.loadDailyData(healthConnectClient, stepsCounting, stepCounting, calories, duration, 1);
+            management.readWater(healthConnectClient, total_water);
+
+            addWater.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    management.writeWaterActivity(healthConnectClient,250.0, total_water);
+                }
+            });
 
 
             dailyActivity.setOnClickListener(new OnClickListener() {

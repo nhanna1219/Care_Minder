@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout textInputPassword;
     private String checkLogin;
 
+    private ProgressBar loading;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     
@@ -89,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         TextView btn=findViewById(R.id.alreadyHaveAccount);
+        loading = findViewById(R.id.loading);
         textInputEmail = findViewById(R.id.textemailSignup);
         textInputName = findViewById(R.id.textnameSignup);
         textInputPassword = findViewById(R.id.textpassSignup);
@@ -101,6 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Khanh code
+                loading.setVisibility(View.VISIBLE);
                 PerformForAuth();
             }
         });
@@ -122,6 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
+                    loading.setVisibility(View.GONE);
                     User user = new User(name, firstLogin, email, pass_encrypt);
                     db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
                     Toast.makeText(SignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();

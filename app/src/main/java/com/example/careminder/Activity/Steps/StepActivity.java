@@ -50,11 +50,11 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
 
     private SensorManager sensorManager;
     private boolean running = false;
-    private TextView steps;
     private float totalSteps = 0f;
     private float previousTotalSteps = 0f;
     private int actualSteps = 0;
-    private final long cadence = 105;
+
+    TextView stepsKcal, stepsKm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,9 +99,22 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
         steps_day_before_1.setText(theDayBefore(splitDate));
         steps_day_before_2.setText(theTwoDaysBefore(splitDate));
 
+        stepsKcal = findViewById(R.id.steps_kcal);
+        stepsKm = findViewById(R.id.steps_km);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         resetSteps();
+    }
 
+    public void setDistanceCalories(int steps) {
+        double cadence = 105.0;
+        double calsPerSteps = 0.04;
+        double avgStrideLength = 0.67;
+        double caloriesBurned = Math.round((calsPerSteps * steps) * 100) / 100.0;
+        double distance = Math.round((steps * avgStrideLength) * 100) / 100.0;
+        String caloriesBurnedString = String.valueOf(caloriesBurned);
+        String distanceString = String.valueOf(distance);
+        stepsKcal.setText(caloriesBurnedString);
+        stepsKm.setText(distanceString);
     }
 
     public void insertSteps(){
@@ -164,6 +177,7 @@ public class StepActivity extends AppCompatActivity implements SensorEventListen
             int currentSteps = (int) (totalSteps - previousTotalSteps);
             actualSteps = actualSteps + currentSteps;
             steps_counting.setText(String.valueOf(actualSteps));
+            setDistanceCalories(actualSteps);
             Log.d("Counting:",  String.valueOf(currentSteps));
             previousTotalSteps = totalSteps;
             saveData();

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.careminder.Activity.Food.DisplayFoodActivity;
 import com.example.careminder.Activity.Food.Food;
@@ -22,7 +23,9 @@ import com.example.careminder.Data.CustomListViewAdapter;
 import com.example.careminder.Data.Database;
 import com.example.careminder.R;
 import com.example.careminder.utils.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -42,13 +45,9 @@ import kotlinx.coroutines.future.FutureKt;
 public class WaterActivity extends AppCompatActivity {
 
     private ImageButton addBtn;
-    private ArrayList<Water> dbMl = new ArrayList<>();
-    private Database db;
     private EditText ml;
     private TextView water_con;
-
-    private ImageButton back_nav;
-
+    CircularFillableLoaders circularFillableLoaders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,70 +56,60 @@ public class WaterActivity extends AppCompatActivity {
         ml = (EditText) findViewById(R.id.water_add);
         water_con = (TextView) findViewById((R.id.water_consumed));
         addBtn = (ImageButton) findViewById(R.id.imageButton);
-        back_nav = (ImageButton) findViewById(R.id.back_nav);
+        circularFillableLoaders = findViewById(R.id.circular);
+
+        ImageButton back_nav = (ImageButton) findViewById(R.id.back_nav);
 
         // Captures how much water a user drank in a single drink
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveWater(Double.parseDouble(ml.getText().toString().trim()));
-
+                if (!ml.getText().toString().isEmpty()) {
+                    saveWater(Double.parseDouble(ml.getText().toString().trim()));
+                    Toast.makeText(WaterActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(WaterActivity.this, "Empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-
-//        refreshData();
-//        addBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //only add water item if the list is not empty
-//                if (!ml.getText().toString().isEmpty()) {
-////                    saveMLToDB();
-//
-//                } else {
-//                    Snackbar.make(v,
-//                            "Add the amount of water you drunk",
-//                            Snackbar.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
         back_nav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             }
         });
+        Refresh();
     }
 
     private void saveWater(Double mlwater) {
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         PermissionsRationaleActivity writeMLWater = new PermissionsRationaleActivity();
+        double water;
+        water = Math.round(mlwater * 100.0) / 100.0;
+        writeMLWater.writeWaterActivity(healthConnectClient, water, water_con, circularFillableLoaders);
+//        CompletableFuture<Unit> suspendResult = FutureKt.future(
+//                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
+//                EmptyCoroutineContext.INSTANCE,
+//                CoroutineStart.DEFAULT,
+//                (scope, continuation) -> writeMLWater.writeWaterActivity(healthConnectClient, water, water_con, circularFillableLoaders,continuation)
+//        );
 
-        // Pass steps textview to a suspendResult to call a suspend function in kotlin
-        CompletableFuture<Unit> suspendResult = FutureKt.future(
-                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
-                EmptyCoroutineContext.INSTANCE,
-                CoroutineStart.DEFAULT,
-                (scope, continuation) -> writeMLWater.writeWaterActivity(healthConnectClient, mlwater, continuation)
-        );
         ml.setText("");
-        Refresh();
     }
 
     private void Refresh() {
 
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         PermissionsRationaleActivity total = new PermissionsRationaleActivity();
-
-        CompletableFuture<Unit> suspendResult = FutureKt.future(
-                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
-                EmptyCoroutineContext.INSTANCE,
-                CoroutineStart.DEFAULT,
-                (scope, continuation) -> total.readWater(healthConnectClient, water_con, continuation)
-        );
-
-
+        total.readWater(healthConnectClient, water_con, circularFillableLoaders);
+//        CompletableFuture<Unit> suspendResult = FutureKt.future(
+//                CoroutineScopeKt.CoroutineScope(EmptyCoroutineContext.INSTANCE),
+//                EmptyCoroutineContext.INSTANCE,
+//                CoroutineStart.DEFAULT,
+//                (scope, continuation) -> total.readWater(healthConnectClient, water_con, circularFillableLoaders, continuation)
+//        );
     }
+
 //    private void saveMLToDB() {
 //    Water water = new Water();
 //    //set water value from input

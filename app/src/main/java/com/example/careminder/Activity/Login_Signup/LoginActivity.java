@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,17 +87,17 @@ public class LoginActivity extends AppCompatActivity {
         TextView btn = findViewById(R.id.textViewSignUp);
         Button login = findViewById(R.id.btnLogin);
         TextView forgot = findViewById(R.id.forgotpw);
-
+        ProgressBar loading = findViewById(R.id.loading);
         mAuth = FirebaseAuth.getInstance();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loading.setVisibility(View.VISIBLE);
                 //Confirm
                 if (!validateEmail() | !validatePassword()) {
+                    loading.setVisibility(View.GONE);
                     return;
                 }
-
-
                 String email = textInputEmail.getEditText().getText().toString().trim();
                 String password = textInputPassword.getEditText().getText().toString().trim();
                 // decrypt the password MD5
@@ -115,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 //                                        Log.d(TAG, "onComplete: " + task.getResult().get("firstLogin"));
                                         // if first login, go to introduction activity
+                                        loading.setVisibility(View.GONE);
                                         if (task.getResult().get("firstLogin").equals("true")) {
                                             startActivity(new Intent(LoginActivity.this, IntroductionActivity.class));
                                         }

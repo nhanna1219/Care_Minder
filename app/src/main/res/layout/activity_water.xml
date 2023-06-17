@@ -7,7 +7,6 @@
     tools:context=".Activity.Water.WaterActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-26dp">
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="335dp"
@@ -19,80 +18,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_remind">
 
-        <LinearLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="78dp"
-            android:background="@drawable/steps_circle"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/water_consumed"
-                android:layout_width="140dp"
-                android:layout_height="52dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/dm_sans_bold"
-                android:gravity="center"
-                android:text="@string/water_consumed"
-                android:textColor="@color/black"
-                android:textSize="40sp" />
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/dm_sans_bold"
-                android:gravity="center"
-                android:text="@string/water_unit"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
+        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+            android:id="@+id/circular"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cfl_border="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:cfl_border_width="10dp"
+            app:cfl_progress="80"
+            app:cfl_wave_amplitude="0.04"
+            app:cfl_wave_color="@color/water"/>
 
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="105dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="17dp"
             android:layout_marginLeft="17dp"
             android:layout_marginEnd="17dp"
             android:layout_marginRight="17dp"
             android:layout_marginBottom="2dp"
-            android:orientation="vertical">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView31"
-                android:layout_width="184dp"
+                android:id="@+id/water_consumed"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/dm_sans_bold"
                 android:text="@string/water_goal"
-                android:textAlignment="center"
-                android:textColor="#FF9800"
-                android:textSize="40sp" />
+                android:textColor="@color/title"
+                android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/textView32"
-                android:layout_width="182dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/dm_sans_bold"
                 android:text="@string/water_unit"
                 android:textAlignment="center"
-                android:textColor="#FF9800"
-                android:textSize="20sp" />
+                android:layout_marginStart="7dp"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
         </LinearLayout>
-
 
     </RelativeLayout>
 
@@ -100,7 +73,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:gravity="center_vertical"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -162,14 +135,15 @@
 
     <EditText
         android:id="@+id/water_add"
-        android:layout_width="370dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="@string/water_add"
+        android:textAlignment="center"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <ImageButton
