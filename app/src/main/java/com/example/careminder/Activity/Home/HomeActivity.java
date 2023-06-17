@@ -1,6 +1,7 @@
 package com.example.careminder.Activity.Home;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.careminder.Activity.Notification.NotificationActivity;
 import com.example.careminder.Activity.Setting.EditProfileActivity;
@@ -19,6 +21,12 @@ import com.example.careminder.R;
 import com.example.careminder.utils.Home_Adapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.io.IOException;
 
@@ -30,10 +38,29 @@ public class HomeActivity extends AppCompatActivity {
 
     ImageButton profile;
     BottomNavigationView bottomNavigationView;
+//    update name
+    TextView fullName;
+    FirebaseAuth auth;
+    FirebaseFirestore firestore;
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        fullName = findViewById(R.id.full_name);
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        userID = auth.getCurrentUser().getUid();
+        DocumentReference documentReference = firestore.collection("users").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                // set text hi + name
+                fullName.setText("Hi, " + value.getString("name"));
+            }
+        });
+
         listView = findViewById(R.id.home_listview);
         adapter = new Home_Adapter(getApplicationContext());
         listView.setAdapter(adapter);
