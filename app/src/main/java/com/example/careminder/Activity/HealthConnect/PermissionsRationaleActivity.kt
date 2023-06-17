@@ -18,6 +18,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
 import kotlinx.coroutines.*
+import java.time.ZonedDateTime
 import kotlin.math.abs
 import kotlin.math.round
 import kotlin.math.roundToInt
@@ -105,6 +106,26 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         val management = HealthConnectManagement(healthConnectClient)
         lifecycleScope.launch {
             val (TOTAL_STEPS, TOTAL_DISTANCE, TOTAL_CALORIES_BURNED) = management.aggregateDailySteps()
+            val totalCalories = round(TOTAL_CALORIES_BURNED.toDouble() * 100) / 100
+            val caloriesString = "$totalCalories  (kcal)"
+            caloriesBurned.text = caloriesString
+
+            val stepsString = "$TOTAL_STEPS  (steps)"
+            steps.text = stepsString
+
+            val distanceInKM = round(TOTAL_DISTANCE.toDouble() * 100) / 100
+            distance.text = distanceInKM.toString()
+
+            val TOTAL_DURATION = round((TOTAL_STEPS.toDouble() / 105) * 100) / 100
+            val durationString = "$TOTAL_DURATION  (min)"
+            duration.text = durationString
+        }
+    }
+
+    fun loadDailyData(healthConnectClient: HealthConnectClient, steps: TextView, distance: TextView, caloriesBurned: TextView, duration: TextView, today: ZonedDateTime) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val (TOTAL_STEPS, TOTAL_DISTANCE, TOTAL_CALORIES_BURNED) = management.aggregateDailySteps(today)
             val totalCalories = round(TOTAL_CALORIES_BURNED.toDouble() * 100) / 100
             val caloriesString = "$totalCalories  (kcal)"
             caloriesBurned.text = caloriesString

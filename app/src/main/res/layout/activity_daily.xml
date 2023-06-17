@@ -61,9 +61,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="32dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/raleway_semibold"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textSize="26sp" />
 
                 <TextView
@@ -71,15 +71,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/raleway_semibold"
                     android:gravity="center_vertical"
                     android:paddingStart="12dp"
                     android:paddingTop="0dp"
                     android:paddingEnd="0dp"
                     android:paddingBottom="0dp"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textSize="26sp" />
+                <ImageButton
+                    android:id="@+id/calendar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_calendar"
+                    android:layout_marginStart="100dp" />
             </LinearLayout>
+
+
 
             <View
                 android:layout_width="350dp"

@@ -1,8 +1,10 @@
 package com.example.careminder.Activity.Daily;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.health.connect.client.HealthConnectClient;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +15,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,9 +24,16 @@ import com.example.careminder.Activity.HealthConnect.HealthConnectManagement;
 import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.R;
+import com.example.careminder.utils.DatePickerFragment;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
@@ -36,7 +46,7 @@ import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.future.FutureKt;
 
-public class DailyActivity extends AppCompatActivity {
+public class DailyActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     ImageButton back;
     private String[] motivationalPhrases = {
             "Success is not final, failure is not fatal: it is the courage to continue that counts.",
@@ -46,7 +56,8 @@ public class DailyActivity extends AppCompatActivity {
             "You miss 100% of the shots you don't take.",
             "The only limit to our realization of tomorrow will be our doubts of today.",
             "Believe you can and you're halfway there."};
-
+    TextView steps, distance, caloriesBurned, duration;
+    HealthConnectClient healthConnectClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,22 +94,36 @@ public class DailyActivity extends AppCompatActivity {
         steps_day_before_1.setText(theDayBefore(splitDate));
         steps_day_before_2.setText(theTwoDaysBefore(splitDate));
 
-        HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
-        TextView steps = findViewById(R.id.step_counting);
-        TextView distance = findViewById(R.id.distance);
-        TextView caloriesBurned = findViewById(R.id.calories);
-        TextView duration = findViewById(R.id.duration);
+        ImageButton calendar = findViewById(R.id.calendar);
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "Date Picker");
+            }
+        });
+
+        healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
+        steps = findViewById(R.id.step_counting);
+        distance = findViewById(R.id.distance);
+        caloriesBurned = findViewById(R.id.calories);
+        duration = findViewById(R.id.duration);
         loadSteps(healthConnectClient, steps, distance, caloriesBurned, duration);
 
         TextView motivation = findViewById(R.id.steps_content_highlights);
         Random random = new Random();
         int index = random.nextInt(motivationalPhrases.length);
         motivation.setText(motivationalPhrases[index]);
+
     }
 
     private void loadSteps(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration){
         PermissionsRationaleActivity management = new PermissionsRationaleActivity();
         management.loadDailyData(healthConnectClient,steps,distance,caloriesBurned,duration);
+    }
+    private void loadStepsCalendar(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration, ZonedDateTime today){
+        PermissionsRationaleActivity management = new PermissionsRationaleActivity();
+        management.loadDailyData(healthConnectClient,steps,distance,caloriesBurned,duration, today);
     }
 
     private String theNextDay(String[] date) {
@@ -215,5 +240,21 @@ public class DailyActivity extends AppCompatActivity {
     private String theTwoDaysBefore(String[] date) {
         date[0] = theDayBefore(date);
         return theDayBefore(date);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        Instant instant = Instant.ofEpochMilli(c.getTimeInMillis());
+        ZoneId zoneId = ZoneId.systemDefault(); // or any other time zone of your choice
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);
+        LocalDate date = zonedDateTime.toLocalDate();
+        LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
+        ZonedDateTime endOfDayInZone = endOfDay.atZone(zonedDateTime.getZone());
+
+        loadStepsCalendar(healthConnectClient, steps, distance, caloriesBurned, duration, endOfDayInZone);
     }
 }

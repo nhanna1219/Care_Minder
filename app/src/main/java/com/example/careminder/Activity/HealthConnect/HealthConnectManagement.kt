@@ -101,6 +101,35 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         return Triple("0", "0", "0",) ;
     }
 
+    suspend fun aggregateDailySteps(today: ZonedDateTime) : Triple<String,String,String> {
+        try {
+            val startOfDay = today.truncatedTo(ChronoUnit.DAYS)
+            val timeRangeFilter = TimeRangeFilter.between(
+                startOfDay.toLocalDateTime(),
+                today.toLocalDateTime()
+            )
+            val response =
+                healthConnectClient.aggregate(
+                    AggregateRequest(
+                        metrics = setOf(StepsRecord.COUNT_TOTAL,
+                            DistanceRecord.DISTANCE_TOTAL,
+                            ActiveCaloriesBurnedRecord.ACTIVE_CALORIES_TOTAL),
+                        timeRangeFilter = timeRangeFilter,
+                    )
+                )
+            // The result may be null if no data is available in the time range.
+            val totalSteps = response[StepsRecord.COUNT_TOTAL] ?: 0L
+            val totalDistance = response[DistanceRecord.DISTANCE_TOTAL]?.inKilometers ?: 0F
+            val totalCalories = response[ActiveCaloriesBurnedRecord.ACTIVE_CALORIES_TOTAL]?.inKilocalories ?: 0F
+//            val distanceString = totalDistance.toString().substring(0, totalDistance.toString().indexOf(" "))
+//            val caloriesString = totalCalories.toString().substring(0, totalCalories.toString().indexOf(""))
+            return Triple(totalSteps.toString(), totalDistance.toString(), totalCalories.toString())
+        } catch (e: Exception) {
+            // Run error handling here.
+            e.printStackTrace()
+        }
+        return Triple("0", "0", "0",) ;
+    }
     suspend fun readWeightInput(): Double {
         val startTime = ZonedDateTime.now().minusDays(30).toInstant()
         val endTime = ZonedDateTime.now().toInstant()
