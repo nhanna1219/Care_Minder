@@ -1,6 +1,7 @@
 package com.example.careminder.Activity.Setting;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.Activity.Notification.NotificationActivity;
@@ -18,12 +20,23 @@ import com.example.careminder.Activity.Statistic.StatisticActivity;
 import com.example.careminder.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SettingActivity extends AppCompatActivity {
+
+    TextView fullName, email;
+    FirebaseAuth auth;
+    FirebaseFirestore firestore;
+    String userID;
 
     BottomNavigationView bottomNavigationView;
 
@@ -34,6 +47,22 @@ public class SettingActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        fullName = findViewById(R.id.textView3);
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        userID = auth.getCurrentUser().getUid();
+        email = findViewById(R.id.textView4);
+        DocumentReference documentReference = firestore.collection("users").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                // set text hi + name
+                fullName.setText(value.getString("name"));
+                email.setText(value.getString("email"));
+
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerView);
 
