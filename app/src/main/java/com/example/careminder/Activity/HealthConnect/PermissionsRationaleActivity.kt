@@ -172,6 +172,18 @@ class PermissionsRationaleActivity : AppCompatActivity() {
 //        }
 //    }
 
+    ///water
+    suspend fun writeWaterActivity(healthConnectClient: HealthConnectClient, water: Double){
+        val management = HealthConnectManagement(healthConnectClient)
+        management.writeWaterInput(water)
+    }
+
+    suspend fun readWater(healthConnectClient: HealthConnectClient, totalWater: TextView) {
+        val management = HealthConnectManagement(healthConnectClient)
+        val result = management.readDailyRecords(healthConnectClient).toString()
+        totalWater.text = result
+    }
+
 
 
 

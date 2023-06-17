@@ -10,12 +10,10 @@ import androidx.health.connect.client.request.AggregateRequest
 import androidx.health.connect.client.request.ChangesTokenRequest
 import androidx.health.connect.client.request.ReadRecordsRequest
 import androidx.health.connect.client.time.TimeRangeFilter
-import androidx.health.connect.client.units.Energy
-import androidx.health.connect.client.units.Length
-import androidx.health.connect.client.units.Mass
-import androidx.health.connect.client.units.meters
+import androidx.health.connect.client.units.*
 import java.time.Duration
 import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 import java.util.UUID
@@ -220,5 +218,59 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
             Log.d("Insert steps: ", e.message.toString())
         }
     }
+
+    //Water
+    suspend fun writeWaterInput(waterInput: Double) {
+
+        val uuid = UUID.randomUUID().toString()
+        val version = System.currentTimeMillis()
+        Log.d("UUID:", uuid)
+        Log.d("Version:", version.toString())
+
+        try {
+
+            val time = ZonedDateTime.now().minusSeconds(1)
+            val waterRecord =  HydrationRecord(
+                startTime =  time.toInstant(),
+                startZoneOffset =  ZoneOffset.of("+07:00"),
+                endTime = time.toInstant(),
+                endZoneOffset = ZoneOffset.of("-07:00"),
+                volume =  Volume.milliliters(waterInput),
+                metadata =  Metadata(
+                    clientRecordId = uuid,
+                    clientRecordVersion = version)
+            )
+
+            val records = listOf(waterRecord)
+
+            healthConnectClient.insertRecords(records)
+            Log.d("Insert water: ", "Successfully")
+        } catch (e: Exception) {
+            Log.d("Insert water: ", e.message.toString())
+        }
+    }
+
+    suspend fun readDailyRecords(client: HealthConnectClient) :Double{
+        // 1
+        val today = ZonedDateTime.now()
+        val startOfDay = today.truncatedTo(ChronoUnit.DAYS)
+        val timeRangeFilter = TimeRangeFilter.between(
+            startOfDay.toLocalDateTime(),
+            today.toLocalDateTime()
+        )
+        // 2
+        val WaterRecordRequest = ReadRecordsRequest(
+            HydrationRecord::class,
+            timeRangeFilter
+        )
+        val WaterToday = client.readRecords(WaterRecordRequest)
+            .records
+            .sumOf { it.volume.inMilliliters }
+
+        return WaterToday;
+    }
+
+
+
 
 }
