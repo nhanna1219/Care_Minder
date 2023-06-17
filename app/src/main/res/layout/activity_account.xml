@@ -32,8 +32,8 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="101dp"
-        android:layout_height="20dp"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
         android:layout_marginTop="30dp"
         android:text="Temperature"
         android:textSize="18sp"
@@ -103,14 +103,14 @@
         android:id="@+id/settingsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:drawableStart="@drawable/ic_back"
         android:drawablePadding="15dp"
         android:text="Account Settings"
         android:textColor="@color/title"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -205,10 +205,17 @@
         app:layout_constraintTop_toBottomOf="@+id/dividerView4" />
 
 
-
     <!-- Màu sắc của chữ -->
+    <Spinner
+        android:id="@+id/genderSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <EditText
+    <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -233,6 +240,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
