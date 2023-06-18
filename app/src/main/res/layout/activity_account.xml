@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="16dp"
-        android:text="Introduce Yourself"
+        android:text="Personal Information"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -80,7 +80,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
 
         android:text="Gender"
         android:textSize="18sp"
@@ -146,6 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Changes"
+        android:layout_marginTop="-200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
