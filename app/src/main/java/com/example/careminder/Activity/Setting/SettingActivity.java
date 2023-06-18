@@ -15,8 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.careminder.Activity.Home.HomeActivity;
-import com.example.careminder.Activity.Notification.NotificationActivity;
-import com.example.careminder.Activity.Statistic.StatisticActivity;
 import com.example.careminder.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -94,20 +92,10 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 final int HOME_NAV_ID = R.id.home_nav;
-                final int STATISTIC_NAV_ID = R.id.statistic_nav;
-                final int NOTIFY_NAV_ID = R.id.notify_nav;
                 final int SETTING_NAV_ID = R.id.setting_nav;
                 switch (item.getItemId()){
                     case HOME_NAV_ID:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case STATISTIC_NAV_ID:
-                        startActivity(new Intent(getApplicationContext(), StatisticActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case NOTIFY_NAV_ID:
-                        startActivity(new Intent(getApplicationContext(), NotificationActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case SETTING_NAV_ID:

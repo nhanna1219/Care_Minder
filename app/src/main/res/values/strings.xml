@@ -131,7 +131,7 @@
     <string name="body_report">Body - Report</string>
     <string name="body_motivation">Change starts in your thoughts!</string>
     <string name="body_btn1">Body Report</string>
-    <string name="body_btn2">Medical History</string>
+    <string name="body_btn2">Note History</string>
     <string name="body_btn3">Recommended For You</string>
     <string name="health_connect_description">Share data between your favorite apps</string>
     <string name="when_you_connect_careminder_to_health_connect_you_can_choose_which_data_types_to_add">When you connect CareMinder to Health Connect, you can choose which data types to add.</string>

@@ -1,7 +1,9 @@
 package com.example.careminder.Activity.HealthConnect
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +24,7 @@ import java.time.ZonedDateTime
 import kotlin.math.abs
 import kotlin.math.round
 import kotlin.math.roundToInt
+import kotlin.math.pow
 
 class PermissionsRationaleActivity : AppCompatActivity() {
     // build a set of permissions for required data types
@@ -101,6 +104,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
+
     // Read steps aggregate
     fun loadDailyData(healthConnectClient: HealthConnectClient, steps: TextView, distance: TextView, caloriesBurned: TextView, duration: TextView) {
         val management = HealthConnectManagement(healthConnectClient)
@@ -154,6 +158,58 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val TOTAL_DURATION = round((TOTAL_STEPS.toDouble() / 105) * 100) / 100
             val durationString = "$TOTAL_DURATION"
             duration.text = durationString
+        }
+    }
+
+    fun readAggregateWeight(healthConnectClient: HealthConnectClient, weight: TextView) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val (avgWeight,maxWeight,minWeight) = management.aggregateWeight()
+            val avgWeightString = round(avgWeight * 100) / 100
+            val content = "In the past 30 days, your weight falls within a specific range of <b>$minWeight kg</b> - <b>$maxWeight kg</b>, " +
+                    "and the average weight is calculated to be <b>$avgWeightString kg</b>."
+            weight.text = (Html.fromHtml(content))
+        }
+    }
+    private fun evaluateBMI(bmi: Double): Pair<String, String> {
+        var result = ""
+        var resultContent = ""
+        when {
+            bmi < 18.5 -> {
+                result = "Underweight 😭"
+                // Recommendation for underweight
+                resultContent += "\nYou may want to consider increasing your calorie intake and incorporating strength training exercises to gain weight in a healthy way."
+            }
+            bmi < 25 -> {
+                result = "Normal Weight 🎉"
+                // Recommendation for normal weight
+                resultContent += "\nCongratulations! You are within a healthy weight range. Keep up the good work by maintaining a balanced diet and regular exercise routine."
+            }
+            bmi < 30 -> {
+                result = "Overweight 😞"
+                // Recommendation for overweight
+                resultContent += "\nYou may want to consider reducing your calorie intake and increasing your physical activity levels to lose weight in a healthy way."
+            }
+            else -> {
+                result = "Obese 👨‍"
+                // Recommendation for obese
+                resultContent += "\nYou may want to consult with a healthcare professional to create a personalized plan for losing weight and improving your overall health."
+            }
+        }
+        return Pair(result, resultContent)
+    }
+    fun readBasicInformation(healthConnectClient: HealthConnectClient, weight: TextView, height: TextView, BMI: TextView, result: TextView, resultContent: TextView) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val weightInput = management.readWeightInput()
+            val heightInput = management.readHeightInput()
+            weight.text = "$weightInput kilogram"
+            height.text = "$heightInput meters"
+            val bmi = round((weightInput / heightInput.pow(2)) * 100) / 100
+            BMI.text = bmi.toString()
+            val (rs, rsContent) = evaluateBMI(bmi)
+            result.text = rs
+            resultContent.text = rsContent
         }
     }
 
@@ -243,4 +299,6 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             readWater(healthConnectClient,totalWater)
         }
     }
+
+
 }

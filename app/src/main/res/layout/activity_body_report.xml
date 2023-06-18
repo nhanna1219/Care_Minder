@@ -1,81 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/txt_remind2"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="67dp"
-        android:background="@drawable/rectangle"
-        android:contentDescription="@string/daily_activity_button"
-        android:elevation="6dp"
-        android:fontFamily="@font/raleway_extrabold"
-        android:gravity="start"
-        android:padding="16dp"
-        android:text="@string/body_motivation"
-        android:textAllCaps="false"
-        android:textColor="@color/title"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_remind2" />
-
-    <ImageView
-        android:id="@+id/img_remind2"
+    <ImageButton
+        android:id="@+id/back_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
-        android:layout_marginBottom="54dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_remind3" />
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/ic_back"
+        android:paddingStart="16dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="20dp"
+        android:tintMode="src_in"
+        android:src="@drawable/ic_back" />
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body Report"
+        android:drawablePadding="8dp"
+        android:textColor="@color/water"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        app:drawableLeftCompat="@drawable/ic_report" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <!-- Weight Label and Input Field -->
+    <TextView
+        android:id="@+id/weight_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight:"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_below="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/weight_label"
+        android:layout_alignBaseline="@+id/weight_label"/>
 
-        <ImageButton
-            android:id="@+id/back_nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/ic_back"
-            android:paddingStart="16dp"
-            android:paddingTop="20dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="20dp"
-            android:src="@drawable/ic_back" />
+    <!-- Height Label and Input Field -->
+    <TextView
+        android:id="@+id/height_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height:"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_below="@+id/weight_label"
+        android:layout_alignStart="@+id/weight_label"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/height_label"
+        android:layout_alignBaseline="@+id/height_label"/>
+
+    <!-- BMI Label and Result -->
+    <TextView
+        android:id="@+id/bmi_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BMI: "
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_below="@+id/height_label"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/weight_label" />
+
+    <TextView
+        android:id="@+id/bmi_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/bmi_label"
+        android:layout_alignBaseline="@+id/bmi_label"/>
+
+    <RelativeLayout
+        android:id="@+id/result_layout"
+        android:layout_width="330dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rectangle"
+        android:layout_below="@+id/bmi_result"
+        android:layout_centerHorizontal="true">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="@string/body_report"
-            android:textColor="@color/colorBlue"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Result"
+            android:textColor="#333333"
+            android:textSize="18sp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/rsContent"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:text="Content"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:srcCompat="@drawable/body_report" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="190dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:layout_below="@+id/result_layout"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/weight_avg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="For You ❤"
+            android:textColor="#333333"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/weight_avg_content"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</RelativeLayout>

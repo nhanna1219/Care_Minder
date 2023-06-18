@@ -130,6 +130,34 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         }
         return Triple("0", "0", "0",) ;
     }
+
+    suspend fun aggregateWeight() : Triple<Double,Double,Double>{
+        try {
+            val today = ZonedDateTime.now()
+            val last30Days = today.minusDays(30)
+            val timeRangeFilter = TimeRangeFilter.between(
+                last30Days.toLocalDateTime(),
+                today.toLocalDateTime()
+            )
+            val response =
+                healthConnectClient.aggregate(
+                    AggregateRequest(
+                        metrics = setOf(WeightRecord.WEIGHT_AVG,
+                                        WeightRecord.WEIGHT_MAX,
+                                        WeightRecord.WEIGHT_MIN),
+                        timeRangeFilter = timeRangeFilter
+                    )
+                )
+            val avgWeight = response[WeightRecord.WEIGHT_AVG]?.inKilograms ?: 0F
+            val maxWeight = response[WeightRecord.WEIGHT_MAX]?.inKilograms ?: 0f
+            val minHeight = response[WeightRecord.WEIGHT_MIN]?.inKilograms ?: 0f
+            return Triple(avgWeight.toDouble(),maxWeight.toDouble(),minHeight.toDouble())
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
+        return Triple(0.0,0.0,0.0)
+    }
+
     suspend fun readWeightInput(): Double {
         val startTime = ZonedDateTime.now().minusDays(30).toInstant()
         val endTime = ZonedDateTime.now().toInstant()
@@ -142,6 +170,20 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         val weightString = response.records[sizeResponse - 1].weight.toString()
         val weightValue = weightString.substring(0, weightString.indexOf(" "))
         return weightValue.toDouble()
+    }
+
+    suspend fun readHeightInput(): Double {
+        val startTime = ZonedDateTime.now().minusDays(30).toInstant()
+        val endTime = ZonedDateTime.now().toInstant()
+        val request = ReadRecordsRequest(
+            recordType = HeightRecord::class,
+            timeRangeFilter = TimeRangeFilter.between(startTime, endTime),
+        )
+        val response = healthConnectClient.readRecords(request)
+        val sizeResponse = response.records.size
+        val heightString = response.records[sizeResponse - 1].height.toString()
+        val heightValue = heightString.substring(0, heightString.indexOf(" "))
+        return heightValue.toDouble()
     }
 
     suspend fun writeWeightInput(weightInput: Double) {
