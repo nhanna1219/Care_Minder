@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.example.careminder.Activity.Food.Food;
 import com.example.careminder.R;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 public class CustomListViewAdapter extends ArrayAdapter<Food> {
     private int layoutResource;
     private Activity activity;
-    private ArrayList<Food> foodList = new ArrayList<>();
+    private ArrayList<Food> foodList;
 
     public CustomListViewAdapter(@NonNull Activity activity, int resource, ArrayList<Food> data) {
         super(activity, resource, data);
@@ -28,7 +30,6 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         this.activity = activity;
         foodList = data;
         notifyDataSetChanged();
-
     }
 
     @Override
@@ -81,7 +82,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
 
         final ViewHolder finalHolder = holder;
 
-        Button btn = row.findViewById(R.id.detailItem);
+        AppCompatImageButton btn = row.findViewById(R.id.detailItem);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

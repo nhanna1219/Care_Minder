@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.health.connect.client.HealthConnectClient;
 import androidx.health.connect.client.records.NutritionRecord;
 
+import com.example.careminder.Activity.Daily.DailyActivity;
 import com.example.careminder.Activity.HealthConnect.HealthConnect;
 import com.example.careminder.Activity.HealthConnect.HealthConnectManagement;
 import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
@@ -37,7 +38,6 @@ import java.util.List;
 public class DisplayFoodActivity extends AppCompatActivity {
 //    private DatabaseHandler db;
     private ArrayList<Food> dbFoods = new ArrayList<>();
-    private CustomListViewAdapter foodAdapter;
     private ListView listView;
 
     private Food myFood;
@@ -53,7 +53,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
         totalFoods = (TextView) findViewById(R.id.totalItemsTxt);
         Button btn = findViewById(R.id.btnadd);
         healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
-//        refreshData();
+        refreshData();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,14 +73,10 @@ public class DisplayFoodActivity extends AppCompatActivity {
         return dbFoods;
     }
     private void refreshData(){
-        dbFoods.clear();
+//        dbFoods.clear();
         PermissionsRationaleActivity readList = new PermissionsRationaleActivity();
-        ArrayList<Food> db = readList.readListFood(healthConnectClient);
-        foodAdapter = new CustomListViewAdapter(DisplayFoodActivity.this, R.layout.list_item, dbFoods);
-        listView.setAdapter(foodAdapter);
-        foodAdapter.notifyDataSetChanged();
+        readList.readListFood(healthConnectClient, listView, DisplayFoodActivity.this);
     }
-
 
 
 //    private void refreshData() {
@@ -142,8 +138,6 @@ public class DisplayFoodActivity extends AppCompatActivity {
 
                         // Call a method to handle the entered information
                         handleEnteredFoodInfo(foodName, foodCalories, mealType, note);
-
-                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -166,19 +160,25 @@ public class DisplayFoodActivity extends AppCompatActivity {
         PermissionsRationaleActivity writeFood = new PermissionsRationaleActivity();
         Food f = new Food(foodName, calo, mealName, note);
         int mealType;
-        if (mealName.equals("Breakfast")) {
-            mealType = 1;
-        } else if (mealName.equals("Bunch")) {
-            mealType = 2;
-        } else if (mealName.equals("Dinner")) {
-            mealType = 3;
-        } else if (mealName.equals("Snack")) {
-            mealType = 4;
-        } else {
-            mealType = 0; // Hoặc giá trị mặc định khác nếu không khớp với bất kỳ bữa ăn nào
-        }
-        writeFood.writeFoodActivity(healthConnectClient, f, mealType,totalCalories );
+        switch (mealName) {
+            case "Breakfast":
+                mealType = 1;
+                break;
+            case "Bunch":
+                mealType = 2;
+                break;
+            case "Dinner":
+                mealType = 3;
+                break;
+            case "Snack":
+                mealType = 4;
+                break;
+            default:
+                mealType = 0; // Hoặc giá trị mặc định khác nếu không khớp với bất kỳ bữa ăn nào
 
+                break;
+        }
+        writeFood.writeFoodActivity(healthConnectClient, f, mealType,totalCalories,listView,DisplayFoodActivity.this);
     }
 
 

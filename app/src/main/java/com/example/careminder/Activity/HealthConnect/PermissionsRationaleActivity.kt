@@ -1,9 +1,12 @@
 package com.example.careminder.Activity.HealthConnect
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
+import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.careminder.Activity.Food.Food
 import com.example.careminder.Activity.Home.HomeActivity
 import com.example.careminder.Activity.Information.InformationActivity
+import com.example.careminder.Data.CustomListViewAdapter
+import com.example.careminder.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -309,18 +314,22 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val result = management.readfoodDailyRecords(healthConnectClient)
             val foodDouble = round(result * 100) / 100
             totalCalories.text = foodDouble.toString()
+
         }
     }
-    fun writeFoodActivity(healthConnectClient: HealthConnectClient, food: Food, mealType: Int, totalCalories: TextView){
+    fun writeFoodActivity(healthConnectClient: HealthConnectClient, food: Food, mealType: Int, totalCalories: TextView, listView: ListView, context: Activity){
         lifecycleScope.launch {
             val management = HealthConnectManagement(healthConnectClient)
             management.writeFoodInput(food, mealType)
             readFood(healthConnectClient,totalCalories)
+
+            // Write and read in the same time
+            readListFood(healthConnectClient, listView, context)
         }
     }
 
 
-    fun readListFood(healthConnectClient: HealthConnectClient) : ArrayList<Food> {
+    fun readListFood(healthConnectClient: HealthConnectClient, listView: ListView, context: Activity){
         val dbFoods = ArrayList<Food>()
         lifecycleScope.launch {
             val management = HealthConnectManagement(healthConnectClient)
@@ -341,9 +350,10 @@ class PermissionsRationaleActivity : AppCompatActivity() {
                 val food = Food(nutritionName, nutritionCalo, mealName )
                 dbFoods.add(food)
             }
-
+            val foodAdapterTemp = CustomListViewAdapter(context, R.layout.list_item, dbFoods)
+            listView.adapter = foodAdapterTemp
+            foodAdapterTemp.notifyDataSetChanged()
         }
-        return dbFoods
     }
 
 
