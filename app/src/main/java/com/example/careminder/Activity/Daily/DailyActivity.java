@@ -57,6 +57,7 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
             "The only limit to our realization of tomorrow will be our doubts of today.",
             "Believe you can and you're halfway there."};
     TextView steps, distance, caloriesBurned, duration;
+    TextView steps_month, steps_year, steps_toDay, steps_day_after_1, steps_day_after_2, steps_day_before_1, steps_day_before_2;
     HealthConnectClient healthConnectClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,28 +72,15 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
             }
         });
 
-        TextView steps_month = findViewById(R.id.steps_month);
-        TextView steps_year = findViewById(R.id.steps_year);
-        TextView steps_toDay = findViewById(R.id.steps_toDay);
-        TextView steps_day_after_1 = findViewById(R.id.steps_day_after_1);
-        TextView steps_day_after_2 = findViewById(R.id.steps_day_after_2);
-        TextView steps_day_before_1 = findViewById(R.id.steps_day_before_1);
-        TextView steps_day_before_2 = findViewById(R.id.steps_day_before_2);
-
+        steps_month = findViewById(R.id.steps_month);
+        steps_year = findViewById(R.id.steps_year);
+        steps_toDay = findViewById(R.id.steps_toDay);
+        steps_day_after_1 = findViewById(R.id.steps_day_after_1);
+        steps_day_after_2 = findViewById(R.id.steps_day_after_2);
+        steps_day_before_1 = findViewById(R.id.steps_day_before_1);
+        steps_day_before_2 = findViewById(R.id.steps_day_before_2);
         Calendar currentTime = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d/MMMM/yyyy");
-        String dateTime = simpleDateFormat.format(currentTime.getTime());
-        String[] splitDate = dateTime.split("/");
-
-        steps_month.setText(splitDate[1]);
-        steps_year.setText(splitDate[2]);
-        steps_toDay.setText(splitDate[0]);
-
-        steps_day_after_1.setText(theNextDay(splitDate));
-        steps_day_after_2.setText(theNextTwoDays(splitDate));
-
-        steps_day_before_1.setText(theDayBefore(splitDate));
-        steps_day_before_2.setText(theTwoDaysBefore(splitDate));
+        setCalendar(currentTime);
 
         ImageButton calendar = findViewById(R.id.calendar);
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -242,6 +230,22 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
         return theDayBefore(date);
     }
 
+    private void setCalendar(Calendar calendar) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d/MMMM/yyyy");
+        String dateTime = simpleDateFormat.format(calendar.getTime());
+        String[] splitDate = dateTime.split("/");
+
+        steps_month.setText(splitDate[1]);
+        steps_year.setText(splitDate[2]);
+        steps_toDay.setText(splitDate[0]);
+
+        steps_day_after_1.setText(theNextDay(splitDate));
+        steps_day_after_2.setText(theNextTwoDays(splitDate));
+
+        steps_day_before_1.setText(theDayBefore(splitDate));
+        steps_day_before_2.setText(theTwoDaysBefore(splitDate));
+    }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -254,7 +258,7 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
         LocalDate date = zonedDateTime.toLocalDate();
         LocalDateTime endOfDay = LocalDateTime.of(date, LocalTime.MAX);
         ZonedDateTime endOfDayInZone = endOfDay.atZone(zonedDateTime.getZone());
-
+        setCalendar(c);
         loadStepsCalendar(healthConnectClient, steps, distance, caloriesBurned, duration, endOfDayInZone);
     }
 }
