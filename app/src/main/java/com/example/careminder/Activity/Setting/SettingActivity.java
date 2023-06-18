@@ -31,7 +31,7 @@ import java.util.List;
 
 public class SettingActivity extends AppCompatActivity {
 
-    TextView fullName, email, back;
+    TextView fullName, email, back, gender;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userID;
@@ -116,9 +116,7 @@ public class SettingActivity extends AppCompatActivity {
     private List<SettingItem> createSettingItems() {
         List<SettingItem> settingItems = new ArrayList<>();
 
-
         settingItems.add(new SettingItem("Account",R.drawable.sic_account));
-//        settingItems.add(new SettingItem("Notification",R.drawable.sic_notification));
         settingItems.add(new SettingItem("Advanced Settings",R.drawable.sic_volume));
         settingItems.add(new SettingItem("Privacy & Security",R.drawable.sic_security));
         settingItems.add(new SettingItem("Log out", R.drawable.sic_logout));

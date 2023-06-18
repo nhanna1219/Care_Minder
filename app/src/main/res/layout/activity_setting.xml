@@ -75,6 +75,7 @@
             android:layout_weight="1"
             android:padding="25dp"
             android:textSize="20sp"
+
             app:layout_constraintTop_toBottomOf="@id/textView4" />
 
 
