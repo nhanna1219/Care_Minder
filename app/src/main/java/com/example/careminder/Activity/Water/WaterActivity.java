@@ -20,7 +20,7 @@ import com.example.careminder.Activity.Food.Food;
 import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
 import com.example.careminder.Activity.Home.HomeActivity;
 import com.example.careminder.Data.CustomListViewAdapter;
-import com.example.careminder.Data.Database;
+//import com.example.careminder.Data.Database;
 import com.example.careminder.R;
 import com.example.careminder.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;

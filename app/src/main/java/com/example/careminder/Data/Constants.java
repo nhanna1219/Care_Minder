@@ -8,6 +8,6 @@ public class Constants {
     public static final String KEY_ID = "id";
     public static final String KEY_FOOD_NAME = "name";
     public static final String KEY_CALORIES = "calories";
-    public static final String KEY_DATE = "date_recorded";
+    public static final String KEY_NOTE = "date_recorded";
 }
 

@@ -11,11 +11,9 @@ import androidx.health.connect.client.request.ChangesTokenRequest
 import androidx.health.connect.client.request.ReadRecordsRequest
 import androidx.health.connect.client.time.TimeRangeFilter
 import androidx.health.connect.client.units.*
+import com.example.careminder.Activity.Food.Food
 import com.example.careminder.Activity.Water.Water
-import java.time.Duration
-import java.time.LocalDateTime
-import java.time.ZoneOffset
-import java.time.ZonedDateTime
+import java.time.*
 import java.time.temporal.ChronoUnit
 import java.util.UUID
 import kotlin.time.Duration.Companion.minutes
@@ -353,4 +351,78 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         }
         return 0.0;
     }
+
+
+    ///WRITE FOOD
+    suspend fun writeFoodInput(foodInput: Food, mealType: Int) {
+        val uuid = UUID.randomUUID().toString()
+        val version = System.currentTimeMillis()
+        Log.d("UUID:", uuid)
+        Log.d("Version:", version.toString())
+
+        try {
+            val start = ZonedDateTime.now().minusSeconds(1L).toInstant()
+            val end = ZonedDateTime.now().toInstant()
+            val foodRecord =  NutritionRecord(
+                startTime = start,
+                startZoneOffset = null,
+                endTime = end,
+                endZoneOffset = null,
+                energy = Energy.calories(foodInput.calories),
+                name = foodInput.name,
+                mealType = mealType,
+                metadata = Metadata(
+                    clientRecordId = uuid,
+                    clientRecordVersion = version)
+            )
+
+            val records = listOf(foodRecord)
+
+            healthConnectClient.insertRecords(records)
+            Log.d("Insert FOOD: ", "Successfully")
+        } catch (e: Exception) {
+            Log.d("Insert FOOD: ", e.message.toString())
+        }
+    }
+
+    ///read TOTAL CALORIES DAILY
+    suspend fun readfoodDailyRecords(client: HealthConnectClient) :Double{
+        try {
+            val today = ZonedDateTime.now()
+            val startOfDay = today.truncatedTo(ChronoUnit.DAYS)
+            val timeRangeFilter = TimeRangeFilter.between(
+                startOfDay.toLocalDateTime(),
+                today.toLocalDateTime()
+            )
+            val response = client.aggregate(
+                AggregateRequest(
+                    metrics = setOf(NutritionRecord.ENERGY_TOTAL),
+                    timeRangeFilter = timeRangeFilter,
+                )
+            )
+            val foodToday = response[NutritionRecord.ENERGY_TOTAL]?.inCalories ?: 0.0
+            Log.d("Read daily FOOD", foodToday.toString())
+
+            return foodToday.toDouble();
+        } catch (e: Exception){
+            Log.d("Read daily FOOD", e.message.toString())
+        }
+        return 0.0;
+    }
+
+    suspend fun readFoodInputs(client: HealthConnectClient): List<NutritionRecord> {
+        val today = ZonedDateTime.now()
+        val startOfDay = today.truncatedTo(ChronoUnit.DAYS)
+        val request = ReadRecordsRequest(
+            recordType = NutritionRecord::class,
+            timeRangeFilter = TimeRangeFilter.between( startOfDay.toLocalDateTime(),
+                today.toLocalDateTime())
+        )
+        val response = healthConnectClient.readRecords(request)
+        return response.records
+    }
+
+
+
+
 }

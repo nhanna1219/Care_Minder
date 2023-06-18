@@ -7,5 +7,5 @@ public class Constant {
     //columns
     public static final String KEY_ID = "id";
     public static final String KEY_ML = "ml";
-    public static final String KEY_DATE = "date_recorded";
+    public static final String KEY_NOTE = "note";
 }

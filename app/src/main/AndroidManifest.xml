@@ -118,9 +118,7 @@
         <activity
             android:name=".Activity.Water.WaterActivity"
             android:exported="false" />
-        <activity
-            android:name=".Activity.Food.FoodActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Activity.Steps.StepActivity"
             android:exported="false" />
@@ -147,9 +145,6 @@
             android:exported="false" />
         <activity
             android:name=".Activity.Food.DisplayFoodActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.Food.FoodItemDetailActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Home.HomeActivity"

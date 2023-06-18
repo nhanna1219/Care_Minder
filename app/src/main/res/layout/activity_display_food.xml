@@ -67,9 +67,9 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="620dp"/>
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btnadd"
         android:layout_width="wrap_content"
@@ -77,7 +77,6 @@
         android:text="ADD"
         android:layout_marginTop="20dp"
         android:layout_gravity="center">
-
     </Button>
 
 

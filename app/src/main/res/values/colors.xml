@@ -29,4 +29,6 @@
     <color name="ic_selected">#432C81</color>
 
     <color name="water">#0f5e9c</color>
+    <color name="gray">#808080</color>
+
 </resources>

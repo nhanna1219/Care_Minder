@@ -1,6 +1,5 @@
 package com.example.careminder.Activity.HealthConnect
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
@@ -13,18 +12,20 @@ import androidx.health.connect.client.PermissionController
 import androidx.health.connect.client.permission.HealthPermission
 import androidx.health.connect.client.records.*
 import androidx.lifecycle.lifecycleScope
+import com.example.careminder.Activity.Food.Food
 import com.example.careminder.Activity.Home.HomeActivity
 import com.example.careminder.Activity.Information.InformationActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.ZonedDateTime
 import kotlin.math.abs
-import kotlin.math.round
-import kotlin.math.roundToInt
 import kotlin.math.pow
+import kotlin.math.round
 
 class PermissionsRationaleActivity : AppCompatActivity() {
     // build a set of permissions for required data types
@@ -299,6 +300,52 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             readWater(healthConnectClient,totalWater)
         }
     }
+    ///// FOOD
+
+
+    fun readFood(healthConnectClient: HealthConnectClient, totalCalories: TextView) {
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            val result = management.readfoodDailyRecords(healthConnectClient)
+            val foodDouble = round(result * 100) / 100
+            totalCalories.text = foodDouble.toString()
+        }
+    }
+    fun writeFoodActivity(healthConnectClient: HealthConnectClient, food: Food, mealType: Int, totalCalories: TextView){
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            management.writeFoodInput(food, mealType)
+            readFood(healthConnectClient,totalCalories)
+        }
+    }
+
+
+    fun readListFood(healthConnectClient: HealthConnectClient) : ArrayList<Food> {
+        val dbFoods = ArrayList<Food>()
+        lifecycleScope.launch {
+            val management = HealthConnectManagement(healthConnectClient)
+            val nutritionRecords = management.readFoodInputs(healthConnectClient)
+
+            for (nutritionRecord in nutritionRecords) {
+                val nutritionName = nutritionRecord.name.toString()
+                val nutritionCalo = nutritionRecord.energy?.inCalories?: 0.0
+                val mealType = nutritionRecord.mealType
+                var mealName: String
+                mealName = when (mealType) {
+                    1 -> "Breakfast"
+                    2 -> "Lunch"
+                    4 -> "Snack"
+                    3 -> "Dinner"
+                    else -> "unknown"
+                }
+                val food = Food(nutritionName, nutritionCalo, mealName )
+                dbFoods.add(food)
+            }
+
+        }
+        return dbFoods
+    }
+
 
 
 }

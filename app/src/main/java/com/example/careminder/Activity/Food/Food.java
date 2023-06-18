@@ -5,19 +5,32 @@ public class Food implements Serializable {
     private static final long serialVersionUID = 10L;
 
     private String name;
-    private int calories;
+    private Double calories;
     private int id;
-    private String recordDate;
+    private String note;
+    private String mealtype;
 
     //constructors
     public Food() {
     }
 
-    public Food(String name, int calories, String recordDate, int id) {
+    public Food(String name, Double calories, String note, int id) {
         this.name = name;
         this.calories = calories;
         this.id = id;
-        this.recordDate = recordDate;
+        this.note = note;
+    }
+    public Food(String name, Double calories, String type,  String note) {
+        this.name = name;
+        this.calories = calories;
+        this.mealtype = type;
+        this.note = note;
+    }
+    public Food(String name, Double calories, String type) {
+        this.name = name;
+        this.calories = calories;
+        this.mealtype = type;
+
     }
 
     //getters and setters
@@ -33,11 +46,11 @@ public class Food implements Serializable {
         this.name = name;
     }
 
-    public int getCalories() {
+    public Double getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(Double calories) {
         this.calories = calories;
     }
 
@@ -49,12 +62,12 @@ public class Food implements Serializable {
         this.id = id;
     }
 
-    public String getRecordDate() {
-        return recordDate;
+    public String getNote() {
+        return note;
     }
 
-    public void setRecordDate(String recordDate) {
-        this.recordDate = recordDate;
+    public void setNote(String recordDate) {
+        this.note = note;
     }
 
 }

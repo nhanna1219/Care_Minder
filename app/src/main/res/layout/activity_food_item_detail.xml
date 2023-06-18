@@ -48,127 +48,129 @@
 <!--        android:layout_marginTop="-8dp"-->
 <!--        android:background="@drawable/row_bg">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_bg"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="40dp">
+
+        <TextView
+            android:id="@+id/detFoodTxt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/row_bg"
-            android:paddingLeft="16dp"
-            android:paddingBottom="40dp"
-            android:paddingTop="20dp">
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:text="FoodName"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/detFoodTxt"
+                android:id="@+id/detCaloriesTxt"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="FoodName"
-                android:textStyle="bold"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:text="Calories:"
+                android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/detCaloriesValueTxt"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp">
-
-                <TextView
-                    android:id="@+id/detCaloriesTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Calories:"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/detCaloriesValueTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="15dp"
-                    android:text="180"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="15dp"
+                android:text="180"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginStart="20dp">
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Eaten on:"
-                    android:textSize="20sp"
-                    android:textStyle="italic" />
-                <TextView
-                    android:id="@+id/detDateTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="8dp"
-                    android:text="120"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="20dp"
-                android:text="Note:"
-                android:textSize="20dp">
-            </TextView>
-            <EditText
-                android:layout_marginStart="20dp"
-                android:layout_width="330dp"
-                android:layout_height="match_parent">
-            </EditText>
+                android:text="Eaten on:"
+                android:textSize="20sp"
+                android:textStyle="italic" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/detDateTxt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="30dp">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:text="120"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="70dp"
-                    android:text="Save" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:text="Note:"
+            android:textSize="20dp"></TextView>
 
-                <Button
-                    android:id="@+id/btnDel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:layout_marginStart="20dp">
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"></EditText>
 
-                </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="70dp"
+                android:text="Save" />
+
+            <Button
+                android:id="@+id/btnDel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Delete">
+
+            </Button>
 
         </LinearLayout>
 
         <!--        <Button-->
-<!--            android:id="@+id/detShareBtn"-->
-<!--            android:layout_width="66dp"-->
-<!--            android:layout_height="63dp"-->
-<!--            android:layout_row="0"-->
-<!--            android:layout_column="1"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginTop="25dp"-->
-<!--            android:background="@drawable/ic_add"-->
-<!--            android:paddingTop="25dp"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:textStyle="bold" />-->
-
+        <!--            android:id="@+id/detShareBtn"-->
+        <!--            android:layout_width="66dp"-->
+        <!--            android:layout_height="63dp"-->
+        <!--            android:layout_row="0"-->
+        <!--            android:layout_column="1"-->
+        <!--            android:layout_gravity="end"-->
+        <!--            android:layout_marginTop="25dp"-->
+        <!--            android:background="@drawable/ic_add"-->
+        <!--            android:paddingTop="25dp"-->
+        <!--            android:textColor="@android:color/white"-->
+        <!--            android:textStyle="bold" />-->
 
 
     </LinearLayout>
