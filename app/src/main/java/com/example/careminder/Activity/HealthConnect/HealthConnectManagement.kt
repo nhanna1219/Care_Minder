@@ -1,6 +1,7 @@
 package com.example.careminder.Activity.HealthConnect
 
 import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.health.connect.client.HealthConnectClient
 import androidx.health.connect.client.changes.UpsertionChange
 import androidx.health.connect.client.records.*
@@ -13,7 +14,15 @@ import androidx.health.connect.client.time.TimeRangeFilter
 import androidx.health.connect.client.units.*
 import com.example.careminder.Activity.Food.Food
 import com.example.careminder.Activity.Water.Water
+
 import java.time.*
+
+import java.time.Duration
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.ZonedDateTime
+
 import java.time.temporal.ChronoUnit
 import java.util.UUID
 import kotlin.time.Duration.Companion.minutes
@@ -353,6 +362,7 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
     }
 
 
+
     ///WRITE FOOD
     suspend fun writeFoodInput(foodInput: Food, mealType: Int) {
         val uuid = UUID.randomUUID().toString()
@@ -425,4 +435,40 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
 
 
 
+
+    // function for delete personal data (Settings -> Advanced Setting -> Delete personal data)
+    // Ref: https://developer.android.com/guide/health-and-fitness/health-connect/common-workflows/delete-data
+
+    // Delete using Record IDs
+
+//    suspend fun deleteStepsByUniqueIdentifier(
+//        healthConnectClient: HealthConnectClient,
+//        idList: List<String>
+//    ) {
+//        try {
+//            healthConnectClient.deleteRecords(
+//                StepsRecord::class,
+//                idList = idList,
+//                clientRecordIdsList = emptyList()
+//            )
+//        } catch (e: Exception) {
+//            // Run error handling here
+//        }
+//    }
+
+    // Delete using a time range
+    suspend fun deleteStepsByTimeRange(
+        healthConnectClient: HealthConnectClient,
+        startTime: Instant,
+        endTime: Instant
+    ) {
+        try {
+            healthConnectClient.deleteRecords(
+                StepsRecord::class,
+                timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+            )
+        } catch (e: Exception) {
+            // Run error handling here
+        }
+    }
 }

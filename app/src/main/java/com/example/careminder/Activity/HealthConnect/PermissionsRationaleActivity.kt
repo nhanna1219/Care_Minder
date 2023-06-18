@@ -24,9 +24,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
+import kotlinx.coroutines.*
+import java.time.Instant
+
 import java.time.ZonedDateTime
 import kotlin.math.abs
 import kotlin.math.pow
@@ -305,6 +310,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             readWater(healthConnectClient,totalWater)
         }
     }
+
     ///// FOOD
 
 
@@ -357,5 +363,13 @@ class PermissionsRationaleActivity : AppCompatActivity() {
     }
 
 
+
+    // function for delete personal data (deleteStepsByTimeRange) in file HealthConnectManagement
+    fun deletePersonalData(healthConnectClient: HealthConnectClient, start: Instant, end: Instant){
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            management.deleteStepsByTimeRange(healthConnectClient, start, end)
+        }
+    }
 
 }

@@ -12,7 +12,7 @@ import com.example.careminder.R;
 
 public class AdvancedSettingActivity extends AppCompatActivity {
 
-    TextView back;
+    TextView back, deleteData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,15 @@ public class AdvancedSettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdvancedSettingActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+        deleteData = findViewById(R.id.textView2);
+        deleteData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Thực hiện hành động khi TextView được nhấn
+                Intent intent = new Intent(getApplicationContext(), DeleteData.class);
                 startActivity(intent);
             }
         });
