@@ -30,7 +30,7 @@ public class AdvancedSettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Thực hiện hành động khi TextView được nhấn
-                Intent intent = new Intent(getApplicationContext(), DeleteData.class);
+                Intent intent = new Intent(AdvancedSettingActivity.this, DeleteData.class);
                 startActivity(intent);
             }
         });

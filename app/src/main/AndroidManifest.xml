@@ -60,6 +60,9 @@
             android:name=".Activity.HealthConnect.HC_Permission"
             android:exported="false" />
         <activity
+            android:name=".Activity.Setting.DeleteData"
+            android:exported="false" />
+        <activity
             android:name=".Activity.HealthConnect.PermissionsRationaleActivity"
             android:enabled="true"
             android:exported="true"> <!-- Handle intent -->
@@ -72,12 +75,6 @@
             android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.Forgotpassword"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.Statistic.StatisticActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.Notification.NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Body.BodyActivity"
@@ -130,7 +127,8 @@
             android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.Login_Signup"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".Activity.Login_Signup.LoginActivity"
             android:exported="false" />
@@ -155,6 +153,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

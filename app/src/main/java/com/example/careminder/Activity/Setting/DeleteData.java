@@ -26,9 +26,10 @@ public class DeleteData extends AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_data);
-        // Notify something
+
         back = findViewById(R.id.back_nav);
         delete = findViewById(R.id.deleteButton);
         back.setOnClickListener(new View.OnClickListener() {
