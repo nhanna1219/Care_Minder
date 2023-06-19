@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Setting.ContactActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/back_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ic_back"
+            android:paddingStart="16dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:text="Contact Us"
+            android:textColor="@color/title"
+            android:textSize="20sp" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="textEmailSubject"
+                    android:hint="Enter your subject" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:text="Message"
+
+                    android:layout_marginRight="12dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:lines="5"
+                    android:hint="Enter your message" />
+
+            </LinearLayout>
+<!--            add Text View to notify-->
+<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="If you have any technical questions, issues, or concerns about integrating with CareMinder, please contact Developement Team through health-connect-support@google.com."
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                />
+            <!-- Add more LinearLayouts for other fields -->
+
+            <Button
+
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Submit" />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

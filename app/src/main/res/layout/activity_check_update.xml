@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/back_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ic_back"
+            android:paddingStart="16dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Check for Update"
+            android:textColor="@color/title"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Information"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:padding="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update 1"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/tvVersion1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Version: 1.0.0"
+                android:paddingLeft="16dp"/>
+
+            <TextView
+                android:id="@+id/tvReleaseDate1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Release Date: 21/06/2023"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/tvStatusMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="You are on the latest version"
+            android:paddingLeft="16dp"/>
+    </LinearLayout>
+</LinearLayout>

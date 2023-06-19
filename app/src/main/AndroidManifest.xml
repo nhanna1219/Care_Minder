@@ -51,6 +51,30 @@
         android:theme="@style/Theme.CareMinder"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Setting.ContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Setting.QuestionAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Setting.QuestionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CareMinder.NoActionBar" />
+        <activity
+            android:name=".Activity.HealthConnect.PermissionsRationaleActivity"
+            android:enabled="true"
+            android:exported="true"> <!-- Handle intent -->
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.Setting.AboutCareMinderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Setting.CheckUpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Body.NoteHistoryActivity"
             android:exported="false" />
         <activity
@@ -62,14 +86,6 @@
         <activity
             android:name=".Activity.Setting.DeleteData"
             android:exported="false" />
-        <activity
-            android:name=".Activity.HealthConnect.PermissionsRationaleActivity"
-            android:enabled="true"
-            android:exported="true"> <!-- Handle intent -->
-            <intent-filter>
-                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Activity.HealthConnect.HealthConnect"
             android:exported="false" />
@@ -115,7 +131,6 @@
         <activity
             android:name=".Activity.Water.WaterActivity"
             android:exported="false" />
-
         <activity
             android:name=".Activity.Steps.StepActivity"
             android:exported="false" />
@@ -127,8 +142,7 @@
             android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.Login_Signup"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".Activity.Login_Signup.LoginActivity"
             android:exported="false" />
@@ -153,7 +167,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"
