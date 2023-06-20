@@ -46,6 +46,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
     private Food myFood;
     private TextView totalFoods, totalCalories;
     HealthConnectClient healthConnectClient;
+    Note myNote = new Note(DisplayFoodActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +72,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
         });
 
     }
+
     public ArrayList<Food> getDbFoods() {
         // Truy cập danh sách dbFoods từ lớp FoodManagement.kt và trả về
         return dbFoods;
@@ -159,15 +161,15 @@ public class DisplayFoodActivity extends AppCompatActivity {
 
     private void handleEnteredFoodInfo(String foodName, double foodCalories, String mealType, String note) {
         storeData(foodName, foodCalories, mealType, note);
+
     }
 
     public void storeData(String foodName, Double calo, String mealName, String note){
-        Note myNote = new Note(DisplayFoodActivity.this);
-        myNote.addNote(note);
+//
+//
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         PermissionsRationaleActivity writeFood = new PermissionsRationaleActivity();
         Food f = new Food(foodName, calo, mealName, note);
-
         int mealType;
         switch (mealName) {
             case "Breakfast":
@@ -187,8 +189,8 @@ public class DisplayFoodActivity extends AppCompatActivity {
 
                 break;
         }
-        writeFood.writeFoodActivity(healthConnectClient, f, mealType,totalCalories,listView,DisplayFoodActivity.this);
-
+        writeFood.writeFoodActivity(healthConnectClient, f, mealType, totalCalories,listView,DisplayFoodActivity.this);
+        myNote.addNote(note);
     }
 
 
