@@ -114,7 +114,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="20521452"
+                    android:text="19521940"
                     android:padding="8dp"
                     android:gravity="center" />
 
@@ -145,7 +145,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nguyen Quoc Khanh"
+                    android:text="Vo Le Nha Trang"
+                    android:padding="8dp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20522042"
+                    android:padding="8dp"
+                    android:gravity="center" />
+
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nguyen Ngoc Hai Son"
                     android:padding="8dp"
                     android:gravity="center" />
 
@@ -164,7 +183,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nguyen Quoc Khanh"
+                    android:text="Vo Minh Tri"
                     android:padding="8dp"
                     android:gravity="center" />
 
@@ -172,26 +191,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="20521452"
-                    android:padding="8dp"
-                    android:gravity="center" />
-
-            </TableRow>
-            <TableRow>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nguyen Quoc Khanh"
-                    android:padding="8dp"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="20521452"
+                    android:text="20520821"
                     android:padding="8dp"
                     android:gravity="center" />
 
