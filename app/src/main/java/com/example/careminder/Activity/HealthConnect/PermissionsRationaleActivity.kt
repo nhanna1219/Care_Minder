@@ -368,6 +368,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         val management = HealthConnectManagement(healthConnectClient)
         lifecycleScope.launch {
             management.deleteStepsByTimeRange(healthConnectClient, start, end)
+            management.deleteWeight(healthConnectClient, start, end)
         }
     }
 

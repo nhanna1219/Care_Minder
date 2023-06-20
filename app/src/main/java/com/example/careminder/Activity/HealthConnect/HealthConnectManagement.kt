@@ -455,7 +455,20 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
 //            // Run error handling here
 //        }
 //    }
-
+//    ExerciseSessionRecord::class,
+//    StepsRecord::class,
+//    TotalCaloriesBurnedRecord::class,
+//    WeightRecord::class,
+//    ActiveCaloriesBurnedRecord::class,
+//    BodyFatRecord::class,
+//    BodyWaterMassRecord::class,
+//    BoneMassRecord::class,
+//    ExerciseSessionRecord::class,
+//    DistanceRecord::class,
+//    SpeedRecord::class,
+//    NutritionRecord::class,
+//    HydrationRecord::class,
+//    HeightRecord::class,
     // Delete using a time range
     suspend fun deleteStepsByTimeRange(
         healthConnectClient: HealthConnectClient,
@@ -471,4 +484,20 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
             // Run error handling here
         }
     }
+
+    suspend fun deleteWeight(
+        healthConnectClient: HealthConnectClient,
+        startTime: Instant,
+        endTime: Instant
+    ) {
+        try {
+            healthConnectClient.deleteRecords(
+                WeightRecord::class,
+                timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+            )
+        } catch (e: Exception) {
+            // Run error handling here
+        }
+    }
+
 }
