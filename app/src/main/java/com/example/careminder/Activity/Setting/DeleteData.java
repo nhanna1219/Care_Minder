@@ -18,10 +18,14 @@ import com.example.careminder.R;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
+import java.util.Calendar;
 
 public class DeleteData extends AppCompatActivity {
     ImageButton back;
     Button delete;
+    private DatePicker startDatePicker;
+    private DatePicker endDatePicker;
+
 
     @Override
 
@@ -64,6 +68,23 @@ public class DeleteData extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Delete data successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
+        startDatePicker = findViewById(R.id.startDatePicker);
+        endDatePicker = findViewById(R.id.endDatePicker);
+
+        // Lấy ngày hiện tại
+        Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Giới hạn DatePicker không cho phép chọn thời điểm trong tương lai
+        startDatePicker.setMaxDate(calendar.getTimeInMillis());
+        endDatePicker.setMaxDate(calendar.getTimeInMillis());
+
+        // Thiết lập ngày hiện tại làm giá trị mặc định
+        startDatePicker.init(currentYear, currentMonth, currentDay, null);
+        endDatePicker.init(currentYear, currentMonth, currentDay, null);
     }
     private void deleteData(Instant start, Instant end) {
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());

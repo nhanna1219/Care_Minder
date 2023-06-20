@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.careminder.R;
 
 public class ContactActivity extends AppCompatActivity {
     Button send;
+    ImageButton back;
     EditText subject, message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,10 @@ public class ContactActivity extends AppCompatActivity {
             Toast.makeText(ContactActivity.this, "Thank you for your feedback", Toast.LENGTH_SHORT).show();
             // activity to previous activity
             finish();
+        });
+        back = findViewById(R.id.back_nav);
+        back.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), HelpSettingActivity.class));
         });
     }
     private void sendEmail() {
