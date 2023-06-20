@@ -53,7 +53,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -61,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="Care Minder is a multifunctional app designed to help you manage your health and self-care easily and effectively. With Care Minder, you can track various health metrics such as heart rate, blood pressure, activity level, and more"
                 android:textSize="16sp"
+                android:gravity="center_horizontal"
                 android:padding="8dp" />
         </LinearLayout>
 

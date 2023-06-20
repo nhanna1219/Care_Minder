@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select the time range to delete data"
+            android:text="Select the time range to delete data:"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -64,6 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="FROM"
                 android:layout_gravity="center"
                 android:layout_marginEnd="8dp"
@@ -97,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="50dp"
                 android:text="TO"
                 android:layout_marginEnd="8dp"
                 android:textStyle="bold"
@@ -122,9 +124,10 @@
 
         <Button
             android:id="@+id/deleteButton"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Delete Now"
+            android:layout_marginTop="30dp"
+            android:text="Delete"
             android:layout_marginBottom="16dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

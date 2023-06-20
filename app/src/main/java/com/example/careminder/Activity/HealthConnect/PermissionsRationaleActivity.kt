@@ -103,6 +103,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
+
     private fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
         val docRef = mAuth.currentUser?.let { db.collection("users").document(it.uid) }
         docRef?.get()?.addOnSuccessListener { document ->
@@ -224,6 +225,16 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
+    fun readBasicInformation(healthConnectClient: HealthConnectClient, weight: TextView, height: TextView) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val weightInput = management.readWeightInput()
+            val heightInput = management.readHeightInput()
+            weight.text = "$weightInput"
+            height.text = "$heightInput"
+        }
+    }
+
     // Write steps record
     fun writeSteps(healthConnectClient: HealthConnectClient, steps: Long){
         val management = HealthConnectManagement(healthConnectClient)
@@ -341,7 +352,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val nutritionRecords = management.readFoodInputs(healthConnectClient)
             var i = 1;
             for (nutritionRecord in nutritionRecords) {
-                var id = 1
+                var id = i
                 val nutritionName = nutritionRecord.name.toString()
                 val nutritionCalo = nutritionRecord.energy?.inCalories?: 0.0
                 val mealType = nutritionRecord.mealType
@@ -369,6 +380,9 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         lifecycleScope.launch {
             management.deleteStepsByTimeRange(healthConnectClient, start, end)
             management.deleteWeight(healthConnectClient, start, end)
+            management.deleteWater(healthConnectClient, start, end)
+            management.deleteFood(healthConnectClient, start, end)
+            management.deleteCaloriesBurned(healthConnectClient, start, end)
         }
     }
 

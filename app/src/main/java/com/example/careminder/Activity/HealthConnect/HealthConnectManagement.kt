@@ -1,6 +1,7 @@
 package com.example.careminder.Activity.HealthConnect
 
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.health.connect.client.HealthConnectClient
 import androidx.health.connect.client.changes.UpsertionChange
@@ -190,6 +191,7 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         val sizeResponse = response.records.size
         val heightString = response.records[sizeResponse - 1].height.toString()
         val heightValue = heightString.substring(0, heightString.indexOf(" "))
+        Log.d("readHeightInput:", "$heightValue")
         return heightValue.toDouble()
     }
 
@@ -211,7 +213,6 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
             )
             val records = listOf(weightRecord)
             val response = healthConnectClient.insertRecords(records)
-
             Log.d("Insert weight: ", "Successfully")
         } catch (e: Exception) {
             Log.d("Insert weight: ", e.message.toString())
@@ -501,4 +502,48 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         }
     }
 
+    suspend fun deleteWater(
+    healthConnectClient: HealthConnectClient,
+    startTime: Instant,
+    endTime: Instant
+    ) {
+        try {
+            healthConnectClient.deleteRecords(
+                HydrationRecord::class,
+                timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+            )
+        } catch (e: Exception) {
+            // Run error handling here
+        }
+    }
+
+    suspend fun deleteFood(
+        healthConnectClient: HealthConnectClient,
+        startTime: Instant,
+        endTime: Instant
+    ) {
+        try {
+            healthConnectClient.deleteRecords(
+                NutritionRecord::class,
+                timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+            )
+        } catch (e: Exception) {
+            // Run error handling here
+        }
+    }
+
+    suspend fun deleteCaloriesBurned(
+    healthConnectClient: HealthConnectClient,
+    startTime: Instant,
+    endTime: Instant
+    ) {
+        try {
+            healthConnectClient.deleteRecords(
+                ActiveCaloriesBurnedRecord::class,
+                timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+            )
+        } catch (e: Exception) {
+            // Run error handling here
+        }
+    }
 }
