@@ -1,4 +1,4 @@
-package com.example.careminder.ListView;
+package com.example.careminder.Partial.ui.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 

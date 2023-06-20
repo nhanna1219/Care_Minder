@@ -67,8 +67,6 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
             //make new viewholder
             holder = new ViewHolder();
             holder.foodName = (TextView) row.findViewById(R.id.nameTxt);
-
-
             row.setTag(holder);
         }
         else {
@@ -79,7 +77,8 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         //get food item of current row, set TextViews to it's data
         holder.food = getItem(position);
         holder.foodName.setText(holder.food.getName());
-
+//        holder.foodCalories.setText(holder.food.getCalories().toString());
+//        holder.mealType.setText(holder.food.getMealtype());
         final ViewHolder finalHolder = holder;
 
         AppCompatImageButton btn = row.findViewById(R.id.detailItem);
@@ -109,9 +108,12 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         TextView foodNameTextView = dialogView.findViewById(R.id.detFoodTxt);
         TextView CaloTextView = dialogView.findViewById(R.id.detCaloriesValueTxt);
         TextView MealTypeTextView = dialogView.findViewById(R.id.detMealTypeTxt);
-        TextView NoteTextView = dialogView.findViewById(R.id.NoteTxt);
+//        TextView NoteTextView = dialogView.findViewById(R.id.NoteTxt);
 
         foodNameTextView.setText(food.getName());
+        CaloTextView.setText(food.getCalories().toString());
+        MealTypeTextView.setText(food.getMealtype());
+//        NoteTextView.setText(food.getNote());
 //        NoteTextView.setText(food.getDescription());
 
         // Delete button click listener

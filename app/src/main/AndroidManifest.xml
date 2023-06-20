@@ -41,6 +41,8 @@
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" /> <!-- permissions internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -113,7 +115,7 @@
             android:name=".Activity.Introduction.IntroductionActivity2"
             android:exported="false" />
         <activity
-            android:name=".ListView.Home_ListView"
+            android:name=".Partial.ui.ListView.Home_ListView"
             android:exported="false" />
         <activity
             android:name=".Activity.Water.WaterActivity"

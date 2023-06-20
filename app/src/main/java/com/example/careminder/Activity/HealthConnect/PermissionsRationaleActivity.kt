@@ -328,7 +328,6 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val management = HealthConnectManagement(healthConnectClient)
             management.writeFoodInput(food, mealType)
             readFood(healthConnectClient,totalCalories)
-
             // Write and read in the same time
             readListFood(healthConnectClient, listView, context)
         }

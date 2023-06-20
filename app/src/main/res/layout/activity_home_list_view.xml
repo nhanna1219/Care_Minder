@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ListView.Home_ListView">
+    tools:context=".Partial.ui.ListView.Home_ListView">
 
         <RelativeLayout
             android:layout_width="wrap_content"

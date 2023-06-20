@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,6 +30,7 @@ import com.example.careminder.Activity.Home.HomeActivity;
 //import com.example.careminder.Data.CustomListViewAdapter;
 //import com.example.careminder.Data.DatabaseHandler;
 import com.example.careminder.Data.CustomListViewAdapter;
+import com.example.careminder.Data.Note;
 import com.example.careminder.R;
 import com.example.careminder.utils.DialogListener;
 import com.example.careminder.utils.Utils;
@@ -76,6 +79,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
 //        dbFoods.clear();
         PermissionsRationaleActivity readList = new PermissionsRationaleActivity();
         readList.readListFood(healthConnectClient, listView, DisplayFoodActivity.this);
+        readList.readFood(healthConnectClient,totalCalories);
     }
 
 
@@ -134,10 +138,12 @@ public class DisplayFoodActivity extends AppCompatActivity {
                         String foodName = foodNameEditText.getText().toString();
                         double foodCalories = Double.parseDouble(foodCaloriesEditText.getText().toString());
                         String mealType = mealTypeSpinner.getSelectedItem().toString();
-                        String note = noteEditText.getText().toString();
+                        String note = noteEditText.getText().toString().trim();
+
 
                         // Call a method to handle the entered information
                         handleEnteredFoodInfo(foodName, foodCalories, mealType, note);
+
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -156,9 +162,12 @@ public class DisplayFoodActivity extends AppCompatActivity {
     }
 
     public void storeData(String foodName, Double calo, String mealName, String note){
+        Note myNote = new Note(DisplayFoodActivity.this);
+        myNote.addNote(note);
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         PermissionsRationaleActivity writeFood = new PermissionsRationaleActivity();
         Food f = new Food(foodName, calo, mealName, note);
+
         int mealType;
         switch (mealName) {
             case "Breakfast":
@@ -179,6 +188,7 @@ public class DisplayFoodActivity extends AppCompatActivity {
                 break;
         }
         writeFood.writeFoodActivity(healthConnectClient, f, mealType,totalCalories,listView,DisplayFoodActivity.this);
+
     }
 
 

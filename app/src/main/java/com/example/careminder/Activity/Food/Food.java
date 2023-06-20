@@ -66,8 +66,16 @@ public class Food implements Serializable {
         return note;
     }
 
-    public void setNote(String recordDate) {
+    public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getMealtype() {
+        return mealtype;
+    }
+
+    public void setMealtype(String type) {
+        this.mealtype = type;
     }
 
 }
