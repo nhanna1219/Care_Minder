@@ -430,6 +430,7 @@ class HealthConnectManagement(private val healthConnectClient: HealthConnectClie
         )
         val response = healthConnectClient.readRecords(request)
         return response.records
+
     }
 
 

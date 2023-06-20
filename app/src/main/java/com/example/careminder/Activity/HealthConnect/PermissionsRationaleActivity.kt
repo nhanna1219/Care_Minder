@@ -339,8 +339,9 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val management = HealthConnectManagement(healthConnectClient)
             val nutritionRecords = management.readFoodInputs(healthConnectClient)
-
+            var i = 1;
             for (nutritionRecord in nutritionRecords) {
+                var id = 1
                 val nutritionName = nutritionRecord.name.toString()
                 val nutritionCalo = nutritionRecord.energy?.inCalories?: 0.0
                 val mealType = nutritionRecord.mealType
@@ -352,16 +353,15 @@ class PermissionsRationaleActivity : AppCompatActivity() {
                     3 -> "Dinner"
                     else -> "unknown"
                 }
-                val food = Food(nutritionName, nutritionCalo, mealName )
+                val food = Food(nutritionName, nutritionCalo, mealName, id)
                 dbFoods.add(food)
+                i++
             }
             val foodAdapterTemp = CustomListViewAdapter(context, R.layout.list_item, dbFoods)
             listView.adapter = foodAdapterTemp
             foodAdapterTemp.notifyDataSetChanged()
         }
     }
-
-
 
     // function for delete personal data (deleteStepsByTimeRange) in file HealthConnectManagement
     fun deletePersonalData(healthConnectClient: HealthConnectClient, start: Instant, end: Instant){

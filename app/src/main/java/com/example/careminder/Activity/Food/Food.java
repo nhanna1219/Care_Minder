@@ -14,11 +14,11 @@ public class Food implements Serializable {
     public Food() {
     }
 
-    public Food(String name, Double calories, String note, int id) {
+    public Food(String name, Double calories, String type, int id) {
         this.name = name;
         this.calories = calories;
         this.id = id;
-        this.note = note;
+        this.mealtype = type;
     }
     public Food(String name, Double calories, String type,  String note) {
         this.name = name;

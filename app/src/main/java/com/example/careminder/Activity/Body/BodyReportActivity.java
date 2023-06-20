@@ -41,8 +41,6 @@ public class BodyReportActivity extends AppCompatActivity {
         management.readBasicInformation(healthConnectClient, weight, height, BMI, result, resultContent);
     }
 
-
-
     private void initializeVariable(){
         healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         management = new PermissionsRationaleActivity();
