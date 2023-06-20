@@ -15,24 +15,26 @@
         android:text="Date"/>
 
     <EditText
+        android:layout_marginTop="20dp"
         android:id="@+id/editTextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tiêu đề" />
+        android:hint="Title" />
 
     <EditText
         android:id="@+id/editTextContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nội dung"
+        android:hint="Content"
+        android:lines="3"
         android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lưu"
+        android:text="Save"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="30dp" />
 
 </LinearLayout>

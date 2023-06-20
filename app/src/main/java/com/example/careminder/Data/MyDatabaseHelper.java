@@ -3,6 +3,7 @@ package com.example.careminder.Data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,13 +11,15 @@ import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 
+import com.example.careminder.Activity.Body.NoteHistoryActivity;
+
 import org.checkerframework.checker.units.qual.C;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Note.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String TABLE_NAME = "Note_Body";
     private static final String COLUMN_ID = "_id";
@@ -34,7 +37,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                +COLUMN_TITLE + " TEXT, " +COLUMN_NOTE + " TEXT, " +COLUMN_DATE + "TEXT);";
+                + COLUMN_TITLE + " TEXT, " + COLUMN_NOTE + " TEXT, " + COLUMN_DATE + " TEXT);";
         db.execSQL(query);
     }
     @Override
@@ -56,6 +59,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
+            context.startActivity(new Intent(context, NoteHistoryActivity.class));
         }
     }
 
@@ -92,6 +96,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(context, context.getClass());
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            context.startActivity(i);
         }
     }
 

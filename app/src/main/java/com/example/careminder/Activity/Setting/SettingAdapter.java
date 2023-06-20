@@ -46,7 +46,7 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.SettingV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = holder.getAdapterPosition();
+                int position = holder.getBindingAdapterPosition();
                 Context context = view.getContext();
                 switch (position) {
                     // Account Setting Activity

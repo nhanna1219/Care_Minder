@@ -32,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Activity activity;
     private ArrayList note_id, title, note, date;
 
-    public CustomAdapter(Activity activity, Context context, ArrayList note_id, ArrayList note, ArrayList title, ArrayList date){
+    public CustomAdapter(Activity activity, Context context, ArrayList note_id, ArrayList title ,ArrayList note, ArrayList date){
         this.activity = activity;
         this.context = context;
         this.note_id = note_id;
@@ -49,7 +49,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return new MyViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.note_date_txt.setText(String.valueOf(date.get(position)));
@@ -60,7 +59,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 showNoteDetailDialog(holder.titletxt.getText().toString(), holder.note, holder.id);
             }
         });
@@ -110,9 +108,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             public void onClick(View v) {
                 // Handle delete logic here
 //                deleteFood(food);
-//                dialog.dismiss();
 
-                confirmDialog(id);
+                confirmDialog(id, title);
+
             }
         });
 
@@ -123,10 +121,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
 
-    void confirmDialog(String id){
+    void confirmDialog(String id, String titleValue){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Delete " + title + " ?");
-        builder.setMessage("Are you sure you want to delete " + title + " ?");
+        builder.setTitle("Delete " + titleValue + " ?");
+        builder.setMessage("Are you sure you want to delete this ?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

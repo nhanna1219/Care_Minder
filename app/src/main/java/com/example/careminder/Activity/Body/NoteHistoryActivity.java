@@ -59,11 +59,17 @@ public class NoteHistoryActivity extends AppCompatActivity {
         note = new ArrayList<>();
         date = new ArrayList<>();
 
-        storeDataInArrays();
 
         customAdapter = new CustomAdapter(NoteHistoryActivity.this,this, note_id, title, note, date);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(NoteHistoryActivity.this));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        storeDataInArrays();
 
     }
 

@@ -20,13 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="16dp"
+        android:padding="15dp"
         android:text="content"/>
     <Button
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>
