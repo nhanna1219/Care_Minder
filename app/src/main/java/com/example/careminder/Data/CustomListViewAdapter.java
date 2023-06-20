@@ -79,6 +79,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
 
         //get food item of current row, set TextViews to it's data
         holder.food = getItem(position);
+        holder.foodName.setText(holder.food.getName());
 
 //        holder.foodName.setText(holder.food.getName());
 //        holder.foodCalories.setText(holder.food.getCalories().toString());

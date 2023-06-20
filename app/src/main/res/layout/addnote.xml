@@ -1,0 +1,38 @@
+<!-- res/layout/activity_add_note.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Activity.Body.addNote"
+    android:padding="30dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"/>
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiêu đề" />
+
+    <EditText
+        android:id="@+id/editTextContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nội dung"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
