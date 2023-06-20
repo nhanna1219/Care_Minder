@@ -80,7 +80,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         //get food item of current row, set TextViews to it's data
         holder.food = getItem(position);
 
-//        holder.foodName.setText(holder.food.getName());
+        holder.foodName.setText(holder.food.getName());
 //        holder.foodCalories.setText(holder.food.getCalories().toString());
 //        holder.mealType.setText(holder.food.getMealtype());
         final ViewHolder finalHolder = holder;
@@ -101,7 +101,6 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         Food food;
         TextView foodName, foodCalories, mealType;
 
-
     }
     ////DIALOG
     private void showFoodDetailDialog(Food food) {
@@ -116,21 +115,21 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
 
 
         foodNameTextView.setText(food.getName());
-        CaloTextView.setText(food.getCalories().toString());
-        MealTypeTextView.setText(food.getMealtype());
+        CaloTextView.setText(food.getCalories().toString() + " kcal");
+        MealTypeTextView.setText(food.getMealtype() + "\n\n");
 
 
 
-        // Delete button click listener
-        Button deleteButton = dialogView.findViewById(R.id.buttonDelete);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle delete logic here
-//                deleteFood(food);
-//                dialog.dismiss();
-            }
-        });
+//         Delete button click listener
+//        Button deleteButton = dialogView.findViewById(R.id.buttonDelete);
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Handle delete logic here
+////                deleteFood(food);
+////                dialog.dismiss();
+//            }
+//        });
 
         AlertDialog dialog = dialogBuilder.create();
         dialog.show();

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme"
     android:padding="16dp"
     android:orientation="vertical"
     tools:context=".Activity.Food.DisplayFoodActivity">
@@ -11,8 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center_vertical"
-        android:background="@color/title"
+        android:backgroundTint="@color/white"
         android:layout_marginBottom="8dp">
+
 
         <ImageButton
             android:id="@+id/bigback"
@@ -24,21 +24,31 @@
             android:paddingTop="20dp"
             android:paddingEnd="24dp"
             android:paddingBottom="20dp"
-            android:src="@drawable/ic_bigback" />
+            android:src="@drawable/ic_back" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_bold"
+            android:gravity="center_vertical"
+            android:text="@string/food"
+            android:textColor="@color/title"
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/displayFoodLinLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rectangle"
-        android:backgroundTint="@color/white"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:paddingTop="2dp"
+        android:gravity="center_horizontal"
         android:paddingBottom="12dp">
 
         <TextView
-            android:id="@+id/totalCalsTxt"
+            android:id="@+id/totalCalsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -48,10 +58,19 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/totalCalsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:text="0"
+            android:textColor="@color/title"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="|"
-            android:textColor="#ffee1d27"
+            android:textColor="@color/black"
             android:textSize="27sp" />
 
         <TextView
@@ -73,8 +92,10 @@
 
     <ListView
         android:id="@+id/listView"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 </LinearLayout>
 
 
@@ -91,6 +112,5 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center">
     </Button>
-
 
 </LinearLayout>
