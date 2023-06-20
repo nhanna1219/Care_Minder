@@ -124,12 +124,12 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
         TextView foodNameTextView = dialogView.findViewById(R.id.detFoodTxt);
         TextView CaloTextView = dialogView.findViewById(R.id.detCaloriesValueTxt);
         TextView MealTypeTextView = dialogView.findViewById(R.id.detMealTypeTxt);
-//        TextView NoteTextView = dialogView.findViewById(R.id.NoteTxt);
+        TextView NoteTextView = dialogView.findViewById(R.id.NoteTxt);
 
         foodNameTextView.setText(food.getName());
         CaloTextView.setText(food.getCalories().toString());
         MealTypeTextView.setText(food.getMealtype());
-//        NoteTextView.setText(food.getNote());
+        NoteTextView.setText(food.getNote());
 //        NoteTextView.setText(food.getDescription());
 
         // Delete button click listener
