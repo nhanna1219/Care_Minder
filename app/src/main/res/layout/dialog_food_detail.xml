@@ -64,25 +64,6 @@
             android:textStyle="bold" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/NotetitleTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Note:"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/NoteTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="Những thông tin đã ghi chú về món ăn"
-            android:textSize="20sp"/>
-
-
         <Button
             android:id="@+id/buttonDelete"
             android:layout_width="wrap_content"

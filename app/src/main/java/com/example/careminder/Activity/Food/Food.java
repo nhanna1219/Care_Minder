@@ -7,7 +7,6 @@ public class Food implements Serializable {
     private String name;
     private Double calories;
     private int id;
-    private String note;
     private String mealtype;
 
     //constructors
@@ -20,18 +19,13 @@ public class Food implements Serializable {
         this.id = id;
         this.mealtype = type;
     }
-    public Food(String name, Double calories, String type,  String note) {
-        this.name = name;
-        this.calories = calories;
-        this.mealtype = type;
-        this.note = note;
-    }
     public Food(String name, Double calories, String type) {
         this.name = name;
         this.calories = calories;
         this.mealtype = type;
 
     }
+
 
     //getters and setters
     public static long getSerialVersionUID() {
@@ -62,13 +56,6 @@ public class Food implements Serializable {
         this.id = id;
     }
 
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public String getMealtype() {
         return mealtype;

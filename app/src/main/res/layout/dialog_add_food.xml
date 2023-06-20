@@ -16,32 +16,24 @@
         <EditText
             android:id="@+id/editTextFoodName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Food Name"
             style="@style/EditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextFoodDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Calories"
             style="@style/EditTextStyle"/>
         <Spinner
             android:id="@+id/spinnerMealType"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:entries="@array/meal_types"
             android:prompt="@string/select_meal_type" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="6dp"
-            android:text="Note:"
-            android:textSize="16dp"/>
-        <EditText
-            android:id="@+id/note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+
 
 
     </LinearLayout>
