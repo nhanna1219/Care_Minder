@@ -115,7 +115,6 @@ public class SettingActivity extends AppCompatActivity {
 
     private List<SettingItem> createSettingItems() {
         List<SettingItem> settingItems = new ArrayList<>();
-
         settingItems.add(new SettingItem("Account",R.drawable.sic_account));
         settingItems.add(new SettingItem("Advanced Settings",R.drawable.sic_volume));
         settingItems.add(new SettingItem("Privacy & Permission",R.drawable.sic_security));
