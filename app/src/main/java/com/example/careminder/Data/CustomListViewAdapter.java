@@ -89,7 +89,6 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
             if(iden == getItem(position).getId() ){
                 holder.Note.setText(holder.food.getNote());
             }
-
         }
 //        holder.foodName.setText(holder.food.getName());
 //        holder.foodCalories.setText(holder.food.getCalories().toString());

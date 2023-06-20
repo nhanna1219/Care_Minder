@@ -352,7 +352,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val nutritionRecords = management.readFoodInputs(healthConnectClient)
             var i = 1;
             for (nutritionRecord in nutritionRecords) {
-                var id = 1
+                var id = i
                 val nutritionName = nutritionRecord.name.toString()
                 val nutritionCalo = nutritionRecord.energy?.inCalories?: 0.0
                 val mealType = nutritionRecord.mealType
