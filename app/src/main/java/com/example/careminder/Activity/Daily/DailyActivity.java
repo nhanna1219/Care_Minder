@@ -59,6 +59,7 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
     TextView steps, distance, caloriesBurned, duration;
     TextView steps_month, steps_year, steps_toDay, steps_day_after_1, steps_day_after_2, steps_day_before_1, steps_day_before_2;
     HealthConnectClient healthConnectClient;
+    PermissionsRationaleActivity management;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,26 +92,28 @@ public class DailyActivity extends AppCompatActivity implements DatePickerDialog
             }
         });
 
-        healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
         steps = findViewById(R.id.step_counting);
         distance = findViewById(R.id.distance);
         caloriesBurned = findViewById(R.id.calories);
         duration = findViewById(R.id.duration);
-        loadSteps(healthConnectClient, steps, distance, caloriesBurned, duration);
 
+        healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
+        management = new PermissionsRationaleActivity();
+
+        loadSteps(healthConnectClient, steps, distance, caloriesBurned, duration);
         TextView motivation = findViewById(R.id.steps_content_highlights);
         Random random = new Random();
         int index = random.nextInt(motivationalPhrases.length);
         motivation.setText(motivationalPhrases[index]);
-
     }
 
+
+
     private void loadSteps(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration){
-        PermissionsRationaleActivity management = new PermissionsRationaleActivity();
+
         management.loadDailyData(healthConnectClient,steps,distance,caloriesBurned,duration);
     }
     private void loadStepsCalendar(HealthConnectClient healthConnectClient, TextView steps,TextView distance, TextView caloriesBurned, TextView duration, ZonedDateTime today){
-        PermissionsRationaleActivity management = new PermissionsRationaleActivity();
         management.loadDailyData(healthConnectClient,steps,distance,caloriesBurned,duration, today);
     }
 

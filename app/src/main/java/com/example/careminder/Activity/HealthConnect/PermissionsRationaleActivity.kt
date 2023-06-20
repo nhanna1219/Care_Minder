@@ -103,6 +103,7 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
+
     private fun onPermissionsAvailable(healthConnectClient: HealthConnectClient) {
         val docRef = mAuth.currentUser?.let { db.collection("users").document(it.uid) }
         docRef?.get()?.addOnSuccessListener { document ->
@@ -221,6 +222,16 @@ class PermissionsRationaleActivity : AppCompatActivity() {
             val (rs, rsContent) = evaluateBMI(bmi)
             result.text = rs
             resultContent.text = rsContent
+        }
+    }
+
+    fun readBasicInformation(healthConnectClient: HealthConnectClient, weight: TextView, height: TextView) {
+        val management = HealthConnectManagement(healthConnectClient)
+        lifecycleScope.launch {
+            val weightInput = management.readWeightInput()
+            val heightInput = management.readHeightInput()
+            weight.text = "$weightInput"
+            height.text = "$heightInput"
         }
     }
 
@@ -361,14 +372,15 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
-
-
     // function for delete personal data (deleteStepsByTimeRange) in file HealthConnectManagement
     fun deletePersonalData(healthConnectClient: HealthConnectClient, start: Instant, end: Instant){
         val management = HealthConnectManagement(healthConnectClient)
         lifecycleScope.launch {
             management.deleteStepsByTimeRange(healthConnectClient, start, end)
             management.deleteWeight(healthConnectClient, start, end)
+            management.deleteWater(healthConnectClient, start, end)
+            management.deleteFood(healthConnectClient, start, end)
+            management.deleteCaloriesBurned(healthConnectClient, start, end)
         }
     }
 

@@ -17,6 +17,8 @@ import com.example.careminder.R;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.Calendar;
 
@@ -58,10 +60,10 @@ public class DeleteData extends AppCompatActivity {
 
                 LocalDate startDate = LocalDate.of(startYear, startMonth + 1, startDayOfMonth);
                 LocalDate endDate = LocalDate.of(endYear, endMonth + 1, endDayOfMonth);
-
+                LocalDateTime endOfDay = LocalDateTime.of(endDate, LocalTime.MAX).withSecond(59).withNano(0);
                 // Chuyển đổi LocalDate thành Instant (nếu cần)
                 Instant startInstant = startDate.atStartOfDay(ZoneOffset.UTC).toInstant();
-                Instant endInstant = endDate.atStartOfDay(ZoneOffset.UTC).toInstant();
+                Instant endInstant = endOfDay.toInstant(ZoneOffset.UTC);
 
                 deleteData(startInstant, endInstant);
                 startActivity(new Intent(getApplicationContext(), AdvancedSettingActivity.class));

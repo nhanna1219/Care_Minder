@@ -57,6 +57,8 @@
                 <!-- Câu hỏi 1 -->
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -65,11 +67,15 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: Yes. Both the Health Connect API and the CareMinder app are available on the Android platform only."/>
                 <!-- Câu hỏi 2 -->
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -78,11 +84,15 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: No. CareMinder has certain compatibility requirements including that mobile devices have Android 9 (API 28) or higher with Google Play services installed."/>
                 <!-- Câu hỏi 2 -->
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -91,10 +101,14 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: CareMinder provides on-device storage. Our goal is to create a system that puts users fully in control of their data, as well as which apps and services they share it with."/>
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -102,10 +116,14 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: Only mobile devices with Android 9 (API 28) or higher can use the CareMinder app. These devices must also have Google Play services installed."/>
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -113,10 +131,14 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: CareMinder allows your app to read records with a time or startTime for up to 30 days before your app's first successful permission request. If your app is uninstalled and then re-installed, the date is reset which marks as your new starting date as if you use it for the first time.\n\nThere are no restrictions on the data you share with CareMinder, however you should avoid writing large amounts of historical data at this time."/>
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Q: Who should I contact if I need help integrating with CareMinder?"
@@ -124,6 +146,8 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:lineSpacingExtra="1.25dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:text="A: If you have any technical questions, issues, or concerns about integrating with CareMinder, please contact Development Team or health-connect-support@google.com."/>
 

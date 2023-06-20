@@ -1,6 +1,6 @@
 package com.example.careminder.Activity.Setting;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.health.connect.client.HealthConnectClient;
 
@@ -15,23 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import com.example.careminder.Activity.HealthConnect.PermissionsRationaleActivity;
-import com.example.careminder.Activity.Home.HomeActivity;
-import com.example.careminder.Activity.Information.InformationActivity;
 import com.example.careminder.R;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
-    TextView back, textView, gender;
+    TextView back, textView;
     EditText height, weight;
     // button
     Button save;
@@ -39,22 +32,21 @@ public class AccountActivity extends AppCompatActivity {
     FirebaseAuth auth;
     String userID;
 
-
+    String genderValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_account);
-
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         userID = auth.getCurrentUser().getUid();
-
 
         back = findViewById(R.id.settingsTextView);
 
         height = findViewById(R.id.textView12);
         weight = findViewById(R.id.textView11);
+        textView = findViewById(R.id.textView9);
 
         save = (Button) findViewById(R.id.save);
 
@@ -65,7 +57,9 @@ public class AccountActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, genders);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(adapter);
-        textView = findViewById(R.id.textView9);
+        getBasicIn4();
+
+        getGender(genderSpinner);
         genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -88,25 +82,15 @@ public class AccountActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // convert height and weight to double
                 Double height_db = Double.parseDouble(height.getText().toString());
                 Double weight_db = Double.parseDouble(weight.getText().toString());
-                height_db = (double) (Math.round(height_db * 100) / 10000); // Divide 10000 cause we want the value in meters
-                weight_db = (double) (Math.round(weight_db * 100) / 100);
-                setBasicIn4(height_db, weight_db);
-
-//                // update gender to firestore
                 setGender(textView.getText().toString());
-
-                Intent intent = new Intent(AccountActivity.this, SettingActivity.class);
-                startActivity(intent);
-                // notify user
-                Toast.makeText(AccountActivity.this, "Saved Changes", Toast.LENGTH_SHORT).show();
-
-
-
+                setBasicIn4(height_db, weight_db);
+                Toast.makeText(AccountActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), SettingActivity.class));
             }
         });
+
     }
     private void setBasicIn4(Double height, Double weight){
         HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
@@ -116,5 +100,31 @@ public class AccountActivity extends AppCompatActivity {
     private void setGender(String gender){
         DocumentReference docRef = db.collection("users").document(userID);
         docRef.update("gender", gender);
+    }
+
+    private void getGender(Spinner genderSpinner) {
+        DocumentReference docRef = db.collection("users").document(userID);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        genderValue = document.getString("gender");
+                        assert genderValue != null;
+                        if (genderValue.equals("Male")){
+                            genderSpinner.setSelection(0);
+                        }
+                        else {
+                            genderSpinner.setSelection(1);
+                        }
+                    }
+            }
+        }});
+    }
+    private void getBasicIn4() {
+        HealthConnectClient healthConnectClient = HealthConnectClient.getOrCreate(getApplicationContext());
+        PermissionsRationaleActivity readBasicIn4 = new PermissionsRationaleActivity();
+        readBasicIn4.readBasicInformation(healthConnectClient, weight, height);
     }
 }
