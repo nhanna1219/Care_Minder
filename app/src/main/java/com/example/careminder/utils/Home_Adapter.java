@@ -77,6 +77,8 @@ public class Home_Adapter extends BaseAdapter {
             TextView duration = view.findViewById(R.id.duration);
             TextView calories = view.findViewById(R.id.calories);
             TextView stepsCounting = view.findViewById(R.id.steps_counting);
+            TextView totalCalories = view.findViewById(R.id.main_calories_counting);
+
 
             TextView total_water = view.findViewById(R.id.main_water_counting);
 
@@ -84,6 +86,7 @@ public class Home_Adapter extends BaseAdapter {
             PermissionsRationaleActivity management = new PermissionsRationaleActivity();
             management.loadDailyData(healthConnectClient, stepsCounting, stepCounting, calories, duration, 1);
             management.readWater(healthConnectClient, total_water);
+            management.readFood(healthConnectClient, totalCalories);
 
             addWater.setOnClickListener(new OnClickListener() {
                 @Override

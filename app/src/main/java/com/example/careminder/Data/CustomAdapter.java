@@ -108,7 +108,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             public void onClick(View v) {
                 // Handle delete logic here
 //                deleteFood(food);
-
                 confirmDialog(id, title);
 
             }

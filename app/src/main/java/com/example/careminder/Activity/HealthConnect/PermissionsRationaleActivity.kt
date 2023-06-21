@@ -386,4 +386,5 @@ class PermissionsRationaleActivity : AppCompatActivity() {
         }
     }
 
+
 }
